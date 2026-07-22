@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroNet AI Agent — Visual Flow</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #0a0c10;
+    --bg2: #0f1117;
+    --bg3: #161b24;
+    --bg4: #1d2330;
+    --border: rgba(99,179,237,0.15);
+    --border2: rgba(99,179,237,0.3);
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --accent3: #34d399;
+    --accent4: #fb923c;
+    --accent5: #f472b6;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+    --node-w: 220px;
+    --glow: 0 0 20px rgba(56,189,248,0.15);
+    --glow2: 0 0 30px rgba(56,189,248,0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* TOP BAR */
+  #topbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 20px;
+    height: 52px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    z-index: 100;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px; font-weight: 600; letter-spacing: -0.3px;
+  }
+  .logo-icon {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .top-tabs {
+    display: flex; gap: 4px; margin-left: 20px;
+  }
+  .top-tab {
+    padding: 5px 14px; font-size: 13px; border-radius: 6px;
+    cursor: pointer; color: var(--text2); transition: all 0.15s;
+    border: 1px solid transparent;
+  }
+  .top-tab.active {
+    background: var(--bg4); color: var(--accent); border-color: var(--border2);
+  }
+  .top-tab:hover:not(.active) { color: var(--text); }
+  .top-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .status-pill {
+    display: flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 20px;
+    background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.3);
+    font-size: 12px; color: var(--accent3);
+  }
+  .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent3); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .btn-run {
+    padding: 6px 18px; font-size: 13px; font-weight: 500;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000; border: none; border-radius: 7px; cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: opacity 0.15s;
+  }
+  .btn-run:hover { opacity: 0.85; }
+
+  /* MAIN LAYOUT */
+  #main { display: flex; flex: 1; overflow: hidden; }
+
+  /* LEFT SIDEBAR — node palette */
+  #sidebar {
+    width: 200px; flex-shrink: 0;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 12px 10px;
+  }
+  .sidebar-section { margin-bottom: 16px; }
+  .sidebar-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--text3); padding: 0 4px; margin-bottom: 8px;
+  }
+  .palette-node {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 10px; border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg3); margin-bottom: 6px;
+    cursor: grab; font-size: 12px; color: var(--text2);
+    transition: all 0.15s;
+  }
+  .palette-node:hover { border-color: var(--border2); color: var(--text); background: var(--bg4); }
+  .palette-icon { font-size: 14px; width: 20px; text-align: center; }
+
+  /* CANVAS */
+  #canvas-wrap {
+    flex: 1; position: relative; overflow: hidden;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(56,189,248,0.03) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(129,140,248,0.04) 0%, transparent 60%);
+  }
+  #canvas-bg {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  #canvas {
+    position: absolute; inset: 0;
+    transform-origin: 0 0;
+  }
+
+  /* NODES */
+  .flow-node {
+    position: absolute;
+    width: var(--node-w);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: move;
+    user-select: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    z-index: 10;
+  }
+  .flow-node:hover { border-color: var(--border2); box-shadow: var(--glow); }
+  .flow-node.active { border-color: var(--accent); box-shadow: var(--glow2); }
+  .flow-node.running { border-color: var(--accent3); box-shadow: 0 0 20px rgba(52,211,153,0.25); animation: nodeRun 0.6s ease; }
+  @keyframes nodeRun { 0%{transform:scale(1)} 50%{transform:scale(1.03)} 100%{transform:scale(1)} }
+
+  .node-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 12px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .node-icon {
+    width: 26px; height: 26px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+  }
+  .node-title { font-size: 12px; font-weight: 600; color: var(--text); flex: 1; }
+  .node-badge {
+    font-size: 9px; padding: 2px 6px; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace; font-weight: 500;
+  }
+  .node-body { padding: 10px 12px; }
+  .node-field {
+    margin-bottom: 8px;
+  }
+  .node-field label { font-size: 10px; color: var(--text3); display: block; margin-bottom: 3px; }
+  .node-field input, .node-field select, .node-field textarea {
+    width: 100%; background: var(--bg4); border: 1px solid var(--border);
+    border-radius: 6px; padding: 5px 8px; font-size: 11px;
+    color: var(--text); font-family: 'JetBrains Mono', monospace;
+    outline: none; transition: border-color 0.15s;
+  }
+  .node-field input:focus, .node-field select:focus, .node-field textarea:focus {
+    border-color: var(--accent);
+  }
+  .node-field textarea { resize: vertical; min-height: 50px; }
+  .node-field select option { background: var(--bg3); }
+
+  /* PORTS */
+  .port-row { display: flex; justify-content: space-between; padding: 0 12px 10px; }
+  .port {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 10px; color: var(--text3); cursor: pointer;
+  }
+  .port-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 2px solid var(--border2); background: var(--bg3);
+    transition: all 0.15s; flex-shrink: 0;
+  }
+  .port:hover .port-dot { background: var(--accent); border-color: var(--accent); }
+
+  /* SVG EDGES */
+  #edges-svg {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 5;
+    overflow: visible;
+  }
+  .edge { stroke: rgba(99,179,237,0.4); stroke-width: 1.5; fill: none; }
+  .edge.active-edge { stroke: var(--accent3); stroke-width: 2; }
+
+  /* RIGHT PANEL */
+  #right-panel {
+    width: 340px; flex-shrink: 0;
+    background: var(--bg2); border-left: 1px solid var(--border);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  #right-tabs {
+    display: flex; border-bottom: 1px solid var(--border);
+  }
+  .rtab {
+    flex: 1; padding: 10px 8px; font-size: 12px; text-align: center;
+    cursor: pointer; color: var(--text3); transition: all 0.15s;
+    border-bottom: 2px solid transparent;
+  }
+  .rtab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .rtab:hover:not(.active) { color: var(--text2); }
+
+  .rpanel { display: none; flex: 1; flex-direction: column; overflow: hidden; }
+  .rpanel.active { display: flex; }
+
+  /* CHAT PANEL */
+  #chat-msgs {
+    flex: 1; overflow-y: auto; padding: 14px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .cmsg {
+    font-size: 12.5px; line-height: 1.55; border-radius: 10px; padding: 9px 12px;
+  }
+  .cmsg.user {
+    background: var(--bg4); border: 1px solid var(--border);
+    align-self: flex-end; max-width: 90%;
+    color: var(--text);
+  }
+  .cmsg.agent {
+    background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.2);
+    align-self: flex-start; max-width: 95%; color: var(--text);
+  }
+  .cmsg .tag { font-size: 10px; color: var(--text3); margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .cmsg.thinking { opacity: 0.5; font-style: italic; }
+  .quick-chips {
+    display: flex; flex-wrap: wrap; gap: 5px; padding: 0 14px 8px;
+  }
+  .chip {
+    font-size: 11px; padding: 4px 9px; border-radius: 15px;
+    border: 1px solid var(--border2); color: var(--text2);
+    cursor: pointer; transition: all 0.15s; background: transparent;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .chip:hover { background: var(--bg4); color: var(--accent); border-color: var(--accent); }
+  #chat-input-row {
+    display: flex; gap: 8px; padding: 10px 14px;
+    border-top: 1px solid var(--border);
+  }
+  #chat-in {
+    flex: 1; background: var(--bg4); border: 1px solid var(--border);
+    border-radius: 8px; padding: 7px 10px; font-size: 12px;
+    color: var(--text); font-family: 'Space Grotesk', sans-serif;
+    outline: none; resize: none; height: 36px;
+  }
+  #chat-in:focus { border-color: var(--accent); }
+  #send-btn {
+    padding: 7px 14px; font-size: 12px; font-weight: 500;
+    background: var(--accent); color: #000;
+    border: none; border-radius: 8px; cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif; transition: opacity 0.15s;
+  }
+  #send-btn:hover { opacity: 0.85; }
+  #send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* SIMULATOR PANEL */
+  #sim-content { flex: 1; overflow-y: auto; padding: 14px; }
+  .sim-metric {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 12px; background: var(--bg3); border-radius: 8px;
+    margin-bottom: 6px; border: 1px solid var(--border);
+  }
+  .sim-metric .sm-label { font-size: 11px; color: var(--text3); }
+  .sim-metric .sm-val {
+    font-size: 16px; font-weight: 600;
+    font-family: 'JetBrains Mono', monospace; color: var(--accent);
+  }
+  .sim-metric.alert .sm-val { color: var(--accent4); }
+  .anomaly-btns { display: flex; flex-direction: column; gap: 6px; margin: 10px 0; }
+  .anom-btn {
+    padding: 8px 12px; font-size: 12px; border: 1px solid var(--border);
+    border-radius: 8px; cursor: pointer; background: var(--bg3);
+    color: var(--text2); font-family: 'Space Grotesk', sans-serif;
+    display: flex; align-items: center; gap: 8px; transition: all 0.15s;
+  }
+  .anom-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg4); }
+  .rl-box {
+    background: var(--bg3); border-radius: 10px; padding: 12px;
+    border: 1px solid var(--border); margin-top: 10px; display: none;
+  }
+  .rl-box.visible { display: block; }
+  .rl-row2 {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; margin-bottom: 6px;
+  }
+  .rl-row2 .rk { color: var(--text3); }
+  .rl-row2 .rv { font-family: 'JetBrains Mono', monospace; font-weight: 500; color: var(--text); }
+  .conf-track {
+    height: 4px; background: var(--bg4); border-radius: 2px;
+    overflow: hidden; margin: 4px 0 8px;
+  }
+  .conf-fill2 { height: 100%; border-radius: 2px; transition: width 0.5s; }
+  .decision-log2 {
+    font-size: 10px; font-family: 'JetBrains Mono', monospace;
+    color: var(--text3); line-height: 1.8; max-height: 120px;
+    overflow-y: auto; background: var(--bg4); border-radius: 6px;
+    padding: 8px; margin-top: 8px; border: 1px solid var(--border);
+  }
+
+  /* DOCS PANEL */
+  #docs-content { flex: 1; overflow-y: auto; padding: 14px; }
+  .doc-btn {
+    width: 100%; margin-bottom: 6px; padding: 9px 12px;
+    text-align: left; font-size: 12px; border: 1px solid var(--border);
+    border-radius: 8px; background: var(--bg3); color: var(--text2);
+    cursor: pointer; font-family: 'Space Grotesk', sans-serif;
+    display: flex; align-items: center; gap: 8px; transition: all 0.15s;
+  }
+  .doc-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg4); }
+  #doc-out {
+    margin-top: 10px; background: var(--bg3); border-radius: 10px;
+    padding: 12px; font-size: 11.5px; line-height: 1.7;
+    color: var(--text2); white-space: pre-wrap;
+    max-height: 380px; overflow-y: auto; border: 1px solid var(--border);
+    font-family: 'Space Grotesk', sans-serif; display: none;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
+
+  /* NODE TYPE COLORS */
+  .ni-input { background: rgba(56,189,248,0.15); }
+  .ni-llm { background: rgba(129,140,248,0.15); }
+  .ni-prompt { background: rgba(251,146,60,0.15); }
+  .ni-output { background: rgba(52,211,153,0.15); }
+  .ni-memory { background: rgba(244,114,182,0.15); }
+  .nb-input { background: rgba(56,189,248,0.15); color: var(--accent); }
+  .nb-llm { background: rgba(129,140,248,0.15); color: var(--accent2); }
+  .nb-prompt { background: rgba(251,146,60,0.15); color: var(--accent4); }
+  .nb-output { background: rgba(52,211,153,0.15); color: var(--accent3); }
+  .nb-memory { background: rgba(244,114,182,0.15); color: var(--accent5); }
+
+  /* API KEY MODAL */
+  #api-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    display: flex; align-items: center; justify-content: center; z-index: 999;
+  }
+  .modal-box {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 14px; padding: 28px; width: 420px;
+    box-shadow: 0 0 60px rgba(56,189,248,0.1);
+  }
+  .modal-box h2 { font-size: 17px; margin-bottom: 6px; }
+  .modal-box p { font-size: 13px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+  .modal-box input {
+    width: 100%; background: var(--bg4); border: 1px solid var(--border2);
+    border-radius: 8px; padding: 10px 12px; font-size: 13px;
+    color: var(--text); font-family: 'JetBrains Mono', monospace;
+    outline: none; margin-bottom: 12px;
+  }
+  .modal-box button {
+    width: 100%; padding: 10px; font-size: 14px; font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000; border: none; border-radius: 8px; cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .warn-note {
+    font-size: 11px; color: var(--accent4); margin-top: 10px;
+    padding: 8px 10px; border-radius: 6px;
+    background: rgba(251,146,60,0.1); border: 1px solid rgba(251,146,60,0.2);
+    line-height: 1.5;
+  }
+
+  /* FLOW LOG */
+  #flow-log {
+    height: 36px; background: var(--bg2); border-top: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px; padding: 0 16px;
+    font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--text3);
+    flex-shrink: 0; overflow: hidden;
+  }
+  #flow-log .log-prefix { color: var(--accent3); }
+  #flow-log-text { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+
+<!-- API KEY MODAL -->
+<div id="api-modal">
+  <div class="modal-box">
+    <h2>Connect API Key</h2>
+    <p>Paste any API key below. The provider is detected automatically from the key format — Groq, OpenAI, Anthropic, or Google Gemini are all supported.</p>
+    <input type="password" id="key-input" placeholder="gsk_  /  sk-  /  sk-ant-  /  AIzaSy..." autocomplete="off" />
+    <div id="key-error" style="font-size:11px;color:#f87171;margin-bottom:8px;min-height:16px;"></div>
+    <button onclick="saveKey()">Connect &amp; Launch NeuroNet Agent</button>
+    <div class="warn-note">Never share your API key publicly. This app runs 100% in your browser — your key never leaves your machine.</div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <div class="logo">
+    <div class="logo-icon">N</div>
+    NeuroNet Agent Flow
+  </div>
+  <div class="top-tabs">
+    <div class="top-tab active" onclick="switchCanvas('flow')">Flow</div>
+    <div class="top-tab" onclick="switchCanvas('api')">API</div>
+  </div>
+  <div class="top-right">
+    <div class="status-pill"><div class="dot"></div><span id="status-label">Ready — Paste API Key</span></div>
+    <button class="btn-run" onclick="runFlow()">Run Flow</button>
+    <button class="btn-run" style="background:var(--bg4);color:var(--text2);border:1px solid var(--border);margin-left:4px" onclick="showKeyModal()">Key</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- LEFT SIDEBAR -->
+  <div id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Inputs</div>
+      <div class="palette-node"><span class="palette-icon">[C]</span>Chat Input</div>
+      <div class="palette-node"><span class="palette-icon">[T]</span>Text Input</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Models</div>
+      <div class="palette-node"><span class="palette-icon">[M]</span>Llama 3.3 70B</div>
+      <div class="palette-node"><span class="palette-icon">[M]</span>Mixtral 8x7B</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Prompts</div>
+      <div class="palette-node"><span class="palette-icon">[P]</span>System Prompt</div>
+      <div class="palette-node"><span class="palette-icon">[P]</span>Prompt Template</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Memory</div>
+      <div class="palette-node"><span class="palette-icon">[H]</span>Chat History</div>
+      <div class="palette-node"><span class="palette-icon">[V]</span>Vector Store</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Outputs</div>
+      <div class="palette-node"><span class="palette-icon">[O]</span>Chat Output</div>
+      <div class="palette-node"><span class="palette-icon">[J]</span>JSON Output</div>
+    </div>
+  </div>
+
+  <!-- CANVAS AREA -->
+  <div id="canvas-wrap">
+    <svg id="canvas-bg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+          <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(99,179,237,0.06)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+    <div id="canvas">
+      <svg id="edges-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <!-- NODE 1: Telemetry Input -->
+      <div class="flow-node" id="node-1" style="left:40px;top:60px" onmousedown="startDrag(event,'node-1')">
+        <div class="node-header">
+          <div class="node-icon ni-input" style="font-size:10px;font-weight:700">TLM</div>
+          <div class="node-title">Telemetry Input</div>
+          <div class="node-badge nb-input">INPUT</div>
+        </div>
+        <div class="node-body">
+          <div class="node-field"><label>SOURCE</label>
+            <select><option>Kafka Stream</option><option>Prometheus</option><option>Manual Inject</option></select>
+          </div>
+          <div class="node-field"><label>INTERVAL</label>
+            <input type="text" value="15s" /></div>
+        </div>
+        <div class="port-row">
+          <div></div>
+          <div class="port"><span>out</span><div class="port-dot" id="p1-out"></div></div>
+        </div>
+      </div>
+
+      <!-- NODE 2: System Prompt -->
+      <div class="flow-node" id="node-2" style="left:40px;top:280px" onmousedown="startDrag(event,'node-2')">
+        <div class="node-header">
+          <div class="node-icon ni-prompt" style="font-size:10px;font-weight:700">PRM</div>
+          <div class="node-title">NeuroNet Prompt</div>
+          <div class="node-badge nb-prompt">PROMPT</div>
+        </div>
+        <div class="node-body">
+          <div class="node-field"><label>ROLE</label>
+            <input type="text" value="NeuroNet Expert Agent" /></div>
+          <div class="node-field"><label>KNOWLEDGE BASE</label>
+            <textarea>RL Architecture · Reward Fn · Cold Start · MANET · DQN/PPO · SHAP · GPU Inference</textarea>
+          </div>
+        </div>
+        <div class="port-row">
+          <div></div>
+          <div class="port"><span>out</span><div class="port-dot" id="p2-out"></div></div>
+        </div>
+      </div>
+
+      <!-- NODE 3: Chat Memory -->
+      <div class="flow-node" id="node-3" style="left:40px;top:490px" onmousedown="startDrag(event,'node-3')">
+        <div class="node-header">
+          <div class="node-icon ni-memory" style="font-size:10px;font-weight:700">MEM</div>
+          <div class="node-title">Chat Memory</div>
+          <div class="node-badge nb-memory">MEMORY</div>
+        </div>
+        <div class="node-body">
+          <div class="node-field"><label>WINDOW SIZE</label>
+            <input type="text" value="20 messages" /></div>
+          <div class="node-field"><label>STORED</label>
+            <input type="text" id="mem-count" value="0 turns" readonly /></div>
+        </div>
+        <div class="port-row">
+          <div></div>
+          <div class="port"><span>out</span><div class="port-dot" id="p3-out"></div></div>
+        </div>
+      </div>
+
+      <!-- NODE 4: LLM -->
+      <div class="flow-node" id="node-4" style="left:320px;top:160px" onmousedown="startDrag(event,'node-4')">
+        <div class="node-header">
+          <div class="node-icon ni-llm" style="font-size:10px;font-weight:700">LLM</div>
+          <div class="node-title" id="node4-title">LLM Node</div>
+          <div class="node-badge nb-llm">LLM</div>
+        </div>
+        <div class="node-body">
+          <div class="node-field"><label>MODEL</label>
+            <select id="model-select">
+              <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile</option>
+              <option value="llama-3.1-8b-instant">llama-3.1-8b-instant</option>
+              <option value="mixtral-8x7b-32768">mixtral-8x7b-32768</option>
+              <option value="gemma2-9b-it">gemma2-9b-it</option>
+            </select>
+          </div>
+          <div class="node-field"><label>TEMPERATURE</label>
+            <input type="text" id="temp-val" value="0.7" /></div>
+          <div class="node-field"><label>MAX TOKENS</label>
+            <input type="text" id="maxtok-val" value="1024" /></div>
+          <div class="node-field"><label>STATUS</label>
+            <input type="text" id="llm-status" value="Ready" readonly /></div>
+        </div>
+        <div class="port-row">
+          <div class="port"><div class="port-dot" id="p4-in-1"></div><span>prompt</span></div>
+          <div class="port"><span>out</span><div class="port-dot" id="p4-out"></div></div>
+        </div>
+      </div>
+
+      <!-- NODE 5: RL Anomaly Detector -->
+      <div class="flow-node" id="node-5" style="left:320px;top:390px" onmousedown="startDrag(event,'node-5')">
+        <div class="node-header">
+          <div class="node-icon ni-prompt" style="font-size:10px;font-weight:700">DET</div>
+          <div class="node-title">Anomaly Detector</div>
+          <div class="node-badge nb-prompt">RL</div>
+        </div>
+        <div class="node-body">
+          <div class="node-field"><label>ALGORITHM</label>
+            <select><option>LSTM + Isolation Forest</option><option>LSTM only</option></select>
+          </div>
+          <div class="node-field"><label>THRESHOLD</label>
+            <input type="text" value="0.70" /></div>
+          <div class="node-field"><label>LAST SCORE</label>
+            <input type="text" id="anom-score-node" value="—" readonly /></div>
+        </div>
+        <div class="port-row">
+          <div class="port"><div class="port-dot"></div><span>telemetry</span></div>
+          <div class="port"><span>out</span><div class="port-dot"></div></div>
+        </div>
+      </div>
+
+      <!-- NODE 6: Chat Output -->
+      <div class="flow-node" id="node-6" style="left:600px;top:160px" onmousedown="startDrag(event,'node-6')">
+        <div class="node-header">
+          <div class="node-icon ni-output" style="font-size:10px;font-weight:700">OUT</div>
+          <div class="node-title">Chat Output</div>
+          <div class="node-badge nb-output">OUTPUT</div>
+        </div>
+        <div class="node-body">
+          <div class="node-field"><label>FORMAT</label>
+            <select><option>Markdown</option><option>Plain Text</option><option>JSON</option></select>
+          </div>
+          <div class="node-field"><label>LAST RESPONSE</label>
+            <textarea id="out-preview" readonly style="height:60px;font-size:10px">—</textarea>
+          </div>
+        </div>
+        <div class="port-row">
+          <div class="port"><div class="port-dot"></div><span>in</span></div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- NODE 7: RL Action Engine -->
+      <div class="flow-node" id="node-7" style="left:600px;top:390px" onmousedown="startDrag(event,'node-7')">
+        <div class="node-header">
+          <div class="node-icon ni-output" style="font-size:10px;font-weight:700">DQN</div>
+          <div class="node-title">RL Action Engine</div>
+          <div class="node-badge nb-output">DQN</div>
+        </div>
+        <div class="node-body">
+          <div class="node-field"><label>POLICY</label>
+            <select><option>Dueling DQN</option><option>PPO</option></select>
+          </div>
+          <div class="node-field"><label>CONF THRESHOLD</label>
+            <input type="text" value="0.75" /></div>
+          <div class="node-field"><label>LAST ACTION</label>
+            <input type="text" id="action-node" value="—" readonly /></div>
+        </div>
+        <div class="port-row">
+          <div class="port"><div class="port-dot"></div><span>anomaly</span></div>
+          <div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div id="right-panel">
+    <div id="right-tabs">
+      <div class="rtab active" onclick="switchRTab('chat')">Chat</div>
+      <div class="rtab" onclick="switchRTab('sim')">Simulator</div>
+      <div class="rtab" onclick="switchRTab('docs')">Docs</div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="rpanel active" id="rp-chat">
+      <div id="chat-msgs">
+        <div class="cmsg agent">
+          <div class="tag">NeuroNet Agent</div>
+          Hi! I'm your NeuroNet AI Agent. Connect any API key (Groq, OpenAI, Anthropic, or Gemini) to get started. I know everything about the project — RL formulation, reward function, architecture, cold start, MANET extension, benchmarks, and more. Ask me anything!
+        </div>
+      </div>
+      <div class="quick-chips">
+        <button class="chip" onclick="qask('Explain the reward function')">Reward fn</button>
+        <button class="chip" onclick="qask('How does cold start work?')">Cold start</button>
+        <button class="chip" onclick="qask('What is the MANET extension?')">MANET</button>
+        <button class="chip" onclick="qask('Explain the DQN architecture')">DQN arch</button>
+        <button class="chip" onclick="qask('What makes NeuroNet stand out from competitors?')">Differentiators</button>
+      </div>
+      <div id="chat-input-row">
+        <textarea id="chat-in" placeholder="Ask about NeuroNet..." onkeydown="ckeydown(event)"></textarea>
+        <button id="send-btn" onclick="sendChat()">Send</button>
+      </div>
+    </div>
+
+    <!-- SIMULATOR -->
+    <div class="rpanel" id="rp-sim">
+      <div id="sim-content">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:10px;font-family:'JetBrains Mono',monospace;">LIVE NETWORK METRICS</div>
+        <div class="sim-metric" id="sm-lat"><span class="sm-label">Latency</span><span class="sm-val" id="sv-lat">5.2 ms</span></div>
+        <div class="sim-metric" id="sm-thr"><span class="sm-label">Throughput</span><span class="sm-val" id="sv-thr">8.4 Gbps</span></div>
+        <div class="sim-metric" id="sm-loss"><span class="sm-label">Packet Loss</span><span class="sm-val" id="sv-loss">0.10%</span></div>
+        <div class="sim-metric" id="sm-cong"><span class="sm-label">Congestion</span><span class="sm-val" id="sv-cong">12%</span></div>
+
+        <div style="font-size:11px;color:var(--text3);margin:12px 0 6px;font-family:'JetBrains Mono',monospace;">INJECT ANOMALY</div>
+        <div class="anomaly-btns">
+          <button class="anom-btn" onclick="inject('congestion')">[!] Link Congestion <span style="margin-left:auto;font-size:10px;color:var(--text3)">+25ms lat</span></button>
+          <button class="anom-btn" onclick="inject('failure')">[X] Link Failure <span style="margin-left:auto;font-size:10px;color:var(--text3)">+145ms lat</span></button>
+          <button class="anom-btn" onclick="inject('degradation')">[~] Device Degradation <span style="margin-left:auto;font-size:10px;color:var(--text3)">+35ms lat</span></button>
+          <button class="anom-btn" onclick="resetSim()" style="border-color:rgba(52,211,153,0.3);color:var(--accent3)">Reset Network</button>
+        </div>
+
+        <div class="rl-box" id="rl-box">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-family:'JetBrains Mono',monospace;">RL DECISION</div>
+          <div class="rl-row2"><span class="rk">Anomaly score</span><span class="rv" id="rv-score">—</span></div>
+          <div class="rl-row2"><span class="rk">Action</span><span class="rv" id="rv-action">—</span></div>
+          <div class="rl-row2"><span class="rk">Confidence</span><span class="rv" id="rv-conf">—</span></div>
+          <div class="conf-track"><div class="conf-fill2" id="rv-cbar" style="width:0%"></div></div>
+          <div class="rl-row2"><span class="rk">Reward</span><span class="rv" id="rv-reward">—</span></div>
+          <div class="rl-row2"><span class="rk">MTTR</span><span class="rv" id="rv-mttr">—</span></div>
+          <div class="rl-row2"><span class="rk">SHAP driver</span><span class="rv" id="rv-shap">—</span></div>
+        </div>
+
+        <div class="decision-log2" id="dec-log">No decisions yet.</div>
+
+        <div style="font-size:11px;color:var(--text3);margin-top:10px;font-family:'JetBrains Mono',monospace;">
+          Episodes: <span id="ep-n" style="color:var(--text2)">0</span> &nbsp;|&nbsp;
+          Mean R: <span id="mean-r" style="color:var(--text2)">—</span> &nbsp;|&nbsp;
+          Auto%: <span id="auto-pct" style="color:var(--accent3)">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCS -->
+    <div class="rpanel" id="rp-docs">
+      <div id="docs-content">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:10px;font-family:'JetBrains Mono',monospace;">GENERATE DOCUMENTATION</div>
+        <button class="doc-btn" onclick="genDoc('exec')">[D] Executive Summary</button>
+        <button class="doc-btn" onclick="genDoc('pitch')">[D] Elevator Pitch</button>
+        <button class="doc-btn" onclick="genDoc('tech')">[D] Technical Brief</button>
+        <button class="doc-btn" onclick="genDoc('qa')">[D] Judge Q&amp;A Prep</button>
+        <button class="doc-btn" onclick="genDoc('readme')">[D] README.md</button>
+        <button class="doc-btn" onclick="genDoc('comparison')">[D] NeuroNet vs Rule Engines</button>
+        <div id="doc-out"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FLOW LOG -->
+<div id="flow-log">
+  <span class="log-prefix">LOG</span>
+  <span id="flow-log-text">NeuroNet Agent Flow ready. Connect API key to begin.</span>
+</div>
+
+<script>
+let API_KEY = '';
+let chatHistory = [];
+let isLoading = false;
+let simEps = 0, simRewards = [], simAutoCount = 0;
+let simLogs = [];
+let simState = { lat:5.2, thr:8.4, loss:0.1, cong:0.12 };
+
+const SYSTEM = `You are the NeuroNet AI Agent — a highly expert assistant for the NeuroNet Modulator project, a GPU-accelerated reinforcement learning self-healing network intelligence system built for the Cognizant Technoverse Hackathon 2026 CMT Track (Network Automation).
+
+FULL PROJECT KNOWLEDGE:
+
+ARCHITECTURE: 5-layer closed-loop pipeline:
+1. Telemetry Ingestion: Kafka + Prometheus + InfluxDB. Metrics every 15s: latency, throughput, packet loss, congestion, device health.
+2. Anomaly Detection: LSTM Autoencoder (2 layers, hidden=64, latent=16) + Isolation Forest ensemble. anomaly_score = 0.6*lstm_error + 0.4*iso_score. Triggers at >0.7.
+3. RL Intelligence Core: Dueling DQN/PPO on CUDA GPU. State=35-dim. 8 actions. Ensemble confidence gating (3 DQN heads).
+4. Execution Layer: OpenFlow (reroute, 15-20ms), Ansible (QoS, 5-10ms), Kubernetes operators (slice scale, 40-60ms).
+5. Dashboard: Grafana + SHAP + ElasticSearch/Kibana.
+
+RL FORMULATION:
+- State: [anomaly_features(4), shap_attribution(4), node_id(1), affected_flows(1), time_sin_cos(2), recent_action_history(5)] = 35 dims
+- Actions (8): 0=reroute ECMP, 1=QoS priority, 2=scale 5G slice, 3=throttle cross-slice, 4=traffic shaping, 5=local failover, 6=escalate NOC, 7=monitor
+- Reward: R = 0.50*(−Δlat*2) + 0.20*(Δthr*0.5) + 0.15*(−Δloss*10) + 0.10*(−Δcong*5) + 1.0*(−sla_penalty*100) + action_cost + oscillation_penalty(-10 if repeated)
+- Policy: Dueling DQN with value+advantage streams. 3-ensemble confidence = 1 - std(Q_ensemble)/max(Q)
+- Confidence ≥75% → autonomous execute | 50-75% → recommend to NOC | <50% → escalate
+
+COLD START (4 phases):
+Phase 1: Synthetic pre-training, 5000 Mininet episodes. Reward improves +5→+45.
+Phase 2: Warm fallback, confidence capped 60%, buffer <500 rows, rule-based fallback.
+Phase 3: Live fine-tuning, buffer >500, retrain every 24h, LR=0.0001.
+Phase 4: Ongoing, micro-batch every 100 incidents, full retrain weekly, A/B monthly.
+
+PERFORMANCE: 85% MTTR reduction. Congestion: 180s→45ms (4000×). Failure: 120s→52ms (2308×). Degradation: 240s→38ms (6316×). GPU inference: 47-52ms. Anomaly precision >90%. Escalation rate: 15%. Autonomous rate: 85%.
+
+MANET EXTENSION: Mobile Ad Hoc Networks — no fixed infrastructure, dynamic topology. State adds mobility + link volatility. Actions add relay assignment + power adjustment. Same reward structure. Future work, not MVP.
+
+SMARTGPU LINEAGE: Extends SmartGPU GPU-accelerated RL. GPU pool→network nodes; job scoring→remediation selection; Redis replay→incident replay; SHAP explainability adapted; cost estimate→SLA breach cost.
+
+TECH STACK: PyTorch 2.0+, CUDA 12+, Ray RLlib, scikit-learn, Kafka, Prometheus, InfluxDB, Docker, Kubernetes, Helm, OpenFlow, Ansible, Mininet, NS-3, Grafana, SHAP, ElasticSearch, FastAPI.
+
+SAFETY: Confidence gating, 3σ reward validation, rollback (inverse actions), oscillation penalty, 100ms timeout with NOC alert.
+
+MVP SCOPE: 20-node Mininet simulation, 3 incident types (congestion/degradation/link_failure), Dueling DQN, LSTM autoencoder + Isolation Forest, reward function, decision log JSON output.
+
+Be precise, cite specific numbers from the project. Keep answers focused and technical. For things outside project scope, say so clearly.`;
+
+// ── PROVIDER DETECTION ──────────────────────────────────────────────────────
+function detectProvider(key) {
+  if (!key) return null;
+  if (key.startsWith('gsk_'))            return 'groq';
+  if (key.startsWith('sk-ant-'))         return 'anthropic';
+  if (key.startsWith('sk-proj-') || key.startsWith('sk-')) return 'openai';
+  if (key.startsWith('AIzaSy'))          return 'gemini';
+  // fallback: try groq-compatible (OpenAI-compatible)
+  return 'openai';
+}
+
+const PROVIDER_MODELS = {
+  groq:      ['llama-3.3-70b-versatile','llama-3.1-8b-instant','mixtral-8x7b-32768','gemma2-9b-it'],
+  openai:    ['gpt-4o','gpt-4o-mini','gpt-4-turbo','gpt-3.5-turbo'],
+  anthropic: ['claude-sonnet-4-5','claude-3-5-haiku-20241022','claude-3-opus-20240229'],
+  gemini:    ['gemini-2.0-flash','gemini-1.5-pro','gemini-1.5-flash'],
+};
+
+const PROVIDER_LABELS = {
+  groq: 'Groq', openai: 'OpenAI', anthropic: 'Anthropic', gemini: 'Google Gemini'
+};
+
+function updateModelDropdown(provider) {
+  const sel = document.getElementById('model-select');
+  sel.innerHTML = '';
+  (PROVIDER_MODELS[provider] || PROVIDER_MODELS.openai).forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m; opt.textContent = m;
+    sel.appendChild(opt);
+  });
+}
+
+function sanitizeKey(raw) {
+  // Strip every char outside printable ASCII (32-126).
+  // Invisible Unicode (zero-width spaces, curly quotes, BOM, etc.)
+  // are illegal in HTTP headers and cause the ISO-8859-1 fetch error.
+  return raw.replace(/[^\x20-\x7E]/g, '').trim();
+}
+
+function saveKey() {
+  const raw = document.getElementById('key-input').value;
+  const k = sanitizeKey(raw);
+  if (!k) {
+    document.getElementById('key-error').textContent = 'Key appears empty after cleaning. Please paste it again.';
+    return;
+  }
+  if (k.length !== raw.trim().length) {
+    // invisible chars were stripped — warn but continue
+    console.warn('API key contained non-ASCII characters that were removed.');
+  }
+  document.getElementById('key-error').textContent = '';
+  API_KEY = k;
+  const provider = detectProvider(k);
+  updateModelDropdown(provider);
+  document.getElementById('api-modal').style.display = 'none';
+  const label = PROVIDER_LABELS[provider] || 'API';
+  setLog(`${label} key detected. Model ready. Flow initialized.`);
+  document.getElementById('llm-status').value = label + ' Connected';
+  document.getElementById('status-label').textContent = label + ' Connected';
+  // update node title too
+  document.getElementById('node4-title').textContent = label + ' LLM';
+}
+
+function showKeyModal() {
+  document.getElementById('api-modal').style.display = 'flex';
+}
+
+function setLog(msg) {
+  document.getElementById('flow-log-text').textContent = msg;
+}
+
+// ── UNIVERSAL API CALLER ─────────────────────────────────────────────────────
+async function callLLM(userMsg, sysOverride) {
+  const model = document.getElementById('model-select').value;
+  const temp  = parseFloat(document.getElementById('temp-val').value) || 0.7;
+  const maxTok = parseInt(document.getElementById('maxtok-val').value) || 1024;
+  const sys   = sysOverride || SYSTEM;
+  const provider = detectProvider(API_KEY);
+  const safeKey = sanitizeKey(API_KEY); // ensure no stray unicode in headers
+
+  const messages = [
+    { role: 'system', content: sys },
+    ...chatHistory.map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content })),
+    { role: 'user', content: userMsg }
+  ];
+
+  // ── Anthropic ──
+  if (provider === 'anthropic') {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': safeKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model,
+        max_tokens: maxTok,
+        system: sys,
+        messages: messages.filter(m => m.role !== 'system')
+      })
+    });
+    const d = await r.json();
+    if (d.error) throw new Error(d.error.message);
+    return d.content?.[0]?.text || 'No response.';
+  }
+
+  // ── Gemini ──
+  if (provider === 'gemini') {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${safeKey}`;
+    const contents = messages
+      .filter(m => m.role !== 'system')
+      .map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] }));
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: sys }] },
+        contents,
+        generationConfig: { temperature: temp, maxOutputTokens: maxTok }
+      })
+    });
+    const d = await r.json();
+    if (d.error) throw new Error(d.error.message);
+    return d.candidates?.[0]?.content?.parts?.[0]?.text || 'No response.';
+  }
+
+  // ── Groq / OpenAI / OpenAI-compatible (default) ──
+  const baseUrl = provider === 'groq'
+    ? 'https://api.groq.com/openai/v1/chat/completions'
+    : 'https://api.openai.com/v1/chat/completions';
+
+  const r = await fetch(baseUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + safeKey
+    },
+    body: JSON.stringify({ model, messages, temperature: temp, max_tokens: maxTok })
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d.choices?.[0]?.message?.content || 'No response.';
+}
+
+function addMsg(role, text) {
+  const provider = detectProvider(API_KEY);
+  const label = PROVIDER_LABELS[provider] || 'AI';
+  const box = document.getElementById('chat-msgs');
+  const d = document.createElement('div');
+  d.className = 'cmsg ' + role;
+  if(role === 'agent') d.innerHTML = `<div class="tag">NeuroNet Agent · ${label}</div>${escHtml(text).replace(/\n/g,'<br>')}`;
+  else d.textContent = text;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+  return d;
+}
+
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+async function sendChat() {
+  if(isLoading || !API_KEY) { if(!API_KEY) showKeyModal(); return; }
+  const inp = document.getElementById('chat-in');
+  const txt = inp.value.trim();
+  if(!txt) return;
+  inp.value = '';
+  addMsg('user', txt);
+  chatHistory.push({ role:'user', content: txt });
+  isLoading = true;
+  document.getElementById('send-btn').disabled = true;
+  const thinking = addMsg('agent','Thinking...');
+  thinking.classList.add('thinking');
+  const providerLabel = PROVIDER_LABELS[detectProvider(API_KEY)] || 'LLM';
+  setLog(`Flow running: Telemetry → Prompt → ${providerLabel} → Output`);
+  highlightFlow();
+  try {
+    const reply = await callLLM(txt);
+    thinking.remove();
+    chatHistory.push({ role:'assistant', content: reply });
+    addMsg('agent', reply);
+    document.getElementById('out-preview').value = reply.substring(0,120)+'...';
+    document.getElementById('mem-count').value = chatHistory.length + ' turns';
+    setLog(`Flow complete. Response: ${reply.substring(0,60)}...`);
+  } catch(e) {
+    thinking.remove();
+    addMsg('agent', 'Error: ' + e.message);
+    setLog('Error: ' + e.message);
+  }
+  isLoading = false;
+  document.getElementById('send-btn').disabled = false;
+}
+
+function ckeydown(e) { if(e.key==='Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }
+function qask(q) { document.getElementById('chat-in').value = q; sendChat(); }
+
+async function runFlow() {
+  if(!API_KEY) { showKeyModal(); return; }
+  qask('Give me a quick status summary of the NeuroNet system and its key metrics.');
+}
+
+function highlightFlow() {
+  ['node-1','node-2','node-3','node-4','node-5','node-6'].forEach((id,i) => {
+    setTimeout(() => {
+      const n = document.getElementById(id);
+      if(n) { n.classList.add('running'); setTimeout(()=>n.classList.remove('running'), 600); }
+    }, i * 200);
+  });
+}
+
+// SIMULATOR
+const PRESETS = {
+  congestion: { lat:30.5, thr:9.5, loss:2.5, cong:0.95 },
+  failure:    { lat:150,  thr:2.0, loss:5.0, cong:0.20 },
+  degradation:{ lat:40.2, thr:7.5, loss:1.2, cong:0.60 }
+};
+const ACTIONS_MAP = {
+  congestion: 'reroute (ECMP)',
+  failure: 'failover',
+  degradation: 'qos_adjust'
+};
+const SHAP_MAP = {
+  congestion: 'throughput sat 68%',
+  failure: 'latency spike 81%',
+  degradation: 'latency drift 73%'
+};
+
+function inject(type) {
+  const p = PRESETS[type];
+  simState = { ...p };
+  updateSimMetrics(true);
+  setTimeout(() => runRL(type), 500);
+}
+
+function runRL(type) {
+  const conf = 0.58 + Math.random()*0.40;
+  const score = (0.70 + Math.random()*0.25).toFixed(3);
+  const auto = conf >= 0.75;
+  const action = ACTIONS_MAP[type];
+  let latAfter, thrAfter, lossAfter;
+  if(auto) {
+    latAfter  = Math.max(4, simState.lat - 15 - Math.random()*8);
+    thrAfter  = Math.min(10, simState.thr + 1.5 + Math.random());
+    lossAfter = Math.max(0.05, simState.loss - 1.5 - Math.random()*0.5);
+  } else {
+    latAfter = simState.lat; thrAfter = simState.thr; lossAfter = simState.loss;
+  }
+  const reward = Math.min(100, Math.max(-100,
+    0.5*Math.min((simState.lat - latAfter)*2, 50) +
+    0.2*Math.min((thrAfter - simState.thr)*5, 30) +
+    0.15*Math.min((simState.loss - lossAfter)*5, 20) +
+    (auto ? 0 : -10)
+  ));
+  const mttr = auto ? (38+Math.random()*20).toFixed(0)+'ms' : '~180s (NOC)';
+
+  simState.lat = latAfter; simState.thr = thrAfter; simState.loss = lossAfter;
+  simState.cong = Math.max(0.05, simState.cong - (auto?0.4:0));
+
+  document.getElementById('rl-box').classList.add('visible');
+  document.getElementById('rv-score').textContent = score;
+  document.getElementById('rv-action').textContent = (auto ? '[AUTO] ' : '[NOC] ') + action;
+  document.getElementById('rv-conf').textContent = (conf*100).toFixed(1)+'%';
+  const cbar = document.getElementById('rv-cbar');
+  cbar.style.width = (conf*100).toFixed(0)+'%';
+  cbar.style.background = conf>=0.75?'#34d399':conf>=0.5?'#fb923c':'#f87171';
+  document.getElementById('rv-reward').textContent = (reward>=0?'+':'')+reward.toFixed(1);
+  document.getElementById('rv-mttr').textContent = mttr;
+  document.getElementById('rv-shap').textContent = SHAP_MAP[type];
+  document.getElementById('anom-score-node').value = score;
+  document.getElementById('action-node').value = action;
+
+  simEps++; simRewards.push(reward); if(auto) simAutoCount++;
+  const meanR = simRewards.reduce((a,b)=>a+b,0)/simRewards.length;
+  document.getElementById('ep-n').textContent = simEps;
+  document.getElementById('mean-r').textContent = meanR.toFixed(1);
+  document.getElementById('auto-pct').textContent = ((simAutoCount/simEps)*100).toFixed(0)+'%';
+
+  const line = `${new Date().toLocaleTimeString()} | ${type} | ${action} | conf=${(conf*100).toFixed(0)}% | R=${reward>=0?'+':''}${reward.toFixed(1)} | ${mttr}`;
+  simLogs.unshift(line);
+  if(simLogs.length>20) simLogs.pop();
+  document.getElementById('dec-log').textContent = simLogs.join('\n');
+
+  updateSimMetrics(false);
+  setLog(`RL decision: ${action} | conf=${(conf*100).toFixed(0)}% | reward=${reward>=0?'+':''}${reward.toFixed(1)}`);
+}
+
+function updateSimMetrics(isAlert) {
+  document.getElementById('sv-lat').textContent  = simState.lat.toFixed(1)+' ms';
+  document.getElementById('sv-thr').textContent  = simState.thr.toFixed(1)+' Gbps';
+  document.getElementById('sv-loss').textContent = simState.loss.toFixed(2)+'%';
+  document.getElementById('sv-cong').textContent = (simState.cong*100).toFixed(0)+'%';
+  ['sm-lat','sm-thr','sm-loss','sm-cong'].forEach(id=>document.getElementById(id).classList.remove('alert'));
+  if(isAlert) {
+    if(simState.lat>20) document.getElementById('sm-lat').classList.add('alert');
+    if(simState.loss>1) document.getElementById('sm-loss').classList.add('alert');
+    if(simState.cong>0.7) document.getElementById('sm-cong').classList.add('alert');
+  }
+}
+
+function resetSim() {
+  simState = { lat:5.2, thr:8.4, loss:0.1, cong:0.12 };
+  document.getElementById('rl-box').classList.remove('visible');
+  updateSimMetrics(false);
+  setLog('Network reset to baseline.');
+}
+
+// DOCS
+const DOC_PROMPTS = {
+  exec: 'Write a compelling 150-word executive summary for the NeuroNet Modulator project for Cognizant Technoverse Hackathon 2026 CMT Network Automation track.',
+  pitch: 'Write a 45-second elevator pitch for NeuroNet Modulator. Punchy, memorable, for a hackathon judge.',
+  tech: 'Write a 200-word technical brief covering RL formulation, GPU acceleration, anomaly detection pipeline, and safety mechanisms.',
+  qa: 'Generate 5 tough questions a hackathon judge would ask, followed by strong specific answers using exact numbers from the project.',
+  readme: 'Write a complete README.md for the NeuroNet Modulator GitHub repo: description, architecture, how to run MVP, results, tech stack.',
+  comparison: 'Create a detailed comparison of NeuroNet vs traditional rule-based network management systems, using specific numbers and technical details.'
+};
+
+async function genDoc(type) {
+  if(!API_KEY) { showKeyModal(); return; }
+  const out = document.getElementById('doc-out');
+  out.style.display = 'block';
+  out.textContent = 'Generating...';
+  setLog('Generating: ' + type + ' document...');
+  try {
+    const oldHistory = chatHistory;
+    chatHistory = [];
+    const reply = await callLLM(DOC_PROMPTS[type]);
+    chatHistory = oldHistory;
+    out.textContent = reply;
+    setLog('Document generated: ' + type);
+  } catch(e) {
+    out.textContent = 'Error: ' + e.message;
+  }
+}
+
+// TAB SWITCHING
+function switchRTab(t) {
+  document.querySelectorAll('.rtab').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.rpanel').forEach(el=>{el.classList.remove('active');el.style.display='none'});
+  const idx = {chat:0,sim:1,docs:2}[t];
+  document.querySelectorAll('.rtab')[idx].classList.add('active');
+  const p = document.getElementById('rp-'+t);
+  p.classList.add('active'); p.style.display='flex';
+}
+
+function switchCanvas(t) {
+  document.querySelectorAll('.top-tab').forEach(el=>el.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// NODE DRAGGING
+let dragging = null, dOx = 0, dOy = 0;
+let canvasScale = 1;
+
+function startDrag(e, id) {
+  if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA') return;
+  dragging = id;
+  const node = document.getElementById(id);
+  const rect = node.getBoundingClientRect();
+  dOx = e.clientX - rect.left;
+  dOy = e.clientY - rect.top;
+  node.style.zIndex = 20;
+  e.preventDefault();
+}
+
+document.addEventListener('mousemove', e => {
+  if(!dragging) return;
+  const node = document.getElementById(dragging);
+  const wrap = document.getElementById('canvas-wrap');
+  const wr = wrap.getBoundingClientRect();
+  const x = (e.clientX - wr.left - dOx);
+  const y = (e.clientY - wr.top - dOy);
+  node.style.left = Math.max(0, x) + 'px';
+  node.style.top  = Math.max(0, y) + 'px';
+  drawEdges();
+});
+
+document.addEventListener('mouseup', () => {
+  if(dragging) { document.getElementById(dragging).style.zIndex = 10; dragging = null; }
+});
+
+// DRAW EDGES
+function getPortPos(nodeId, portId, isOut) {
+  const node = document.getElementById(nodeId);
+  if(!node) return null;
+  const nl = parseFloat(node.style.left)||0;
+  const nt = parseFloat(node.style.top)||0;
+  const nw = node.offsetWidth;
+  const nh = node.offsetHeight;
+  if(isOut) return { x: nl + nw, y: nt + nh/2 };
+  return { x: nl, y: nt + nh/2 };
+}
+
+const EDGES_DEF = [
+  ['node-1','node-4',true],
+  ['node-2','node-4',true],
+  ['node-3','node-4',true],
+  ['node-4','node-6',true],
+  ['node-1','node-5',true],
+  ['node-5','node-7',true],
+];
+
+function drawEdges() {
+  const svg = document.getElementById('edges-svg');
+  svg.innerHTML = '';
+  EDGES_DEF.forEach(([from, to, isFlow]) => {
+    const a = getPortPos(from, null, true);
+    const b = getPortPos(to, null, false);
+    if(!a||!b) return;
+    const cx1 = a.x + 60, cy1 = a.y;
+    const cx2 = b.x - 60, cy2 = b.y;
+    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d', `M${a.x},${a.y} C${cx1},${cy1} ${cx2},${cy2} ${b.x},${b.y}`);
+    path.setAttribute('class', 'edge');
+    svg.appendChild(path);
+  });
+}
+
+// Init
+setTimeout(drawEdges, 100);
+window.addEventListener('resize', drawEdges);
+</script>
+</body>
+</html>

@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroNet Modulation Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Sora:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="neuronet-container">
+<div class="title-block">
+<h1>NeuroNet Smart Modulation Pipeline</h1>
+<p>Real-time AI workflow for telemetry ingestion, anomaly intelligence, autonomous actions, and reinforcement learning.</p>
+</div>
+
+<div class="legend">
+<h3 class="group-heading">Pipeline Legend</h3>
+<div class="legend-item"><div class="legend-color data-source"></div>Data source / Input</div>
+<div class="legend-item"><div class="legend-color processing"></div>Processing & Logic</div>
+<div class="legend-item"><div class="legend-color action"></div>Action Execution</div>
+<div class="legend-item"><div class="legend-color feedback"></div>Feedback & Learning</div>
+<div class="legend-item"><div class="legend-diamond"></div>Decision Point</div>
+<div class="legend-item"><div class="legend-gpu"></div>GPU Accelerated</div>
+</div>
+
+<div class="flowchart">
+<div class="layer telemetry">
+<h2>Layer 1: Telemetry Ingestion</h2>
+<div class="sources">
+<div class="node data-source">Prometheus Scraping</div>
+<div class="node data-source">SNMP Traps</div>
+</div>
+<div class="connect"><div class="arrow"></div></div>
+<div class="node data-source pipeline-item">Apache Kafka (Exactly-once, ordered)</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer anomaly">
+	<h2>Layer 2: Anomaly Detection</h2>
+	<div class="node processing">
+		LSTM Autoencoder & Isolation Forest Ensemble
+		<span class="gpu-accelerated-glow"></span>
+	</div>
+	<div class="connect"><div class="arrow"></div></div>
+	<div class="node data-source pipeline-item">SHAP Feature Breakdown & Anomaly Score</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer state">
+	<h2>Layer 3: RL State Encoding</h2>
+	<div class="node processing">State Builder</div>
+	<div class="connect"><div class="arrow"></div></div>
+	<div class="node data-source pipeline-item">Numerical State Vector [Latency, Loss, Traffic, ...]</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer rl-engine">
+	<h2>Layer 4: SmartGPU RL Engine</h2>
+	<div class="decision-block">
+		<div class="node processing pipeline-item">
+			Deep Q-Network / Proximal Policy Optimisation (DQN/PPO)
+			<span class="gpu-accelerated-glow"></span>
+		</div>
+		<div class="connect"><div class="arrow"></div></div>
+		<div class="diamond processing">
+			<span>Confidence Score > 75%?</span>
+		</div>
+		<div class="decision-branch">
+			<div class="branch-stem"><div class="stem-line"></div></div>
+			<div class="branch-row">
+				<div class="branch-col yes"><div class="arrow"></div><span>Yes</span></div>
+				<div class="branch-col no"><div class="arrow"></div><span>No</span></div>
+			</div>
+		</div>
+		<div class="flows">
+			<div class="node action action-yes">
+				Actions: Reroute Traffic, Bandwidth Allocation, QoS Params, Scale Slice
+			</div>
+			<div class="node action action-no">
+				Escalate to NOC
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="connect connect-yes"><div class="arrow"></div></div>
+
+<div class="layer modulation">
+	<h2>Layer 5: Modulation Engine</h2>
+	<div class="node processing pipeline-item">Translation Layer (Abstract to Concrete)</div>
+	<div class="connect"><div class="arrow"></div></div>
+	<div class="dispatchers">
+		<div class="node action">SDN Controller (OpenFlow)</div>
+		<div class="node action">K8s Operator</div>
+		<div class="node action">Ansible Playbook</div>
+	</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+<div class="node pipeline-item live-network">Live Network Node</div>
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer feedback">
+	<h2>Layer 6: Feedback & Model Update</h2>
+	<div class="node feedback pipeline-item">Reward Feedback Loop (60s Observation Window)</div>
+	<div class="connect"><div class="arrow"></div></div>
+	<div class="calculations">
+		<div class="node feedback">Measure Metrics: Latency, Throughput, Loss</div>
+		<div class="node feedback calculate">
+			Compute Reward: R = α·(−Δlat) + β·(thru) + γ·(−Δloss)
+		</div>
+	</div>
+	<div class="connect"><div class="arrow"></div></div>
+	<div class="node feedback pipeline-item">Experience Replay Buffer (Redis)</div>
+	<div class="connect"><div class="arrow"></div></div>
+	<div class="node feedback pipeline-item">Background Training Process (Update Weights)</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer coldstart">
+	<h2>Layer 7: Cold Start Strategy</h2>
+	<div class="coldstart-phases">
+		<div class="phase-card phase1">
+			<div class="phase-num">Phase 1</div>
+			<div class="phase-title">Synthetic Pre-training</div>
+			<div class="phase-desc">RL agent pre-trained on simulated incidents via Mininet / NS-3 before touching live traffic</div>
+		</div>
+		<div class="phase-arrow">→</div>
+		<div class="phase-card phase2">
+			<div class="phase-num">Phase 2</div>
+			<div class="phase-title">Warm Fallback</div>
+			<div class="phase-desc">Rule-based round-robin routing while replay buffer &lt; 500 rows</div>
+		</div>
+		<div class="phase-arrow">→</div>
+		<div class="phase-card phase3">
+			<div class="phase-num">Phase 3</div>
+			<div class="phase-title">Live Fine-tuning</div>
+			<div class="phase-desc">Full RL operation kicks in once buffer exceeds 500 real-world incident rows</div>
+		</div>
+		<div class="phase-arrow">→</div>
+		<div class="phase-card phase4">
+			<div class="phase-num">Phase 4</div>
+			<div class="phase-title">Confidence Gating</div>
+			<div class="phase-desc">Actions below 75% confidence always escalate to NOC — across all phases</div>
+		</div>
+	</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer simulation">
+	<h2>Layer 8: Simulation Layer</h2>
+	<div class="sim-note">All RL policy development and pre-training happens in simulation — development risk never enters production</div>
+	<div class="sources">
+		<div class="node processing">
+			Mininet
+			<span class="sim-sub">Network topology emulation, incident scenario generation, RL pre-training</span>
+		</div>
+		<div class="node processing">
+			NS-3
+			<span class="sim-sub">Large-scale simulation (1000s of nodes), wireless protocol & radio propagation modelling</span>
+		</div>
+	</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer infra">
+	<h2>Layer 9: Infrastructure & Deployment</h2>
+	<h3 class="subheading">Deployment Components</h3>
+	<div class="infra-grid">
+		<div class="infra-card">
+			<div class="infra-icon">Cloud</div>
+			<div class="infra-label">Cloud / On-Prem</div>
+			<div class="infra-desc">Azure AKS, on-premises data centres</div>
+		</div>
+		<div class="infra-card">
+			<div class="infra-icon">Package</div>
+			<div class="infra-label">Kubernetes + Helm</div>
+			<div class="infra-desc">Portable deployment via Helm charts across all environments</div>
+		</div>
+		<div class="infra-card">
+			<div class="infra-icon">Edge</div>
+			<div class="infra-label">Edge Compute</div>
+			<div class="infra-desc">AWS Wavelength & edge nodes for ultra-low latency</div>
+		</div>
+		<div class="infra-card">
+			<div class="infra-icon">Container</div>
+			<div class="infra-label">Docker</div>
+			<div class="infra-desc">Containerised components — no bespoke infrastructure required</div>
+		</div>
+	</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer security">
+	<h2>Layer 10: Security Layer</h2>
+	<h3 class="subheading">Security Domains</h3>
+	<div class="security-grid">
+		<div class="security-card">
+			<div class="sec-icon">Secure</div>
+			<div class="sec-title">Secure Control-Plane</div>
+			<div class="sec-desc">RL action dispatch — SDN, K8s, Ansible — is authenticated, encrypted, and tamper-evident</div>
+		</div>
+		<div class="security-card">
+			<div class="sec-icon">Protect</div>
+			<div class="sec-title">AI & Telemetry Protection</div>
+			<div class="sec-desc">RL model, experience replay buffer, and raw telemetry stream protected from unauthorised access</div>
+		</div>
+		<div class="security-card future-tag">
+			<div class="sec-icon">Network</div>
+			<div class="sec-title">Mixnet-Inspired Routing <span class="future-badge">Future</span></div>
+			<div class="sec-desc">Obfuscates origin/destination of control-plane commands for adversarial environments (military edge, critical infra)</div>
+		</div>
+	</div>
+</div>
+
+<div class="connect"><div class="arrow"></div></div>
+
+<div class="layer manet">
+	<h2>Layer 11: MANET Extension — AI Control for Decentralised Networks</h2>
+	<div class="manet-note">Extension of the same RL architecture to Mobile Ad Hoc Networks — not a separate product</div>
+	<div class="manet-grid">
+		<div class="manet-card">
+			<div class="manet-label">MANET Environment</div>
+			<div class="manet-items">
+				<div class="node data-source manet-node">No Fixed Infrastructure</div>
+				<div class="node data-source manet-node">Dynamic Topology</div>
+				<div class="node data-source manet-node">Every Node = Endpoint + Relay</div>
+			</div>
+		</div>
+		<div class="manet-flow-arrow">→</div>
+		<div class="manet-card">
+			<div class="manet-label">RL Agent Observes</div>
+			<div class="manet-items">
+				<div class="node processing manet-node">Node Positions & Mobility</div>
+				<div class="node processing manet-node">Link Quality & Volatility</div>
+				<div class="node processing manet-node">Traffic Loads</div>
+			</div>
+		</div>
+		<div class="manet-flow-arrow">→</div>
+		<div class="manet-card">
+			<div class="manet-label">RL Agent Acts</div>
+			<div class="manet-items">
+				<div class="node action manet-node">Route Selection</div>
+				<div class="node action manet-node">Relay Assignment</div>
+				<div class="node action manet-node">Power Adjustment</div>
+			</div>
+		</div>
+		<div class="manet-flow-arrow">→</div>
+		<div class="manet-card">
+			<div class="manet-label">Reward Optimises</div>
+			<div class="manet-items">
+				<div class="node feedback manet-node">Throughput</div>
+				<div class="node feedback manet-node">Latency</div>
+				<div class="node feedback manet-node">Connectivity</div>
+			</div>
+		</div>
+	</div>
+	<div class="manet-footer">SmartGPU RL Engine handles MANET without architectural changes — only state representation and action vocabulary differ</div>
+</div>
+
+<div class="loop-back">
+	<div class="arrow-up"></div>
+	<div class="text">Continuous Model Update</div>
+</div>
+</div>
+</div>
+
+<style>
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+min-height: 100vh;
+font-family: "Manrope", "Trebuchet MS", sans-serif;
+color: #16303a;
+background:
+radial-gradient(circle at 12% 8%, rgba(50, 170, 212, 0.18) 0 18%, transparent 42%),
+radial-gradient(circle at 90% 14%, rgba(255, 174, 116, 0.2) 0 16%, transparent 40%),
+linear-gradient(145deg, #eff9ff 0%, #fff6ea 100%);
+}
+
+.neuronet-container {
+--border-radius: 14px;
+--node-width: 280px;
+--arrow-color: #4d7484;
+
+--data-color: #daf3ff;
+--processing-color: #e7edf8;
+--action-color: #e4f7e8;
+--feedback-color: #fff3d2;
+
+--data-accent: #0f5e76;
+--processing-accent: #2f4e79;
+--action-accent: #1c6a3d;
+--feedback-accent: #7a5f00;
+
+max-width: 1160px;
+margin: 30px auto;
+padding: 24px clamp(14px, 3vw, 30px) 42px;
+border-radius: 24px;
+background: rgba(255, 255, 255, 0.72);
+border: 1px solid rgba(86, 131, 148, 0.26);
+box-shadow: 0 18px 42px rgba(26, 70, 88, 0.16);
+backdrop-filter: blur(4px);
+position: relative;
+overflow: auto;
+}
+
+.title-block {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.title-block h1 {
+margin: 0;
+font-family: "Sora", "Segoe UI", sans-serif;
+font-size: clamp(1.25rem, 2.4vw, 2rem);
+letter-spacing: 0.01em;
+color: #10394a;
+}
+
+.title-block p {
+margin: 8px auto 0;
+max-width: 820px;
+font-size: 0.95rem;
+color: #4a6975;
+}
+
+.legend {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+gap: 10px;
+margin-bottom: 24px;
+}
+
+.group-heading {
+grid-column: 1 / -1;
+margin: 0 0 2px;
+font-family: "Sora", "Segoe UI", sans-serif;
+font-size: 0.9rem;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+color: #2a5d70;
+text-align: center;
+}
+
+.legend-item {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: 0.86rem;
+font-weight: 700;
+padding: 10px 12px;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.95);
+border: 1px solid #d6e4ea;
+color: #385564;
+box-shadow: 0 4px 12px rgba(20, 74, 97, 0.08);
+}
+
+.legend-color,
+.legend-diamond,
+.legend-gpu {
+width: 16px;
+height: 16px;
+flex: 0 0 16px;
+}
+
+.legend-color {
+border-radius: 4px;
+}
+
+.legend-diamond {
+transform: rotate(45deg);
+border-radius: 3px;
+background: var(--processing-color);
+border: 2px solid var(--processing-accent);
+}
+
+.legend-gpu {
+border-radius: 5px;
+border: 2px solid #22a5cc;
+box-shadow: 0 0 0 2px rgba(34, 165, 204, 0.18), 0 0 10px rgba(34, 165, 204, 0.55);
+}
+
+.flowchart {
+display: flex;
+flex-direction: column;
+align-items: center;
+position: relative;
+width: 100%;
+}
+
+.layer {
+width: min(100%, 960px);
+border: 1px solid #d8e6ed;
+border-radius: 18px;
+padding: 16px 16px 18px;
+margin: 8px 0;
+background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88));
+box-shadow: 0 10px 24px rgba(17, 75, 98, 0.1);
+position: relative;
+animation: rise 0.45s ease-out both;
+}
+
+.layer h2 {
+font-family: "Sora", "Segoe UI", sans-serif;
+font-size: 1rem;
+margin: 0 0 14px;
+text-align: center;
+color: #1c4b5f;
+padding-bottom: 8px;
+border-bottom: 1px solid #e1eef4;
+}
+
+.subheading {
+margin: -4px 0 12px;
+text-align: center;
+font-size: 0.82rem;
+font-weight: 700;
+letter-spacing: 0.04em;
+text-transform: uppercase;
+color: #4a6975;
+}
+
+.node {
+width: min(100%, var(--node-width));
+min-height: 48px;
+padding: 12px 14px;
+border-radius: var(--border-radius);
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+margin: 0 auto;
+font-size: 0.88rem;
+font-weight: 700;
+line-height: 1.35;
+box-shadow: 0 6px 14px rgba(22, 74, 96, 0.1);
+position: relative;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.node:hover {
+transform: translateY(-2px);
+box-shadow: 0 10px 18px rgba(22, 74, 96, 0.16);
+}
+
+.data-source {
+background: linear-gradient(135deg, #e8f8ff, var(--data-color));
+color: var(--data-accent);
+border: 1px solid rgba(15, 94, 118, 0.42);
+}
+
+.processing {
+background: linear-gradient(135deg, #eef3fc, var(--processing-color));
+color: var(--processing-accent);
+border: 1px solid rgba(47, 78, 121, 0.42);
+}
+
+.action {
+background: linear-gradient(135deg, #ecfaef, var(--action-color));
+color: var(--action-accent);
+border: 1px solid rgba(28, 106, 61, 0.4);
+}
+
+.feedback {
+background: linear-gradient(135deg, #fff8e0, var(--feedback-color));
+color: var(--feedback-accent);
+border: 1px solid rgba(122, 95, 0, 0.38);
+}
+
+.pipeline-item {
+width: min(100%, calc(var(--node-width) + 210px));
+}
+
+.action-yes,
+.action-no {
+width: min(100%, 560px);
+}
+
+.sources,
+.dispatchers,
+.calculations {
+display: flex;
+justify-content: center;
+gap: 12px;
+margin: 10px 0;
+flex-wrap: wrap;
+}
+
+.flows {
+display: grid;
+grid-template-columns: repeat(2, minmax(220px, 1fr));
+gap: 12px;
+width: min(100%, 560px);
+margin: 10px auto 0;
+}
+
+.flows .node {
+width: 100%;
+}
+
+.calculations {
+flex-direction: column;
+align-items: center;
+}
+
+.decision-branch {
+width: min(100%, 560px);
+margin: 4px auto 8px;
+}
+
+.branch-stem {
+height: 20px;
+display: flex;
+justify-content: center;
+}
+
+.stem-line {
+width: 2px;
+height: 100%;
+background: linear-gradient(180deg, rgba(77, 116, 132, 0.3), var(--arrow-color));
+}
+
+.branch-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+position: relative;
+padding-top: 10px;
+}
+
+.branch-row::before {
+content: "";
+position: absolute;
+top: 0;
+left: 14%;
+right: 14%;
+height: 2px;
+background-color: rgba(77, 116, 132, 0.58);
+}
+
+.branch-col {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 3px;
+}
+
+.branch-col .arrow {
+height: 24px;
+}
+
+.branch-col span {
+font-size: 0.78rem;
+font-weight: 700;
+}
+
+.branch-col.yes span {
+color: var(--action-accent);
+}
+
+.branch-col.no span {
+color: #7f2736;
+}
+
+.live-network {
+background: repeating-linear-gradient(
+45deg,
+#ffffff,
+#ffffff 8px,
+#f4f8fb 8px,
+#f4f8fb 16px
+);
+border: 2px dashed #7f97a3;
+color: #4b6672;
+font-weight: 700;
+}
+
+.gpu-accelerated-glow {
+position: absolute;
+inset: -2px;
+border: 2px solid rgba(29, 165, 206, 0.78);
+box-shadow: 0 0 0 2px rgba(29, 165, 206, 0.14), 0 0 16px rgba(29, 165, 206, 0.42);
+border-radius: inherit;
+pointer-events: none;
+}
+
+.diamond {
+width: 112px;
+height: 112px;
+background: linear-gradient(145deg, #ecf2fb, var(--processing-color));
+border: 2px solid var(--processing-accent);
+transform: rotate(45deg);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 18px auto;
+box-shadow: 0 10px 16px rgba(24, 69, 99, 0.15);
+z-index: 2;
+}
+
+.diamond span {
+transform: rotate(-45deg);
+font-size: 0.78rem;
+line-height: 1.25;
+padding: 0 10px;
+color: var(--processing-accent);
+}
+
+.connect {
+display: flex;
+justify-content: center;
+height: 28px;
+width: 100%;
+margin: 4px 0;
+}
+
+.arrow {
+width: 2px;
+height: 100%;
+background: linear-gradient(180deg, rgba(77, 116, 132, 0.38) 0%, var(--arrow-color) 55%);
+position: relative;
+}
+
+.arrow::after {
+content: "";
+position: absolute;
+bottom: -1px;
+left: 50%;
+transform: translateX(-50%);
+width: 0;
+height: 0;
+border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-top: 8px solid var(--arrow-color);
+}
+
+.arrow-up {
+width: 2px;
+height: 100%;
+background: linear-gradient(180deg, var(--arrow-color) 20%, rgba(77, 116, 132, 0.35) 100%);
+position: relative;
+}
+
+.arrow-up::after {
+content: "";
+position: absolute;
+top: -1px;
+left: 50%;
+transform: translateX(-50%) rotate(180deg);
+width: 0;
+height: 0;
+border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-top: 8px solid var(--arrow-color);
+}
+
+.connect-yes {
+margin-top: -2px;
+}
+
+.calculate {
+font-family: "JetBrains Mono", Consolas, monospace;
+font-size: 0.82rem;
+}
+
+.loop-back {
+position: absolute;
+right: 10px;
+top: 71%;
+height: 180px;
+width: 46px;
+border: 2px solid rgba(77, 116, 132, 0.78);
+border-left: none;
+border-top-right-radius: 20px;
+border-bottom-right-radius: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 10px 8px;
+background: rgba(255, 255, 255, 0.64);
+}
+
+.loop-back .text {
+writing-mode: vertical-rl;
+transform: rotate(180deg);
+font-size: 0.72rem;
+color: #486674;
+font-weight: 700;
+letter-spacing: 0.02em;
+margin-top: 8px;
+}
+
+/* ── Cold Start ── */
+.coldstart-phases {
+display: flex;
+align-items: stretch;
+justify-content: center;
+gap: 6px;
+flex-wrap: wrap;
+margin-top: 4px;
+}
+
+.phase-card {
+flex: 1 1 160px;
+max-width: 200px;
+border-radius: 12px;
+padding: 14px 12px;
+display: flex;
+flex-direction: column;
+gap: 6px;
+border: 1px solid rgba(47, 78, 121, 0.3);
+background: linear-gradient(160deg, #eef3fc, var(--processing-color));
+box-shadow: 0 4px 12px rgba(17, 75, 98, 0.08);
+}
+
+.phase-num {
+font-size: 0.7rem;
+font-weight: 700;
+color: #8899bb;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+}
+
+.phase-title {
+font-size: 0.88rem;
+font-weight: 700;
+color: var(--processing-accent);
+}
+
+.phase-desc {
+font-size: 0.78rem;
+color: #4a5f80;
+line-height: 1.4;
+}
+
+.phase-arrow {
+display: flex;
+align-items: center;
+font-size: 1.4rem;
+color: #7f97a3;
+flex-shrink: 0;
+padding: 0 2px;
+}
+
+/* ── Simulation ── */
+.sim-note {
+text-align: center;
+font-size: 0.82rem;
+color: #4a6975;
+margin-bottom: 12px;
+font-style: italic;
+}
+
+.simulation .node {
+flex-direction: column;
+gap: 6px;
+min-height: 80px;
+max-width: 380px;
+}
+
+.sim-sub {
+font-size: 0.74rem;
+font-weight: 400;
+color: #4a5f80;
+line-height: 1.35;
+}
+
+/* ── Infrastructure ── */
+.infra-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 10px;
+}
+
+.infra-card {
+border-radius: 12px;
+padding: 14px 12px;
+background: linear-gradient(160deg, #ecfaef, var(--action-color));
+border: 1px solid rgba(28, 106, 61, 0.28);
+box-shadow: 0 4px 10px rgba(17, 75, 98, 0.07);
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.infra-icon {
+font-size: 0.72rem;
+font-weight: 800;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: #3d7756;
+}
+
+.infra-label {
+font-size: 0.88rem;
+font-weight: 700;
+color: var(--action-accent);
+}
+
+.infra-desc {
+font-size: 0.76rem;
+color: #3a6048;
+line-height: 1.4;
+}
+
+/* ── Security ── */
+.security-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 10px;
+}
+
+.security-card {
+border-radius: 12px;
+padding: 14px 12px;
+background: linear-gradient(160deg, #fff3f5, #ffe8ec);
+border: 1px solid rgba(127, 39, 54, 0.26);
+box-shadow: 0 4px 10px rgba(100, 20, 35, 0.07);
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.sec-icon {
+font-size: 0.72rem;
+font-weight: 800;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: #7f2736;
+}
+
+.sec-title {
+font-size: 0.88rem;
+font-weight: 700;
+color: #7f2736;
+display: flex;
+align-items: center;
+gap: 7px;
+flex-wrap: wrap;
+}
+
+.sec-desc {
+font-size: 0.76rem;
+color: #6a3040;
+line-height: 1.4;
+}
+
+.future-badge {
+font-size: 0.66rem;
+font-weight: 700;
+background: #7f2736;
+color: #fff;
+border-radius: 20px;
+padding: 2px 8px;
+letter-spacing: 0.04em;
+}
+
+/* ── MANET ── */
+.layer.manet {
+border: 1.5px dashed rgba(110, 60, 160, 0.42);
+background: linear-gradient(180deg, rgba(248, 243, 255, 0.98), rgba(238, 228, 255, 0.88));
+}
+
+.layer.manet h2 {
+color: #5a2d82;
+border-bottom-color: rgba(110, 60, 160, 0.2);
+}
+
+.manet-note {
+text-align: center;
+font-size: 0.82rem;
+color: #7a4fa3;
+margin-bottom: 14px;
+font-style: italic;
+}
+
+.manet-grid {
+display: flex;
+align-items: stretch;
+justify-content: center;
+gap: 6px;
+flex-wrap: wrap;
+}
+
+.manet-card {
+flex: 1 1 150px;
+max-width: 200px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.manet-label {
+font-size: 0.75rem;
+font-weight: 700;
+text-align: center;
+color: #5a2d82;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+padding-bottom: 4px;
+border-bottom: 1px solid rgba(110, 60, 160, 0.25);
+}
+
+.manet-items {
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+
+.manet-node {
+width: 100% !important;
+font-size: 0.78rem !important;
+min-height: 36px;
+padding: 8px 10px !important;
+}
+
+.manet-flow-arrow {
+display: flex;
+align-items: center;
+font-size: 1.4rem;
+color: #9b72c8;
+flex-shrink: 0;
+padding: 0 2px;
+margin-top: 28px;
+}
+
+.manet-footer {
+margin-top: 14px;
+text-align: center;
+font-size: 0.78rem;
+font-weight: 700;
+color: #6a3fa0;
+background: rgba(110, 60, 160, 0.08);
+border-radius: 8px;
+padding: 8px 14px;
+border: 1px solid rgba(110, 60, 160, 0.18);
+}
+
+@keyframes rise {
+from {
+opacity: 0;
+transform: translateY(12px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@media (max-width: 900px) {
+.neuronet-container {
+padding: 18px 12px 30px;
+}
+
+.layer {
+padding: 14px;
+}
+
+.decision-branch,
+.flows {
+width: min(100%, 460px);
+}
+
+.loop-back {
+display: none;
+}
+}
+
+@media (max-width: 640px) {
+.title-block p {
+font-size: 0.88rem;
+}
+
+.legend {
+grid-template-columns: 1fr;
+}
+
+.node,
+.pipeline-item,
+.action-yes,
+.action-no {
+width: 100%;
+}
+
+.sources,
+.dispatchers,
+.flows {
+flex-direction: column;
+align-items: center;
+}
+
+.flows {
+display: grid;
+grid-template-columns: 1fr;
+width: 100%;
+}
+
+.diamond {
+width: 92px;
+height: 92px;
+}
+
+.diamond span {
+font-size: 0.7rem;
+}
+
+.branch-row::before {
+left: 12%;
+right: 12%;
+}
+}
+</style>
+ </body>
+ </html>
