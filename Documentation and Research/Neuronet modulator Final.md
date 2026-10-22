@@ -1,6 +1,6 @@
 # NeuroNet Modulator
 ## GPU-Accelerated RL-Based Self-Healing Network Intelligence System
-**Cognizant Technoverse Hackathon 2026 — CMT Track: Network Automation**
+**Final Year Research Project**
 *Powered by the SmartGPU GPU-Accelerated RL Architecture*
 
 ---
@@ -792,5 +792,5 @@ It is grounded in a real architectural precedent (SmartGPU), uses a well-defined
 **NeuroNet doesn't just automate networks — it learns them.**
 
 ---
-*NeuroNet Modulator · Cognizant Technoverse Hackathon 2026 · CMT Track — Network Automation*
+*NeuroNet Modulator · Final Year Research Project*
 *Powered by the SmartGPU GPU-Accelerated RL Architecture*
