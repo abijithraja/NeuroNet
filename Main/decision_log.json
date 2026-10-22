@@ -1,0 +1,2853 @@
+[
+  {
+    "episode": 0,
+    "timestamp": "2026-04-24T12:26:37.657407",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.0,
+    "action": "failover",
+    "confidence": 0.1278,
+    "escalated": true,
+    "reward": 28.07,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 0.0,
+      "loss": 0.0,
+      "throughput": 11.0
+    }
+  },
+  {
+    "episode": 1,
+    "timestamp": "2026-04-24T12:26:37.659530",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.0,
+    "action": "monitor",
+    "confidence": 0.1442,
+    "escalated": true,
+    "reward": -0.05,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    }
+  },
+  {
+    "episode": 2,
+    "timestamp": "2026-04-24T12:26:37.674003",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.6734339689539324,
+    "action": "scale_slice",
+    "confidence": 0.9744,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "episode": 3,
+    "timestamp": "2026-04-24T12:26:37.692144",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6923534120533537,
+    "action": "scale_slice",
+    "confidence": 0.9979,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 4,
+    "timestamp": "2026-04-24T12:26:37.705407",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 5,
+    "timestamp": "2026-04-24T12:26:37.719812",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "scale_slice",
+    "confidence": 0.9703,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "episode": 6,
+    "timestamp": "2026-04-24T12:26:37.734778",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 7,
+    "timestamp": "2026-04-24T12:26:37.746393",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.1385,
+    "escalated": true,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 8,
+    "timestamp": "2026-04-24T12:26:37.760607",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "qos_adjust",
+    "confidence": 0.1773,
+    "escalated": true,
+    "reward": 8.28,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 142.0,
+      "loss": 4.5,
+      "throughput": 2.0
+    }
+  },
+  {
+    "episode": 9,
+    "timestamp": "2026-04-24T12:26:37.782864",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.9985,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 10,
+    "timestamp": "2026-04-24T12:26:37.799268",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.9984,
+    "escalated": false,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 11,
+    "timestamp": "2026-04-24T12:26:37.813605",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "scale_slice",
+    "confidence": 0.9701,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "episode": 12,
+    "timestamp": "2026-04-24T12:26:37.833469",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 13,
+    "timestamp": "2026-04-24T12:26:37.844963",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "reroute",
+    "confidence": 0.2388,
+    "escalated": true,
+    "reward": 17.7,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 25.0,
+      "loss": 0.0,
+      "throughput": 9.5
+    }
+  },
+  {
+    "episode": 14,
+    "timestamp": "2026-04-24T12:26:37.861620",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "scale_slice",
+    "confidence": 0.9711,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "episode": 15,
+    "timestamp": "2026-04-24T12:26:37.881484",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.9976,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 16,
+    "timestamp": "2026-04-24T12:26:37.899341",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 17,
+    "timestamp": "2026-04-24T12:26:37.911234",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "scale_slice",
+    "confidence": 0.9704,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "episode": 18,
+    "timestamp": "2026-04-24T12:26:37.924432",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.9976,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 19,
+    "timestamp": "2026-04-24T12:26:37.944080",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 20,
+    "timestamp": "2026-04-24T12:26:37.957865",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "scale_slice",
+    "confidence": 0.97,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "episode": 21,
+    "timestamp": "2026-04-24T12:26:37.973883",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.1586,
+    "escalated": true,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 22,
+    "timestamp": "2026-04-24T12:26:37.994416",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 23,
+    "timestamp": "2026-04-24T12:26:38.007776",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "traffic_shaping",
+    "confidence": 0.2247,
+    "escalated": true,
+    "reward": 5.12,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 145.0,
+      "loss": 4.7,
+      "throughput": 2.0
+    }
+  },
+  {
+    "episode": 24,
+    "timestamp": "2026-04-24T12:26:38.022520",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.9987,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 25,
+    "timestamp": "2026-04-24T12:26:38.036716",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.9987,
+    "escalated": false,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 26,
+    "timestamp": "2026-04-24T12:26:38.050808",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "scale_slice",
+    "confidence": 0.9704,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "episode": 27,
+    "timestamp": "2026-04-24T12:26:38.065976",
+    "anomaly_type": "congestion",
+    "anomaly_score": 0.6905573159311801,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 30.0,
+      "loss": 2.5,
+      "throughput": 9.5
+    },
+    "metrics_after": {
+      "latency": 10.0,
+      "loss": 0.5,
+      "throughput": 12.5
+    }
+  },
+  {
+    "episode": 28,
+    "timestamp": "2026-04-24T12:26:38.079615",
+    "anomaly_type": "degradation",
+    "anomaly_score": 0.6908241631419778,
+    "action": "scale_slice",
+    "confidence": 0.9975,
+    "escalated": false,
+    "reward": 23.4,
+    "metrics_before": {
+      "latency": 40.0,
+      "loss": 1.2,
+      "throughput": 7.5
+    },
+    "metrics_after": {
+      "latency": 20.0,
+      "loss": 0.0,
+      "throughput": 10.5
+    }
+  },
+  {
+    "episode": 29,
+    "timestamp": "2026-04-24T12:26:38.093565",
+    "anomaly_type": "link_failure",
+    "anomaly_score": 0.684913556432432,
+    "action": "scale_slice",
+    "confidence": 0.9706,
+    "escalated": false,
+    "reward": 24.0,
+    "metrics_before": {
+      "latency": 150.0,
+      "loss": 5.0,
+      "throughput": 2.0
+    },
+    "metrics_after": {
+      "latency": 130.0,
+      "loss": 3.0,
+      "throughput": 5.0
+    }
+  },
+  {
+    "timestamp": "2026-10-14 05:29:50",
+    "episode": 1,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.156,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.15593698620796204,
+      "reason": "Confidence 15.6% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "metrics_after": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (96.7%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.6% is below required autonomy threshold 75.0% (Confidence: 15.6%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.21640431880950928,
+        0.0966377854347229,
+        0.1433270275592804,
+        0.14836783707141876,
+        0.3970624804496765,
+        0.12252886593341827,
+        0.08179230988025665,
+        0.16436003148555756
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 2,
+    "scenario": "routing_flap",
+    "anomaly_type": "routing_flap",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "metrics_after": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.21250241994857788,
+        0.06654411554336548,
+        0.14962224662303925,
+        0.1486215442419052,
+        0.3894674479961395,
+        0.10439658164978027,
+        0.053982481360435486,
+        0.15698206424713135
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 3,
+    "scenario": "degradation",
+    "anomaly_type": "degradation",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.157,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.15748631954193115,
+      "reason": "Confidence 15.7% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 73.779066049815,
+      "throughput_mbps": 67.79960765521427,
+      "packet_loss_pct": 2.5363952757935193,
+      "congestion": 0.15096332193092235,
+      "link_health": 0.5093113635876062,
+      "cpu_util_pct": 25.72328401203153
+    },
+    "metrics_after": {
+      "latency_ms": 73.779066049815,
+      "throughput_mbps": 67.79960765521427,
+      "packet_loss_pct": 2.5363952757935193,
+      "congestion": 0.15096332193092235,
+      "link_health": 0.5093113635876062,
+      "cpu_util_pct": 25.72328401203153
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (50.9%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.7% is below required autonomy threshold 75.0% (Confidence: 15.7%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.1815960556268692,
+        0.0586676299571991,
+        0.14089354872703552,
+        0.1322317123413086,
+        0.3738411068916321,
+        0.07860946655273438,
+        0.022705838084220886,
+        0.11141863465309143
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 4,
+    "scenario": "link_failure",
+    "anomaly_type": "link_failure",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.161,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.16120177507400513,
+      "reason": "Confidence 16.1% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 114.34028195146456,
+      "throughput_mbps": 3.501735439066959,
+      "packet_loss_pct": 9.564987328601562,
+      "congestion": 0.8609344298364506,
+      "link_health": 0.12466743236562912,
+      "cpu_util_pct": 26.973016684813768
+    },
+    "metrics_after": {
+      "latency_ms": 114.34028195146456,
+      "throughput_mbps": 3.501735439066959,
+      "packet_loss_pct": 9.564987328601562,
+      "congestion": 0.8609344298364506,
+      "link_health": 0.12466743236562912,
+      "cpu_util_pct": 26.973016684813768
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (12.5%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 16.1% is below required autonomy threshold 75.0% (Confidence: 16.1%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.21688425540924072,
+        0.04592801630496979,
+        0.1506296843290329,
+        0.16437353193759918,
+        0.42764195799827576,
+        0.11565087735652924,
+        0.0693855732679367,
+        0.14432688057422638
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 5,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": true,
+    "anomaly_score": 0.736,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.153,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.15341152250766754,
+      "reason": "Confidence 15.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 135.7639206265772,
+      "throughput_mbps": 97.05925469141441,
+      "packet_loss_pct": 7.664386390414543,
+      "congestion": 0.9544971549754663,
+      "link_health": 0.9863128822583854,
+      "cpu_util_pct": 98.9898826224688
+    },
+    "metrics_after": {
+      "latency_ms": 135.7639206265772,
+      "throughput_mbps": 97.05925469141441,
+      "packet_loss_pct": 7.664386390414543,
+      "congestion": 0.9544971549754663,
+      "link_health": 0.9863128822583854,
+      "cpu_util_pct": 98.9898826224688
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.74, LSTM: 5834.10, IsoForest: 0.34). Primary metric driver: PACKET_LOSS (93.0% contribution).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (98.6%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.3% is below required autonomy threshold 75.0% (Confidence: 15.3%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9300000071525574,
+      "feature_attributions": {
+        "latency": 0.04100000113248825,
+        "throughput": 0.007000000216066837,
+        "packet_loss": 0.9300000071525574,
+        "congestion": 0.017000000923871994,
+        "cpu": 0.004999999888241291
+      },
+      "q_values": [
+        0.2599366307258606,
+        0.09118324518203735,
+        0.14617449045181274,
+        0.14805728197097778,
+        0.38113927841186523,
+        0.1213340163230896,
+        0.05658289045095444,
+        0.16736087203025818
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 6,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": true,
+    "anomaly_score": 0.724,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.154,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.15357089042663574,
+      "reason": "Confidence 15.4% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 154.32090441447758,
+      "throughput_mbps": 97.30254985550313,
+      "packet_loss_pct": 7.913076909803719,
+      "congestion": 0.9771595176251431,
+      "link_health": 0.9858622233135927,
+      "cpu_util_pct": 95.61739135023677
+    },
+    "metrics_after": {
+      "latency_ms": 154.32090441447758,
+      "throughput_mbps": 97.30254985550313,
+      "packet_loss_pct": 7.913076909803719,
+      "congestion": 0.9771595176251431,
+      "link_health": 0.9858622233135927,
+      "cpu_util_pct": 95.61739135023677
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.72, LSTM: 6067.81, IsoForest: 0.31). Primary metric driver: PACKET_LOSS (92.8% contribution).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (98.6%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.4% is below required autonomy threshold 75.0% (Confidence: 15.4%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9279999732971191,
+      "feature_attributions": {
+        "latency": 0.04399999976158142,
+        "throughput": 0.007000000216066837,
+        "packet_loss": 0.9279999732971191,
+        "congestion": 0.01600000075995922,
+        "cpu": 0.004999999888241291
+      },
+      "q_values": [
+        0.26027417182922363,
+        0.08866676688194275,
+        0.1479368507862091,
+        0.15107735991477966,
+        0.38349437713623047,
+        0.12202468514442444,
+        0.05758996307849884,
+        0.17077533900737762
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 7,
+    "scenario": "degradation",
+    "anomaly_type": "degradation",
+    "is_anomaly": true,
+    "anomaly_score": 0.725,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.154,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.15382887423038483,
+      "reason": "Confidence 15.4% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 60.118020111451585,
+      "throughput_mbps": 60.653965029157675,
+      "packet_loss_pct": 2.616147813874055,
+      "congestion": 0.14427277208211697,
+      "link_health": 0.5728387618778706,
+      "cpu_util_pct": 22.290989414653865
+    },
+    "metrics_after": {
+      "latency_ms": 60.118020111451585,
+      "throughput_mbps": 60.653965029157675,
+      "packet_loss_pct": 2.616147813874055,
+      "congestion": 0.14427277208211697,
+      "link_health": 0.5728387618778706,
+      "cpu_util_pct": 22.290989414653865
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.73, LSTM: 5998.87, IsoForest: 0.31). Primary metric driver: PACKET_LOSS (93.3% contribution).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (57.3%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.4% is below required autonomy threshold 75.0% (Confidence: 15.4%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9330000281333923,
+      "feature_attributions": {
+        "latency": 0.041999999433755875,
+        "throughput": 0.007000000216066837,
+        "packet_loss": 0.9330000281333923,
+        "congestion": 0.014000000432133675,
+        "cpu": 0.004999999888241291
+      },
+      "q_values": [
+        0.22904661297798157,
+        0.08065694570541382,
+        0.1466362327337265,
+        0.13869436085224152,
+        0.35982537269592285,
+        0.08286347985267639,
+        0.014442399144172668,
+        0.12569484114646912
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 8,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": true,
+    "anomaly_score": 0.74,
+    "action": "escalate_to_human",
+    "proposed_action": "reroute",
+    "confidence": 0.216,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.215591392441081,
+      "reason": "Confidence 21.6% is below required autonomy threshold 75.0%",
+      "inverse_action": "reroute",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 118.89983197264641,
+      "throughput_mbps": 48.66391737100585,
+      "packet_loss_pct": 5.229391355000393,
+      "congestion": 0.9399615532691836,
+      "link_health": 0.9753059765979727,
+      "cpu_util_pct": 77.50757257745288
+    },
+    "metrics_after": {
+      "latency_ms": 118.89983197264641,
+      "throughput_mbps": 48.66391737100585,
+      "packet_loss_pct": 5.229391355000393,
+      "congestion": 0.9399615532691836,
+      "link_health": 0.9753059765979727,
+      "cpu_util_pct": 77.50757257745288
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.74, LSTM: 6599.36, IsoForest: 0.35). Primary metric driver: PACKET_LOSS (92.7% contribution).",
+      "action_rationale": "Selected 'reroute' to bypass high latency (118.9ms) and buffer congestion (94.0%) via alternate paths.",
+      "action_description": "Distribute traffic load onto alternate ECMP paths via OpenFlow",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 21.6% is below required autonomy threshold 75.0% (Confidence: 21.6%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9269999861717224,
+      "feature_attributions": {
+        "latency": 0.04399999976158142,
+        "throughput": 0.007000000216066837,
+        "packet_loss": 0.9269999861717224,
+        "congestion": 0.017000000923871994,
+        "cpu": 0.004999999888241291
+      },
+      "q_values": [
+        0.2570028305053711,
+        0.07278884202241898,
+        0.14906135201454163,
+        0.14809425175189972,
+        0.37371668219566345,
+        0.11429300159215927,
+        0.052722349762916565,
+        0.15915079414844513
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 9,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": true,
+    "anomaly_score": 0.755,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.153,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.15302804112434387,
+      "reason": "Confidence 15.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 105.74591391913339,
+      "throughput_mbps": 44.0943294811469,
+      "packet_loss_pct": 4.559585457871565,
+      "congestion": 0.958976848933582,
+      "link_health": 0.9700275317239851,
+      "cpu_util_pct": 76.21868014469287
+    },
+    "metrics_after": {
+      "latency_ms": 105.74591391913339,
+      "throughput_mbps": 44.0943294811469,
+      "packet_loss_pct": 4.559585457871565,
+      "congestion": 0.958976848933582,
+      "link_health": 0.9700275317239851,
+      "cpu_util_pct": 76.21868014469287
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.76, LSTM: 4800.34, IsoForest: 0.39). Primary metric driver: PACKET_LOSS (90.4% contribution).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.3% is below required autonomy threshold 75.0% (Confidence: 15.3%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9039999842643738,
+      "feature_attributions": {
+        "latency": 0.05900000035762787,
+        "throughput": 0.004999999888241291,
+        "packet_loss": 0.9039999842643738,
+        "congestion": 0.024000000208616257,
+        "cpu": 0.008999999612569809
+      },
+      "q_values": [
+        0.2579096257686615,
+        0.07070744037628174,
+        0.14807087182998657,
+        0.14680926501750946,
+        0.3722405433654785,
+        0.11389267444610596,
+        0.052006036043167114,
+        0.15836261212825775
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:29:51",
+    "episode": 10,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": true,
+    "anomaly_score": 0.743,
+    "action": "escalate_to_human",
+    "proposed_action": "traffic_shape",
+    "confidence": 0.365,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.3648058838767211,
+      "reason": "Confidence 36.5% is below required autonomy threshold 75.0%",
+      "inverse_action": "qos_adjust",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 144.18231045316315,
+      "throughput_mbps": 98.47547120466456,
+      "packet_loss_pct": 7.690774184258385,
+      "congestion": 0.9310788429122309,
+      "link_health": 0.9884030813745739,
+      "cpu_util_pct": 96.14425901542774
+    },
+    "metrics_after": {
+      "latency_ms": 144.18231045316315,
+      "throughput_mbps": 98.47547120466456,
+      "packet_loss_pct": 7.690774184258385,
+      "congestion": 0.9310788429122309,
+      "link_health": 0.9884030813745739,
+      "cpu_util_pct": 96.14425901542774
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.74, LSTM: 4819.39, IsoForest: 0.36). Primary metric driver: PACKET_LOSS (90.2% contribution).",
+      "action_rationale": "Selected 'traffic_shape' to smooth bursty packet arrivals and prevent queue buffer exhaustion.",
+      "action_description": "Smooth bursty packet transmission rates using token buckets",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 36.5% is below required autonomy threshold 75.0% (Confidence: 36.5%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9020000100135803,
+      "feature_attributions": {
+        "latency": 0.061000000685453415,
+        "throughput": 0.004999999888241291,
+        "packet_loss": 0.9020000100135803,
+        "congestion": 0.024000000208616257,
+        "cpu": 0.008999999612569809
+      },
+      "q_values": [
+        0.25972309708595276,
+        0.09108851850032806,
+        0.14681248366832733,
+        0.14866194128990173,
+        0.3812420964241028,
+        0.1205022931098938,
+        0.05571052432060242,
+        0.167757049202919
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:35:11",
+    "episode": 1,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.551,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.550769031047821,
+      "reason": "Confidence 55.1% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "metrics_after": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (97.6%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 55.1% is below required autonomy threshold 75.0% (Confidence: 55.1%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.17793035507202148,
+        1.8398151397705078,
+        0.6096420288085938,
+        -0.4279698133468628,
+        0.30591732263565063,
+        1.719282627105713,
+        3.1751320362091064,
+        1.083821415901184
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:35:11",
+    "episode": 2,
+    "scenario": "routing_flap",
+    "anomaly_type": "routing_flap",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "metrics_after": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.3469124436378479,
+        0.768680214881897,
+        0.005203187465667725,
+        -0.537377119064331,
+        -0.12159490585327148,
+        0.820503830909729,
+        1.1716333627700806,
+        0.37765705585479736
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:35:11",
+    "episode": 3,
+    "scenario": "degradation",
+    "anomaly_type": "degradation",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "scale_resource",
+    "confidence": 0.199,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.19942191243171692,
+      "reason": "Confidence 19.9% is below required autonomy threshold 75.0%",
+      "inverse_action": "throttle",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 73.779066049815,
+      "throughput_mbps": 67.79960765521427,
+      "packet_loss_pct": 2.5363952757935193,
+      "congestion": 0.15096332193092235,
+      "link_health": 0.5093113635876062,
+      "cpu_util_pct": 25.72328401203153
+    },
+    "metrics_after": {
+      "latency_ms": 73.779066049815,
+      "throughput_mbps": 67.79960765521427,
+      "packet_loss_pct": 2.5363952757935193,
+      "congestion": 0.15096332193092235,
+      "link_health": 0.5093113635876062,
+      "cpu_util_pct": 25.72328401203153
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'scale_resource' to increase 5G slice capacity and absorb high demand without queue overflows.",
+      "action_description": "Dynamically allocate additional compute/bandwidth to 5G slice",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 19.9% is below required autonomy threshold 75.0% (Confidence: 19.9%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.4885684549808502,
+        0.39415329694747925,
+        -0.23151902854442596,
+        -0.6081451773643494,
+        -0.294527143239975,
+        0.5277188420295715,
+        0.3967932462692261,
+        0.12976603209972382
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:35:11",
+    "episode": 4,
+    "scenario": "link_failure",
+    "anomaly_type": "link_failure",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.692,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.6918824315071106,
+      "reason": "Confidence 69.2% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 114.34028195146456,
+      "throughput_mbps": 3.501735439066959,
+      "packet_loss_pct": 9.564987328601562,
+      "congestion": 0.8609344298364506,
+      "link_health": 0.12466743236562912,
+      "cpu_util_pct": 26.973016684813768
+    },
+    "metrics_after": {
+      "latency_ms": 114.34028195146456,
+      "throughput_mbps": 3.501735439066959,
+      "packet_loss_pct": 9.564987328601562,
+      "congestion": 0.8609344298364506,
+      "link_health": 0.12466743236562912,
+      "cpu_util_pct": 26.973016684813768
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (27.0%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 69.2% is below required autonomy threshold 75.0% (Confidence: 69.2%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.10672342777252197,
+        2.2113168239593506,
+        0.9263869524002075,
+        -0.2250741720199585,
+        0.5333095788955688,
+        2.0293052196502686,
+        4.092247009277344,
+        1.3314164876937866
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:35:11",
+    "episode": 5,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": true,
+    "anomaly_score": 0.736,
+    "action": "throttle",
+    "proposed_action": "throttle",
+    "confidence": 0.916,
+    "escalated": false,
+    "safety_gate": {
+      "approved": true,
+      "action": "throttle",
+      "action_id": 6,
+      "confidence": 0.915722131729126,
+      "reason": "Confidence 91.6% meets safety standards with valid risk clearance",
+      "inverse_action": "scale_resource",
+      "risk_level": "LOW"
+    },
+    "metrics_before": {
+      "latency_ms": 135.7639206265772,
+      "throughput_mbps": 97.05925469141441,
+      "packet_loss_pct": 7.664386390414543,
+      "congestion": 0.9544971549754663,
+      "link_health": 0.9863128822583854,
+      "cpu_util_pct": 98.9898826224688
+    },
+    "metrics_after": {
+      "latency_ms": 95.03474443860404,
+      "throughput_mbps": 97.05925469141441,
+      "packet_loss_pct": 3.0657545561658175,
+      "congestion": 0.47724857748773314,
+      "link_health": 0.9863128822583854,
+      "cpu_util_pct": 54.44443544235784
+    },
+    "latency_improvement_ms": 40.73,
+    "reward": 8.43,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.74, LSTM: 5829.16, IsoForest: 0.34). Primary metric driver: PACKET_LOSS (93.0% contribution).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (99.0%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate APPROVED: Action dispatched autonomously (Confidence: 91.6%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9300000071525574,
+      "feature_attributions": {
+        "latency": 0.041999999433755875,
+        "throughput": 0.007000000216066837,
+        "packet_loss": 0.9300000071525574,
+        "congestion": 0.017000000923871994,
+        "cpu": 0.004999999888241291
+      },
+      "q_values": [
+        -0.01460409164428711,
+        3.9215645790100098,
+        1.6229312419891357,
+        -0.4823110103607178,
+        0.8670704364776611,
+        3.4233546257019043,
+        7.0042829513549805,
+        2.412231922149658
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:41:26",
+    "episode": 1,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.551,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.550769031047821,
+      "reason": "Confidence 55.1% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "metrics_after": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (97.6%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 55.1% is below required autonomy threshold 75.0% (Confidence: 55.1%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.17793035507202148,
+        1.8398151397705078,
+        0.6096420288085938,
+        -0.4279698133468628,
+        0.30591732263565063,
+        1.719282627105713,
+        3.1751320362091064,
+        1.083821415901184
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:41:26",
+    "episode": 2,
+    "scenario": "routing_flap",
+    "anomaly_type": "routing_flap",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "metrics_after": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.3469124436378479,
+        0.768680214881897,
+        0.005203187465667725,
+        -0.537377119064331,
+        -0.12159490585327148,
+        0.820503830909729,
+        1.1716333627700806,
+        0.37765705585479736
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:44:20",
+    "episode": 1,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "monitor",
+    "confidence": 0.15,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.1495988816022873,
+      "reason": "Confidence 15.0% is below required autonomy threshold 75.0%",
+      "inverse_action": "monitor",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "metrics_after": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'monitor' as current telemetry fluctuations do not warrant active intervention.",
+      "action_description": "Continue observing telemetry without active network modification",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.0% is below required autonomy threshold 75.0% (Confidence: 15.0%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.1937745362520218,
+        -0.020296823233366013,
+        -0.05673391744494438,
+        -0.13245412707328796,
+        -0.11366106569766998,
+        0.07583649456501007,
+        0.1792946308851242,
+        -0.07084189355373383
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:44:20",
+    "episode": 2,
+    "scenario": "routing_flap",
+    "anomaly_type": "routing_flap",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "metrics_after": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.1906982958316803,
+        -0.03305783122777939,
+        -0.06447279453277588,
+        -0.13148170709609985,
+        -0.12177448719739914,
+        0.07746028155088425,
+        0.16142091155052185,
+        -0.08055762201547623
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:53:55",
+    "episode": 1,
+    "scenario": "none",
+    "anomaly_type": "none",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "monitor",
+    "confidence": 0.148,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.14769527316093445,
+      "reason": "Confidence 14.8% is below required autonomy threshold 75.0%",
+      "inverse_action": "monitor",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 17.920031787519008,
+      "throughput_mbps": 92.25135358741937,
+      "packet_loss_pct": 0.2752451773112971,
+      "congestion": 0.07195859245384653,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 25.383521209501858
+    },
+    "metrics_after": {
+      "latency_ms": 17.920031787519008,
+      "throughput_mbps": 92.25135358741937,
+      "packet_loss_pct": 0.2752451773112971,
+      "congestion": 0.07195859245384653,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 25.383521209501858
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'monitor' as current telemetry fluctuations do not warrant active intervention.",
+      "action_description": "Continue observing telemetry without active network modification",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 14.8% is below required autonomy threshold 75.0% (Confidence: 14.8%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.17794542014598846,
+        -0.020148130133748055,
+        -0.06078101694583893,
+        -0.12154574692249298,
+        -0.12210814654827118,
+        0.08445842564105988,
+        0.17129456996917725,
+        -0.07478264719247818
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:53:55",
+    "episode": 2,
+    "scenario": "degradation",
+    "anomaly_type": "degradation",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 64.36751481531283,
+      "throughput_mbps": 61.94959652748713,
+      "packet_loss_pct": 2.9317564857941134,
+      "congestion": 0.18517591899451313,
+      "link_health": 0.62,
+      "cpu_util_pct": 25.19809209268365
+    },
+    "metrics_after": {
+      "latency_ms": 64.36751481531283,
+      "throughput_mbps": 61.94959652748713,
+      "packet_loss_pct": 2.9317564857941134,
+      "congestion": 0.18517591899451313,
+      "link_health": 0.62,
+      "cpu_util_pct": 25.19809209268365
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (62.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.17387598752975464,
+        -0.014626243151724339,
+        -0.05567820742726326,
+        -0.11872551590204239,
+        -0.11506243795156479,
+        0.0867713913321495,
+        0.16765551269054413,
+        -0.06798728555440903
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:54:00",
+    "episode": 1,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "monitor",
+    "confidence": 0.15,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.1495988816022873,
+      "reason": "Confidence 15.0% is below required autonomy threshold 75.0%",
+      "inverse_action": "monitor",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "metrics_after": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'monitor' as current telemetry fluctuations do not warrant active intervention.",
+      "action_description": "Continue observing telemetry without active network modification",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 15.0% is below required autonomy threshold 75.0% (Confidence: 15.0%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.1937745362520218,
+        -0.020296823233366013,
+        -0.05673391744494438,
+        -0.13245412707328796,
+        -0.11366106569766998,
+        0.07583649456501007,
+        0.1792946308851242,
+        -0.07084189355373383
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 05:54:00",
+    "episode": 2,
+    "scenario": "routing_flap",
+    "anomaly_type": "routing_flap",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "metrics_after": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.1906982958316803,
+        -0.03305783122777939,
+        -0.06447279453277588,
+        -0.13148170709609985,
+        -0.12177448719739914,
+        0.07746028155088425,
+        0.16142091155052185,
+        -0.08055762201547623
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:06:07",
+    "episode": 1,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.468,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.4678051471710205,
+      "reason": "Confidence 46.8% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 109.23761381096294,
+      "throughput_mbps": 52.6265791853226,
+      "packet_loss_pct": 4.944181662652217,
+      "congestion": 0.8944086821727927,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 82.39698987431414
+    },
+    "metrics_after": {
+      "latency_ms": 109.23761381096294,
+      "throughput_mbps": 52.6265791853226,
+      "packet_loss_pct": 4.944181662652217,
+      "congestion": 0.8944086821727927,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 82.39698987431414
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (82.4%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 46.8% is below required autonomy threshold 75.0% (Confidence: 46.8%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.17508983612060547,
+        1.5213521718978882,
+        0.45403146743774414,
+        -0.4096565246582031,
+        0.19228166341781616,
+        1.451856017112732,
+        2.614248275756836,
+        0.8743646740913391
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:06:08",
+    "episode": 2,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 107.35565383028239,
+      "throughput_mbps": 50.23110744146426,
+      "packet_loss_pct": 5.66784988932454,
+      "congestion": 0.9185022226704125,
+      "link_health": 0.9714070753711675,
+      "cpu_util_pct": 77.0756881822737
+    },
+    "metrics_after": {
+      "latency_ms": 107.35565383028239,
+      "throughput_mbps": 50.23110744146426,
+      "packet_loss_pct": 5.66784988932454,
+      "congestion": 0.9185022226704125,
+      "link_health": 0.9714070753711675,
+      "cpu_util_pct": 77.0756881822737
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.1%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.14266717433929443,
+        1.6002838611602783,
+        0.5063167214393616,
+        -0.3921542167663574,
+        0.23104625940322876,
+        1.5145905017852783,
+        2.7848615646362305,
+        0.925175130367279
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:06:08",
+    "episode": 3,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.505,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.5045316219329834,
+      "reason": "Confidence 50.5% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 122.18367946264496,
+      "throughput_mbps": 49.45914681275919,
+      "packet_loss_pct": 5.247523689519782,
+      "congestion": 0.9842494280261138,
+      "link_health": 0.9853230918555335,
+      "cpu_util_pct": 75.96792491807692
+    },
+    "metrics_after": {
+      "latency_ms": 122.18367946264496,
+      "throughput_mbps": 49.45914681275919,
+      "packet_loss_pct": 5.247523689519782,
+      "congestion": 0.9842494280261138,
+      "link_health": 0.9853230918555335,
+      "cpu_util_pct": 75.96792491807692
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (76.0%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 50.5% is below required autonomy threshold 75.0% (Confidence: 50.5%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.13622796535491943,
+        1.6259403228759766,
+        0.5219598412513733,
+        -0.38753771781921387,
+        0.24026918411254883,
+        1.534034013748169,
+        2.839116096496582,
+        0.9420066475868225
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:06:08",
+    "episode": 4,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.502,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.5018064975738525,
+      "reason": "Confidence 50.2% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 105.47458102040876,
+      "throughput_mbps": 47.15179545113243,
+      "packet_loss_pct": 5.4651134071627805,
+      "congestion": 0.9422976251361033,
+      "link_health": 0.9788605254234513,
+      "cpu_util_pct": 80.71577134152598
+    },
+    "metrics_after": {
+      "latency_ms": 105.47458102040876,
+      "throughput_mbps": 47.15179545113243,
+      "packet_loss_pct": 5.4651134071627805,
+      "congestion": 0.9422976251361033,
+      "link_health": 0.9788605254234513,
+      "cpu_util_pct": 80.71577134152598
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (80.7%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 50.2% is below required autonomy threshold 75.0% (Confidence: 50.2%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.13823860883712769,
+        1.6170692443847656,
+        0.5159761905670166,
+        -0.3884961009025574,
+        0.23630499839782715,
+        1.5281362533569336,
+        2.821808338165283,
+        0.9351216554641724
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:06:08",
+    "episode": 5,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": true,
+    "anomaly_score": 0.762,
+    "action": "throttle",
+    "proposed_action": "throttle",
+    "confidence": 0.898,
+    "escalated": false,
+    "safety_gate": {
+      "approved": true,
+      "action": "throttle",
+      "action_id": 6,
+      "confidence": 0.8980516791343689,
+      "reason": "Confidence 89.8% meets safety standards with valid risk clearance",
+      "inverse_action": "scale_resource",
+      "risk_level": "LOW"
+    },
+    "metrics_before": {
+      "latency_ms": 116.25619400255572,
+      "throughput_mbps": 50.40840033199255,
+      "packet_loss_pct": 5.160043062821147,
+      "congestion": 0.9389386467751563,
+      "link_health": 0.9822359554877468,
+      "cpu_util_pct": 70.71422090072167
+    },
+    "metrics_after": {
+      "latency_ms": 81.379335801789,
+      "throughput_mbps": 50.40840033199255,
+      "packet_loss_pct": 2.064017225128459,
+      "congestion": 0.46946932338757813,
+      "link_health": 0.9822359554877468,
+      "cpu_util_pct": 38.89282149539692
+    },
+    "latency_improvement_ms": 34.88,
+    "reward": 6.8,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.76, LSTM: 3890.01, IsoForest: 0.41). Primary metric driver: PACKET_LOSS (88.3% contribution).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (70.7%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate APPROVED: Action dispatched autonomously (Confidence: 89.8%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.8830000162124634,
+      "feature_attributions": {
+        "latency": 0.06199999898672104,
+        "throughput": 0.009999999776482582,
+        "packet_loss": 0.8830000162124634,
+        "congestion": 0.03500000014901161,
+        "cpu": 0.009999999776482582
+      },
+      "q_values": [
+        0.04098916053771973,
+        3.662470817565918,
+        1.5192954540252686,
+        -0.43836188316345215,
+        0.7931885719299316,
+        3.207298755645752,
+        6.576894760131836,
+        2.241469144821167
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:06:08",
+    "episode": 6,
+    "scenario": "congestion",
+    "anomaly_type": "congestion",
+    "is_anomaly": true,
+    "anomaly_score": 0.762,
+    "action": "throttle",
+    "proposed_action": "throttle",
+    "confidence": 0.886,
+    "escalated": false,
+    "safety_gate": {
+      "approved": true,
+      "action": "throttle",
+      "action_id": 6,
+      "confidence": 0.8855125904083252,
+      "reason": "Confidence 88.6% meets safety standards with valid risk clearance",
+      "inverse_action": "scale_resource",
+      "risk_level": "LOW"
+    },
+    "metrics_before": {
+      "latency_ms": 123.88360550502156,
+      "throughput_mbps": 48.35369570997521,
+      "packet_loss_pct": 3.5481490687776223,
+      "congestion": 0.9099534491004267,
+      "link_health": 0.994949413112344,
+      "cpu_util_pct": 78.81376532552503
+    },
+    "metrics_after": {
+      "latency_ms": 86.7185238535151,
+      "throughput_mbps": 48.35369570997521,
+      "packet_loss_pct": 1.419259627511049,
+      "congestion": 0.4549767245502134,
+      "link_health": 0.994949413112344,
+      "cpu_util_pct": 43.34757092903877
+    },
+    "latency_improvement_ms": 37.17,
+    "reward": 6.83,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.76, LSTM: 3612.44, IsoForest: 0.41). Primary metric driver: PACKET_LOSS (87.0% contribution).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (78.8%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate APPROVED: Action dispatched autonomously (Confidence: 88.6%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.8700000047683716,
+      "feature_attributions": {
+        "latency": 0.07199999690055847,
+        "throughput": 0.010999999940395355,
+        "packet_loss": 0.8700000047683716,
+        "congestion": 0.03799999877810478,
+        "cpu": 0.009999999776482582
+      },
+      "q_values": [
+        0.015029668807983398,
+        3.5531234741210938,
+        1.4564287662506104,
+        -0.44803881645202637,
+        0.7459529638290405,
+        3.1187081336975098,
+        6.354482650756836,
+        2.1698875427246094
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:31:21",
+    "episode": 1,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.551,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.550769031047821,
+      "reason": "Confidence 55.1% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "metrics_after": {
+      "latency_ms": 132.65640084924502,
+      "throughput_mbps": 97.96639768499142,
+      "packet_loss_pct": 7.378056697295278,
+      "congestion": 0.9775879594972565,
+      "link_health": 0.9669782049313768,
+      "cpu_util_pct": 97.5555838708579
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (97.6%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 55.1% is below required autonomy threshold 75.0% (Confidence: 55.1%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.17793035507202148,
+        1.8398151397705078,
+        0.6096420288085938,
+        -0.4279698133468628,
+        0.30591732263565063,
+        1.719282627105713,
+        3.1751320362091064,
+        1.083821415901184
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:31:21",
+    "episode": 2,
+    "scenario": "routing_flap",
+    "anomaly_type": "routing_flap",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "failover",
+    "confidence": 0.223,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.22346755614104286,
+      "reason": "Confidence 22.3% is below required autonomy threshold 75.0%",
+      "inverse_action": "failover",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "metrics_after": {
+      "latency_ms": 90.11914026361255,
+      "throughput_mbps": 64.74545687915372,
+      "packet_loss_pct": 2.8770705748423056,
+      "congestion": 0.7478033070939224,
+      "link_health": 0.97041117399171,
+      "cpu_util_pct": 27.51380120522909
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'failover' due to critical link health deterioration (97.0%) to avoid link failure packet blackhole.",
+      "action_description": "Switch traffic immediately to designated redundant standby link",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 22.3% is below required autonomy threshold 75.0% (Confidence: 22.3%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.3469124436378479,
+        0.768680214881897,
+        0.005203187465667725,
+        -0.537377119064331,
+        -0.12159490585327148,
+        0.820503830909729,
+        1.1716333627700806,
+        0.37765705585479736
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:31:21",
+    "episode": 3,
+    "scenario": "degradation",
+    "anomaly_type": "degradation",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "scale_resource",
+    "confidence": 0.199,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.19942191243171692,
+      "reason": "Confidence 19.9% is below required autonomy threshold 75.0%",
+      "inverse_action": "throttle",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 73.779066049815,
+      "throughput_mbps": 67.79960765521427,
+      "packet_loss_pct": 2.5363952757935193,
+      "congestion": 0.15096332193092235,
+      "link_health": 0.5093113635876062,
+      "cpu_util_pct": 25.72328401203153
+    },
+    "metrics_after": {
+      "latency_ms": 73.779066049815,
+      "throughput_mbps": 67.79960765521427,
+      "packet_loss_pct": 2.5363952757935193,
+      "congestion": 0.15096332193092235,
+      "link_health": 0.5093113635876062,
+      "cpu_util_pct": 25.72328401203153
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -0.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'scale_resource' to increase 5G slice capacity and absorb high demand without queue overflows.",
+      "action_description": "Dynamically allocate additional compute/bandwidth to 5G slice",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 19.9% is below required autonomy threshold 75.0% (Confidence: 19.9%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        -0.4885684549808502,
+        0.39415329694747925,
+        -0.23151902854442596,
+        -0.6081451773643494,
+        -0.294527143239975,
+        0.5277188420295715,
+        0.3967932462692261,
+        0.12976603209972382
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:31:21",
+    "episode": 4,
+    "scenario": "link_failure",
+    "anomaly_type": "link_failure",
+    "is_anomaly": false,
+    "anomaly_score": 0.0,
+    "action": "escalate_to_human",
+    "proposed_action": "throttle",
+    "confidence": 0.692,
+    "escalated": true,
+    "safety_gate": {
+      "approved": false,
+      "action": "escalate_to_human",
+      "action_id": 7,
+      "confidence": 0.6918824315071106,
+      "reason": "Confidence 69.2% is below required autonomy threshold 75.0%",
+      "inverse_action": "scale_resource",
+      "risk_level": "MEDIUM"
+    },
+    "metrics_before": {
+      "latency_ms": 114.34028195146456,
+      "throughput_mbps": 3.501735439066959,
+      "packet_loss_pct": 9.564987328601562,
+      "congestion": 0.8609344298364506,
+      "link_health": 0.12466743236562912,
+      "cpu_util_pct": 26.973016684813768
+    },
+    "metrics_after": {
+      "latency_ms": 114.34028195146456,
+      "throughput_mbps": 3.501735439066959,
+      "packet_loss_pct": 9.564987328601562,
+      "congestion": 0.8609344298364506,
+      "link_health": 0.12466743236562912,
+      "cpu_util_pct": 26.973016684813768
+    },
+    "latency_improvement_ms": 0.0,
+    "reward": -25.2,
+    "explanation": {
+      "anomaly_summary": "Telemetry within nominal bounds (Anomaly score: 0.00).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (27.0%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate ESCALATED: Confidence 69.2% is below required autonomy threshold 75.0% (Confidence: 69.2%).",
+      "top_contributing_feature": "latency",
+      "top_contributing_weight": 0.25,
+      "feature_attributions": {
+        "latency": 0.25,
+        "packet_loss": 0.25,
+        "congestion": 0.25,
+        "cpu": 0.25
+      },
+      "q_values": [
+        0.10672342777252197,
+        2.2113168239593506,
+        0.9263869524002075,
+        -0.2250741720199585,
+        0.5333095788955688,
+        2.0293052196502686,
+        4.092247009277344,
+        1.3314164876937866
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:31:21",
+    "episode": 5,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": true,
+    "anomaly_score": 0.736,
+    "action": "throttle",
+    "proposed_action": "throttle",
+    "confidence": 0.916,
+    "escalated": false,
+    "safety_gate": {
+      "approved": true,
+      "action": "throttle",
+      "action_id": 6,
+      "confidence": 0.915722131729126,
+      "reason": "Confidence 91.6% meets safety standards with valid risk clearance",
+      "inverse_action": "scale_resource",
+      "risk_level": "LOW"
+    },
+    "metrics_before": {
+      "latency_ms": 135.7639206265772,
+      "throughput_mbps": 97.05925469141441,
+      "packet_loss_pct": 7.664386390414543,
+      "congestion": 0.9544971549754663,
+      "link_health": 0.9863128822583854,
+      "cpu_util_pct": 98.9898826224688
+    },
+    "metrics_after": {
+      "latency_ms": 95.03474443860404,
+      "throughput_mbps": 97.05925469141441,
+      "packet_loss_pct": 3.0657545561658175,
+      "congestion": 0.47724857748773314,
+      "link_health": 0.9863128822583854,
+      "cpu_util_pct": 54.44443544235784
+    },
+    "latency_improvement_ms": 40.73,
+    "reward": 8.43,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.74, LSTM: 5811.56, IsoForest: 0.34). Primary metric driver: PACKET_LOSS (93.1% contribution).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (99.0%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate APPROVED: Action dispatched autonomously (Confidence: 91.6%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9309999942779541,
+      "feature_attributions": {
+        "latency": 0.04100000113248825,
+        "throughput": 0.007000000216066837,
+        "packet_loss": 0.9309999942779541,
+        "congestion": 0.017000000923871994,
+        "cpu": 0.004999999888241291
+      },
+      "q_values": [
+        -0.01460409164428711,
+        3.9215645790100098,
+        1.6229312419891357,
+        -0.4823110103607178,
+        0.8670704364776611,
+        3.4233546257019043,
+        7.0042829513549805,
+        2.412231922149658
+      ]
+    },
+    "loss": null
+  },
+  {
+    "timestamp": "2026-10-14 06:31:21",
+    "episode": 6,
+    "scenario": "attack_ddos",
+    "anomaly_type": "attack_ddos",
+    "is_anomaly": true,
+    "anomaly_score": 0.724,
+    "action": "throttle",
+    "proposed_action": "throttle",
+    "confidence": 0.917,
+    "escalated": false,
+    "safety_gate": {
+      "approved": true,
+      "action": "throttle",
+      "action_id": 6,
+      "confidence": 0.9174519181251526,
+      "reason": "Confidence 91.7% meets safety standards with valid risk clearance",
+      "inverse_action": "scale_resource",
+      "risk_level": "LOW"
+    },
+    "metrics_before": {
+      "latency_ms": 154.32090441447758,
+      "throughput_mbps": 97.30254985550313,
+      "packet_loss_pct": 7.913076909803719,
+      "congestion": 0.9771595176251431,
+      "link_health": 0.9858622233135927,
+      "cpu_util_pct": 95.61739135023677
+    },
+    "metrics_after": {
+      "latency_ms": 108.0246330901343,
+      "throughput_mbps": 97.30254985550313,
+      "packet_loss_pct": 3.1652307639214876,
+      "congestion": 0.48857975881257154,
+      "link_health": 0.9858622233135927,
+      "cpu_util_pct": 52.58956524263023
+    },
+    "latency_improvement_ms": 46.3,
+    "reward": -15.5,
+    "explanation": {
+      "anomaly_summary": "Anomaly detected (Score: 0.72, LSTM: 6045.11, IsoForest: 0.31). Primary metric driver: PACKET_LOSS (92.9% contribution).",
+      "action_rationale": "Selected 'throttle' to curtail low-priority background flows and relieve high CPU load (95.6%).",
+      "action_description": "Rate-limit bulk background traffic to protect latency-critical flows",
+      "safety_summary": "Safety Gate APPROVED: Action dispatched autonomously (Confidence: 91.7%).",
+      "top_contributing_feature": "packet_loss",
+      "top_contributing_weight": 0.9290000200271606,
+      "feature_attributions": {
+        "latency": 0.04399999976158142,
+        "throughput": 0.006000000052154064,
+        "packet_loss": 0.9290000200271606,
+        "congestion": 0.01600000075995922,
+        "cpu": 0.004999999888241291
+      },
+      "q_values": [
+        -0.019265413284301758,
+        3.9439711570739746,
+        1.6336374282836914,
+        -0.4847447872161865,
+        0.8755103349685669,
+        3.4429237842559814,
+        7.046431541442871,
+        2.4282069206237793
+      ]
+    },
+    "loss": null
+  }
+]
