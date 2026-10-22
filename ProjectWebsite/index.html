@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroNet - Autonomous Network Control Plane</title>
+  <meta name="description" content="Final Year Research: Reinforcement learning control plane for autonomous network incident response. Dueling DQN, confidence-gated safety, 20-node M/M/1 simulator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+  <header class="navbar">
+    <a href="#overview" class="nav-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/>
+          <circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/>
+          <line x1="6" y1="6" x2="10" y2="10.5"/>
+          <line x1="18" y1="6" x2="14" y2="10.5"/>
+          <line x1="6" y1="18" x2="10" y2="13.5"/>
+          <line x1="18" y1="18" x2="14" y2="13.5"/>
+        </svg>
+      </div>
+      <span class="brand-name">NeuroNet</span>
+      <span class="brand-sep">&#183;</span>
+      <span class="brand-sub">Control Plane</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#simulation">Simulation</a>
+      <a href="#evolution">Timeline</a>
+      <a href="#research">Research</a>
+    </nav>
+    <div class="nav-indicator">
+      <span class="live-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></span>
+      <span>Research Prototype &middot; Architecture Demo</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 01 OVERVIEW -->
+    <section id="overview">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">Final Year Research Project &middot; Network Automation</div>
+          <h1>When networks fail,<br>the agent decides.</h1>
+          <p class="hero-lead">
+            Network degradations unfold in seconds. Human NOC operators respond in minutes. NeuroNet closes that gap with a Dueling DQN policy that reads live telemetry, detects anomalies, and dispatches recovery actions through a confidence-gated safety barrier.
+          </p>
+          <div class="tag-row">
+            <span class="tag tag-cyan">Dueling DQN + Double-DQN</span>
+            <span class="tag tag-indigo">LSTM AE &middot; Isolation Forest</span>
+            <span class="tag tag-green">Confidence Gate &ge;75&thinsp;%</span>
+            <span class="tag tag-dim">20-node M/M/1 Simulator</span>
+          </div>
+          <div class="cta-row">
+            <a href="#simulation" class="cta-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg>
+              Run a Scenario
+            </a>
+            <a href="#architecture" class="cta-ghost">Inspect Architecture</a>
+          </div>
+        </div>
+
+        <div class="canvas-panel">
+          <div class="canvas-toolbar">
+            <span class="mono-label">20-NODE TOPOLOGY &middot; M/M/1 QUEUE MODEL</span>
+            <span id="canvas-status" class="status-nominal">&bull; NOMINAL</span>
+          </div>
+          <canvas id="topology-canvas"></canvas>
+          <div class="canvas-legend">
+            <span><span class="dot dot-cyan"></span>Core &times;4</span>
+            <span><span class="dot dot-indigo"></span>Aggregation &times;6</span>
+            <span><span class="dot dot-green"></span>Edge &times;10</span>
+            <span class="hint">Drag nodes &middot; hover for detail</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-strip">
+        <div class="kpi-item">
+          <div class="kpi-number">14<span>-D</span></div>
+          <div class="kpi-label">State vector dimension</div>
+          <div class="kpi-note">Normalized telemetry &amp; anomaly scores</div>
+        </div>
+        <div class="kpi-divider"></div>
+        <div class="kpi-item">
+          <div class="kpi-number">8</div>
+          <div class="kpi-label">Discrete control actions</div>
+          <div class="kpi-note">Ranked by risk tier with rollback definitions</div>
+        </div>
+        <div class="kpi-divider"></div>
+        <div class="kpi-item">
+          <div class="kpi-number">&ge;75<span>%</span></div>
+          <div class="kpi-label">Confidence safety gate</div>
+          <div class="kpi-note">Required threshold prior to execution</div>
+        </div>
+        <div class="kpi-divider"></div>
+        <div class="kpi-item">
+          <div class="kpi-number">20</div>
+          <div class="kpi-label">Simulated topology nodes</div>
+          <div class="kpi-note">M/M/1 queuing dynamics &amp; 6 fault models</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 ARCHITECTURE -->
+    <section id="architecture">
+      <div class="section-intro">
+        <div class="section-tag">02 &middot; Architecture</div>
+        <h2>The perception and decision pipeline</h2>
+        <p>Telemetry arrives every 15 seconds, is normalised into a 14-dimensional state vector, scored by a Dueling DQN, then held at a safety gate before any action reaches the network.</p>
+      </div>
+
+      <div class="pipeline">
+        <div class="pipe-stage pipe-active">
+          <div class="pipe-header">
+            <span class="pipe-id">01</span>
+            <span class="pipe-arrow-icon">&rarr;</span>
+          </div>
+          <div class="pipe-name">Telemetry</div>
+          <div class="pipe-detail">15s Scrape &middot; Kafka bus</div>
+        </div>
+
+        <div class="pipe-stage">
+          <div class="pipe-header">
+            <span class="pipe-id">02</span>
+            <span class="pipe-arrow-icon">&rarr;</span>
+          </div>
+          <div class="pipe-name">Detection</div>
+          <div class="pipe-detail">LSTM-AE + IsoForest</div>
+        </div>
+
+        <div class="pipe-stage">
+          <div class="pipe-header">
+            <span class="pipe-id">03</span>
+            <span class="pipe-arrow-icon">&rarr;</span>
+          </div>
+          <div class="pipe-name">State Vector</div>
+          <div class="pipe-detail">14-D Normalised</div>
+        </div>
+
+        <div class="pipe-stage">
+          <div class="pipe-header">
+            <span class="pipe-id">04</span>
+            <span class="pipe-arrow-icon">&rarr;</span>
+          </div>
+          <div class="pipe-name">DQN Policy</div>
+          <div class="pipe-detail">V(s) + A(s,a) Split</div>
+        </div>
+
+        <div class="pipe-stage">
+          <div class="pipe-header">
+            <span class="pipe-id">05</span>
+            <span class="pipe-arrow-icon">&rarr;</span>
+          </div>
+          <div class="pipe-name">Safety Gate</div>
+          <div class="pipe-detail">&ge;75% Conf &middot; Guard</div>
+        </div>
+
+        <div class="pipe-stage">
+          <div class="pipe-header">
+            <span class="pipe-id">06</span>
+            <span class="pipe-arrow-icon">&rarr;</span>
+          </div>
+          <div class="pipe-name">Remediation</div>
+          <div class="pipe-detail">SDN &middot; K8s Dispatch</div>
+        </div>
+
+        <div class="pipe-stage">
+          <div class="pipe-header">
+            <span class="pipe-id">07</span>
+            <span class="pipe-arrow-icon" style="color:var(--green)">&#8635;</span>
+          </div>
+          <div class="pipe-name">Feedback Loop</div>
+          <div class="pipe-detail">PER Replay Buffer</div>
+        </div>
+      </div>
+
+      <div class="arch-grid">
+
+        <!-- LEFT: Dueling DQN Flow -->
+        <div class="arch-card">
+          <div class="arch-card-label" style="color:var(--cyan)">DUELING DQN POLICY</div>
+          <h3>Value stream &amp; Advantage stream</h3>
+          <p>Standard Q-networks conflate state quality with action selection. Decomposing Q(s,a) into V(s) and A(s,a) lets the agent learn when network conditions are inherently bad — independently of which action it evaluates — improving stability under sparse failure events.</p>
+
+          <div class="dqn-flow">
+            <div class="dqn-layer dqn-input">
+              <div class="dlayer-left">
+                <span class="dlayer-badge" style="color:#94a3b8;border-color:rgba(148,163,184,0.25);">INPUT</span>
+                <span class="dlayer-name">State Vector &nbsp;<span class="dlayer-dim">s &isin; &#8477;<sup>14</sup></span></span>
+              </div>
+              <div class="dfeats">
+                <span>latency</span><span>loss</span><span>throughput</span><span>queue</span><span>link&nbsp;health</span><span>lstm&nbsp;err</span><span>cpu</span><span class="dfeat-more">+7</span>
+              </div>
+            </div>
+
+            <div class="dqn-connector"><span class="conn-dot"></span><div class="conn-bar"></div><span class="conn-dot"></span></div>
+
+            <div class="dqn-layer dqn-shared">
+              <div class="dlayer-left">
+                <span class="dlayer-badge" style="color:var(--cyan);border-color:rgba(56,189,248,0.35);">FC</span>
+                <span class="dlayer-name">Shared Encoder</span>
+              </div>
+              <code class="dlayer-code">Dense(14,64) &rarr; ReLU &rarr; Dense(64,64) &rarr; ReLU</code>
+            </div>
+
+            <div class="dqn-fork-visual">
+              <div class="fork-trunk"></div>
+              <div class="fork-arms">
+                <div class="fork-arm-left"></div>
+                <div class="fork-arm-right"></div>
+              </div>
+            </div>
+
+            <div class="dqn-streams">
+              <div class="dqn-layer dqn-value">
+                <span class="dlayer-badge" style="color:var(--green);border-color:rgba(52,211,153,0.35);">V</span>
+                <span class="dlayer-name">Value Stream</span>
+                <code class="dlayer-code">Dense(64,32) &rarr; &#8477;<sup>1</sup></code>
+                <div class="stream-output">V(s)</div>
+              </div>
+              <div class="dqn-layer dqn-advantage">
+                <span class="dlayer-badge" style="color:var(--amber);border-color:rgba(245,158,11,0.35);">A</span>
+                <span class="dlayer-name">Advantage Stream</span>
+                <code class="dlayer-code">Dense(64,32) &rarr; &#8477;<sup>8</sup></code>
+                <div class="stream-output">A(s,a)</div>
+              </div>
+            </div>
+
+            <div class="dqn-merge-visual">
+              <div class="merge-arm-left"></div>
+              <div class="merge-arm-right"></div>
+              <div class="merge-trunk"></div>
+            </div>
+
+            <div class="dqn-layer dqn-agg">
+              <div class="dlayer-left">
+                <span class="dlayer-badge" style="color:var(--purple);border-color:rgba(168,85,247,0.35);">Q</span>
+                <span class="dlayer-name">Aggregation</span>
+              </div>
+              <code class="dlayer-code">Q(s,a) = V(s) + [ A(s,a) &minus; <span style="opacity:.5">mean</span>&thinsp;A(s,:) ]</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Action Space -->
+        <div class="arch-card">
+          <div class="arch-card-label" style="color:var(--amber)">ACTION SPACE &nbsp;|A| = 8</div>
+          <h3>Discrete remediation actions</h3>
+          <p>Sorted by operational risk. Each action has a defined execution cost and inverse rollback mapping. Actions are mutually exclusive per decision step.</p>
+
+          <div class="act-spec">
+            <div class="act-spec-header">
+              <span>ID</span><span>Action</span><span>Cost</span><span>Risk</span>
+            </div>
+            <div class="act-spec-row"><span class="asid">0</span><span class="asnm">MONITOR</span><span class="asct">&minus;0.1</span><span class="asr asr-nil">None</span></div>
+            <div class="act-spec-row"><span class="asid">7</span><span class="asnm">ESCALATE</span><span class="asct">&minus;0.2</span><span class="asr asr-nil">None</span></div>
+            <div class="act-spec-row"><span class="asid">2</span><span class="asnm">QOS_ADJUST</span><span class="asct">&minus;0.5</span><span class="asr asr-low">Low</span></div>
+            <div class="act-spec-row"><span class="asid">3</span><span class="asnm">TRAFFIC_SHAPE</span><span class="asct">&minus;0.8</span><span class="asr asr-low">Low</span></div>
+            <div class="act-spec-row"><span class="asid">1</span><span class="asnm">REROUTE</span><span class="asct">&minus;1.0</span><span class="asr asr-med">Med</span></div>
+            <div class="act-spec-row"><span class="asid">6</span><span class="asnm">THROTTLE</span><span class="asct">&minus;1.2</span><span class="asr asr-med">Med</span></div>
+            <div class="act-spec-row"><span class="asid">4</span><span class="asnm">FAILOVER</span><span class="asct">&minus;1.8</span><span class="asr asr-high">High</span></div>
+            <div class="act-spec-row"><span class="asid">5</span><span class="asnm">SCALE_RESOURCE</span><span class="asct">&minus;2.0</span><span class="asr asr-high">High</span></div>
+          </div>
+
+          <div class="gate-box">
+            <div class="gate-box-header">
+              <span class="mono-label">CONFIDENCE GATE</span>
+              <span class="gate-live">&bull; Active</span>
+            </div>
+            <code class="gate-formula">&pi;(a|s) = softmax&thinsp;Q(s,:) [argmax] &ge; 0.75</code>
+            <p class="gate-desc">Actions below the 75&thinsp;% confidence threshold are suppressed and automatically route to ESCALATE (id=7), transferring control to the human NOC without disrupting the audit log.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 SIMULATION -->
+    <section id="simulation">
+      <div class="section-intro">
+        <div class="section-tag">03 &middot; Illustrative Walkthrough</div>
+        <h2>Conceptual simulation &amp; decision lifecycle</h2>
+        <p>An interactive conceptual walkthrough demonstrating the observe-detect-decide-gate-act workflow. All metrics and outcomes shown below are illustrative models derived from synthetic simulation snapshots (<code>evaluate_agent.py</code>) rather than live hardware telemetry.</p>
+      </div>
+
+      <div class="notice-banner">
+        <div class="notice-icon">&#9432;</div>
+        <div class="notice-body">
+          <strong>Illustrative Demonstration Notice:</strong> This interactive console presents conceptual scenario snapshots to illustrate how the control loop operates in design. The values shown demonstrate offline Python simulation results rather than live physical switch measurements.
+        </div>
+      </div>
+
+      <div class="sim-shell">
+        <div class="scen-picker">
+          <button class="scen-btn scen-active" data-scen="congestion">Buffer Congestion</button>
+          <button class="scen-btn" data-scen="link_failure">Link Failure</button>
+          <button class="scen-btn" data-scen="attack_ddos">DDoS SYN Flood</button>
+          <button class="scen-btn" data-scen="routing_flap">Route Flap &rarr; escalation</button>
+          <button class="scen-btn" data-scen="degradation">Optical Degradation</button>
+        </div>
+
+        <div class="scen-header">
+          <div class="scen-header-left">
+            <span id="sim-scen-tag" class="scen-type-tag">High Traffic Load</span>
+            <h3 id="sim-scen-title">Buffer Congestion Ramp</h3>
+            <p id="sim-scen-desc">Link demand spikes to 120&thinsp;% capacity. FIFO queue saturates; latency climbs +95&thinsp;ms.</p>
+          </div>
+          <button id="btn-run-sim" class="replay-btn">&#8635; Replay</button>
+        </div>
+
+        <div class="stepper">
+          <div class="step-card" id="t-step-1">
+            <div class="step-index">01 &middot; Observe</div>
+            <div class="step-title">Telemetry polled</div>
+            <div class="step-body">RTT and buffer utilisation breach threshold.</div>
+          </div>
+          <div class="step-card" id="t-step-2">
+            <div class="step-index">02 &middot; Detect</div>
+            <div class="step-title">Ensemble scored</div>
+            <div class="step-body">LSTM reconstruction error + IsoForest score &gt; 0.70.</div>
+          </div>
+          <div class="step-card" id="t-step-3">
+            <div class="step-index">03 &middot; Decide</div>
+            <div class="step-title">DQN inference</div>
+            <div class="step-body">Policy evaluates all 8 actions; selects highest Q-value.</div>
+          </div>
+          <div class="step-card" id="t-step-4">
+            <div class="step-index">04 &middot; Gate</div>
+            <div class="step-title">Safety check</div>
+            <div class="step-body">Confidence and anti-thrash rules verified before dispatch.</div>
+          </div>
+          <div class="step-card" id="t-step-5">
+            <div class="step-index">05 &middot; Act</div>
+            <div class="step-title">Action dispatched</div>
+            <div class="step-body">Metrics recover; reward logged to replay buffer.</div>
+          </div>
+        </div>
+
+        <div class="outcome-grid">
+          <div class="metric-panel">
+            <div class="panel-label">
+              <span>Before (Fault State)</span>
+              <span class="status-bad">&#9679; SIMULATED INCIDENT</span>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>RTT latency</span><span id="m-lat-before">115 ms</span></div>
+              <div class="bar-track"><div id="bar-lat-before" class="bar-fill fill-rose" style="width:72%"></div></div>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>Packet loss</span><span id="m-loss-before">5.2 %</span></div>
+              <div class="bar-track"><div id="bar-loss-before" class="bar-fill fill-rose" style="width:52%"></div></div>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>Throughput</span><span id="m-tput-before">48 Mbps</span></div>
+              <div class="bar-track"><div id="bar-tput-before" class="bar-fill fill-amber" style="width:48%"></div></div>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>Buffer load</span><span id="m-cong-before">92 %</span></div>
+              <div class="bar-track"><div id="bar-cong-before" class="bar-fill fill-rose" style="width:92%"></div></div>
+            </div>
+          </div>
+
+          <div class="metric-panel">
+            <div class="panel-label">
+              <span>After (Simulated Recovery)</span>
+              <span class="status-good">&#9679; ILLUSTRATIVE OUTCOME</span>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>RTT latency</span><span id="m-lat-after">22 ms</span></div>
+              <div class="bar-track"><div id="bar-lat-after" class="bar-fill fill-green" style="width:14%"></div></div>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>Packet loss</span><span id="m-loss-after">0.2 %</span></div>
+              <div class="bar-track"><div id="bar-loss-after" class="bar-fill fill-green" style="width:2%"></div></div>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>Throughput</span><span id="m-tput-after">92 Mbps</span></div>
+              <div class="bar-track"><div id="bar-tput-after" class="bar-fill fill-green" style="width:92%"></div></div>
+            </div>
+            <div class="mbar-group">
+              <div class="mbar-row"><span>Buffer load</span><span id="m-cong-after">18 %</span></div>
+              <div class="bar-track"><div id="bar-cong-after" class="bar-fill fill-green" style="width:18%"></div></div>
+            </div>
+          </div>
+
+          <div class="decision-panel">
+            <div class="decision-top">
+              <div class="decision-action-row">
+                <span class="label-faint">Action (Model Output)</span>
+                <span id="v-action" class="decision-action">REROUTE</span>
+                <span id="v-confidence" class="decision-conf">88.4&thinsp;%</span>
+                <span id="v-qvalue" class="decision-q">Q +38.5</span>
+              </div>
+              <span id="v-gate-badge" class="gate-pill gate-pass">APPROVED</span>
+            </div>
+            <p id="v-gate-reason" class="gate-reason">Confidence 88.4&thinsp;% &ge; 75.0&thinsp;% threshold. Zero thrashing risk.</p>
+            <p id="v-rationale" class="decision-rationale">Dueling DQN identified primary trunk buffer saturation (92&thinsp;%). ECMP reroute dispatched via OpenFlow; latency recovered 93&thinsp;ms, packet loss reduced 5.0&thinsp;%.</p>
+            <pre id="json-audit-dump" class="audit-json"></pre>
+          </div>
+
+          <div class="shap-panel">
+            <div class="panel-label"><span>Feature attribution</span><span class="label-faint">illustrative SHAP proxy</span></div>
+            <div id="shap-bars-wrap" style="margin-top:14px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 EVOLUTION -->
+    <section id="evolution">
+      <div class="section-intro">
+        <div class="section-tag">04 &middot; Project Timeline</div>
+        <h2>Four phases, one codebase</h2>
+        <p>The project moved from MDP formulation through a working simulator, to a safety-gated agent, to empirical evaluation and this presentation layer.</p>
+      </div>
+
+      <div class="phase-grid">
+        <!-- Phase 01 -->
+        <div class="phase-card">
+          <div class="phase-top">
+            <span class="phase-badge">PHASE 01</span>
+            <span class="phase-status done">&#10003; COMPLETE</span>
+          </div>
+          <div class="phase-title">Research &amp; Formulation</div>
+          <div class="phase-sub">MDP design &amp; transfer theory</div>
+          <ul class="phase-list">
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">MDP tuple <code>(S, A, P, R, &gamma;)</code> formulated</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">SmartGPU resource-scheduling transfer theory</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">Architecture blueprints &amp; problem scoping</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">Cold-start to steady-state training design</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Phase 02 -->
+        <div class="phase-card">
+          <div class="phase-top">
+            <span class="phase-badge">PHASE 02</span>
+            <span class="phase-status done">&#10003; COMPLETE</span>
+          </div>
+          <div class="phase-title">Simulator &amp; RL Pipeline</div>
+          <div class="phase-sub">Queue dynamics &amp; Dueling DQN</div>
+          <ul class="phase-list">
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">20-node network with M/M/1 queue dynamics</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">6 realistic failure scenario generators</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">LSTM-AE + Isolation Forest ensemble</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">Dueling DQN with prioritized replay buffer</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Phase 03 -->
+        <div class="phase-card">
+          <div class="phase-top">
+            <span class="phase-badge">PHASE 03</span>
+            <span class="phase-status done">&#10003; COMPLETE</span>
+          </div>
+          <div class="phase-title">Safety &amp; Explainability</div>
+          <div class="phase-sub">Gated barriers &amp; SHAP attribution</div>
+          <ul class="phase-list">
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">Confidence safety barrier <span class="nowrap">(&ge;75% threshold)</span></span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">Anti-thrashing oscillation guard <span class="nowrap">(&times;3 rule)</span></span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">SHAP feature attribution breakdowns</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon done">&#10003;</span>
+              <span class="b-text">Automated unit test suite <span class="nowrap">(test_core.py harness)</span></span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Phase 04 - Current -->
+        <div class="phase-card phase-current">
+          <div class="phase-top">
+            <span class="phase-badge phase-badge-live">PHASE 04</span>
+            <span class="phase-status live"><span class="live-dot"></span> CURRENT MILESTONE</span>
+          </div>
+          <div class="phase-title">Evaluation &amp; Presentation</div>
+          <div class="phase-sub">Empirical baselines &amp; workbench</div>
+          <ul class="phase-list">
+            <li class="phase-item">
+              <span class="b-icon live">&#9679;</span>
+              <span class="b-text">Simulated baseline benchmarks <span class="nowrap">(6 synthetic scenarios)</span></span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon live">&#9679;</span>
+              <span class="b-text">Streamlit operational NOC dashboard</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon live">&#9679;</span>
+              <span class="b-text">Interactive research presentation workbench</span>
+            </li>
+            <li class="phase-item">
+              <span class="b-icon live">&#9679;</span>
+              <span class="b-text">ns-3 FlowMonitor trace ingestion adapters</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-header">
+          <div>
+            <div class="pill-illustrative">SIMULATION BENCHMARK &middot; NOT PRODUCTION VERIFIED</div>
+            <h3>Comparative simulation results &mdash; 6 synthetic scenarios</h3>
+            <p>Output from synthetic Monte Carlo episodes in <code>evaluate_agent.py</code> comparing strategy behaviors under simulated queue dynamics.</p>
+          </div>
+          <span class="tag tag-amber">&#9888; Illustrative / Synthetic</span>
+        </div>
+        <table class="bench-table">
+          <thead>
+            <tr>
+              <th>Strategy</th>
+              <th class="th-num">Mean Episode Reward</th>
+              <th class="th-num">Latency Recovery</th>
+              <th class="th-num">Loss Reduction</th>
+              <th>Autonomy &amp; Safety</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bench-highlight">
+              <td>
+                <div class="strat-col">
+                  <strong>NeuroNet RL (Safety-Gated)</strong>
+                  <span class="strat-badge">Primary System</span>
+                </div>
+              </td>
+              <td class="td-num"><strong>+1.49</strong></td>
+              <td class="td-num"><strong>+19.54&thinsp;ms</strong></td>
+              <td class="td-num"><strong>+2.47&thinsp;%</strong></td>
+              <td><span class="safety-split"><strong>55&thinsp;%</strong> auto &middot; <strong>45&thinsp;%</strong> escalated</span></td>
+            </tr>
+            <tr>
+              <td>Static threshold rule engine</td>
+              <td class="td-num">+9.03</td>
+              <td class="td-num">+39.99&thinsp;ms</td>
+              <td class="td-num">+3.02&thinsp;%</td>
+              <td><span class="safety-uncheck">100&thinsp;% unchecked</span></td>
+            </tr>
+            <tr>
+              <td>Random policy agent</td>
+              <td class="td-num">&minus;1.97</td>
+              <td class="td-num">+21.83&thinsp;ms</td>
+              <td class="td-num">+1.89&thinsp;%</td>
+              <td><span class="safety-uncheck">100&thinsp;% unchecked</span></td>
+            </tr>
+            <tr>
+              <td>Passive monitor (inaction)</td>
+              <td class="td-num">&minus;14.15</td>
+              <td class="td-num">&minus;1.75&thinsp;ms</td>
+              <td class="td-num">+0.05&thinsp;%</td>
+              <td><span class="safety-none">No remediation</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-note">
+          <div class="note-icon">&#9432;</div>
+          <div class="note-content">
+            <strong>Illustrative Benchmark Disclaimer:</strong> These benchmark numbers are derived from synthetic M/M/1 queue simulations in <code>evaluate_agent.py</code> to illustrate how policy behaviors differ in theory (e.g. why unconstrained static rules yield higher reward while safety-gated agents prioritize zero unsafe dispatches). They are illustrative models and do not represent validated performance on production physical hardware.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 RESEARCH EXTENSIONS -->
+    <section id="research">
+      <div class="section-intro">
+        <div class="section-tag">05 &middot; Research Roadmap</div>
+        <h2>From SmartGPU to network orchestration</h2>
+        <p>Three categories are distinguished: what is running in <code>Main/</code>, what is documented in <code>Documentation and Research/</code>, and what constitutes proposed extensions requiring further implementation and validation.</p>
+      </div>
+
+      <div class="legend-row">
+        <span class="legend-pill legend-built">&#10003; Implemented in Prototype &mdash; Main/</span>
+        <span class="legend-pill legend-doc">&#9670; Research foundation &mdash; Documentation/</span>
+        <span class="legend-pill legend-proposed">&#9881; Proposed &mdash; not yet implemented</span>
+      </div>
+
+      <div class="built-block">
+        <div class="built-label">&#10003; Core Components Implemented in Codebase</div>
+        <div class="built-chips">
+          <span>20-node simulator</span>
+          <span>LSTM AE + Isolation Forest</span>
+          <span>Dueling DQN &middot; Double-DQN target</span>
+          <span>8-action space</span>
+          <span>Confidence safety gate</span>
+          <span>SHAP attribution</span>
+          <span>Tamper-evident audit log</span>
+          <span>Unit test suite</span>
+          <span>Streamlit dashboard</span>
+          <span>ns-3 CSV adapter</span>
+        </div>
+      </div>
+
+      <div class="research-grid">
+        <div class="research-card">
+          <div class="rc-tag" style="color:var(--cyan);border-color:rgba(56,189,248,0.3)">Architecture Transfer</div>
+          <h4>SmartGPU &rarr; NeuroNet</h4>
+          <p>SmartGPU schedules GPU memory and compute kernels using deep RL. The MDP formulation transfers directly to network resource orchestration &mdash; buffer queues, bandwidth slices, and routing tables become elastic resources shaped by live traffic demand.</p>
+          <div class="rc-note">The mathematical equivalence between SM/VRAM scheduling and network queue management is the theoretical foundation of this project.</div>
+        </div>
+
+        <div class="research-card">
+          <div class="rc-tag" style="color:var(--amber);border-color:rgba(245,158,11,0.3)">Proposed Research</div>
+          <h4>Four-way workload agent</h4>
+          <p>A multi-head architecture with specialised sub-agents for URLLC (sub-5&thinsp;ms), eMBB (high throughput), mMTC (device density), and best-effort traffic. Single-policy networks cannot simultaneously optimise these conflicting SLA objectives.</p>
+          <div class="rc-note">Requires Pareto-optimal MARL formulation and per-slice reward decomposition.</div>
+        </div>
+
+        <div class="research-card">
+          <div class="rc-tag" style="color:var(--amber);border-color:rgba(245,158,11,0.3)">Proposed Research</div>
+          <h4>Closed-loop observe-act-verify-learn</h4>
+          <p>Extend one-step dispatch into an asynchronous state machine: dispatch action &rarr; 30-second verification window &rarr; trigger inverse rollback if degradation continues &rarr; append full rollback trajectory to replay buffer.</p>
+          <div class="rc-note">Eliminates human intervention on failed remediations without removing the audit trail.</div>
+        </div>
+
+        <div class="research-card">
+          <div class="rc-tag" style="color:var(--amber);border-color:rgba(245,158,11,0.3)">Proposed Research</div>
+          <h4>CUDA acceleration + native ns-3</h4>
+          <p>Compile the Dueling DQN into a TensorRT engine for direct CUDA execution, and replace the CSV adapter with a socket-level interface to the ns-3 discrete-event simulator for packet-level validation.</p>
+          <div class="rc-note">Target: sub-5&thinsp;ms batched policy evaluation at 100+ Gbps with full ns-3 ground truth.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <span class="brand-name">NeuroNet</span>
+          <span class="footer-meta"> &middot; Final Year Research Project in Network Automation</span>
+        </div>
+        <div class="footer-links mono-label">
+          <span>Codebase: Main/</span>
+          <span>&middot;</span>
+          <span>Docs: Documentation and Research/</span>
+          <span>&middot;</span>
+          <span>SmartGPU RL Architecture</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
