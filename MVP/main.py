@@ -11,7 +11,6 @@ from src.neuronet.anomaly_detector import AnomalyDetector
 from src.neuronet.safety import apply_safety_gate
 from src.neuronet.audit import log_decision
 
-
 def build_detector(seed=42):
     rng = np.random.default_rng(seed)
     normal = []
