@@ -70,6 +70,11 @@ class OVSController:
         self.run_cmd(f'tc qdisc del dev {iface} root 2>/dev/null')
         self.run_cmd(f'tc qdisc add dev {iface} root handle 1: prio')
 
+    def scale_resource(self, iface='e1-eth2', rate_mbps=100, limit_bytes=50000):
+        """SCALE_RESOURCE: Dynamically scales interface bandwidth capacity and queue limit."""
+        self.run_cmd(f'tc qdisc del dev {iface} root 2>/dev/null')
+        self.run_cmd(f'tc qdisc add dev {iface} root tbf rate {rate_mbps}mbit burst 64kbit limit {limit_bytes}')
+
     def clear_tc_rules(self):
         """Clears all tc artificial impairments across key interfaces."""
         for iface in ['e1-eth2', 'e1-eth3', 'e5-eth2', 'e5-eth3', 'a1-eth1', 'a1-eth2', 'c1-eth1', 'c1-eth2']:
@@ -78,11 +83,11 @@ class OVSController:
     # =========================================================================
     # REAL FAULT INJECTIONS USING LINUX TC & OVS
     # =========================================================================
-    def inject_congestion(self):
-        """Injects artificial buffer congestion & latency on Path A interface."""
-        self.run_cmd('tc qdisc del dev e1-eth2 root 2>/dev/null')
-        # Add 90ms latency and 5% drop
-        self.run_cmd('tc qdisc add dev e1-eth2 root netem delay 90ms 10ms loss 5.2%')
+    def inject_congestion(self, iface='e1-eth2'):
+        """Injects actual physical queue-based congestion using Linux TBF with tight buffer limit."""
+        self.run_cmd(f'tc qdisc del dev {iface} root 2>/dev/null')
+        # Rate-limit to 15 Mbps with tight 10k buffer while 50 Mbps traffic is flowing -> buffer saturates and drops packets physically
+        self.run_cmd(f'tc qdisc add dev {iface} root tbf rate 15mbit burst 16kbit limit 10000')
 
     def inject_link_failure(self):
         """Cuts the primary trunk link between a1 and c1."""

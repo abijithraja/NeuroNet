@@ -131,7 +131,7 @@ class RealMininetEnv:
         elif action == Action.ROLLBACK:
             self.ovs.reset_nominal()
         elif action == Action.SCALE_RESOURCE:
-            self.ovs.clear_tc_rules()
+            self.ovs.scale_resource(rate_mbps=100, limit_bytes=50000)
         elif action in (Action.MONITOR, Action.ESCALATE):
             pass
 
