@@ -1,0 +1,3167 @@
+[
+  {
+    "episode": 0,
+    "timestamp": "2026-11-02T13:01:08.154153",
+    "anomaly_type": "link_failure",
+    "link": 8,
+    "anomaly_score": 0.92,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.525,
+    "mode": "escalated",
+    "reward": 28.19,
+    "decision_ms": 7.768,
+    "modelled_mttr_s": 289.93,
+    "shap_attribution": {
+      "latency": 0.252,
+      "throughput": 0.243,
+      "loss": 0.254,
+      "congestion": 0.252
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 37.943,
+      "throughput_gbps": 6.741,
+      "packet_loss_pct": 1.247,
+      "congestion": 0.674
+    }
+  },
+  {
+    "episode": 1,
+    "timestamp": "2026-11-02T13:01:08.174537",
+    "anomaly_type": "congestion",
+    "link": 6,
+    "anomaly_score": 0.839,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 24.37,
+    "decision_ms": 8.638,
+    "modelled_mttr_s": 14.2,
+    "shap_attribution": {
+      "latency": 0.353,
+      "throughput": 0.135,
+      "loss": 0.386,
+      "congestion": 0.126
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 8.542,
+      "throughput_gbps": 8.672,
+      "packet_loss_pct": 0.398,
+      "congestion": 0.867
+    }
+  },
+  {
+    "episode": 2,
+    "timestamp": "2026-11-02T13:01:08.194626",
+    "anomaly_type": "link_failure",
+    "link": 6,
+    "anomaly_score": 0.871,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.518,
+    "mode": "escalated",
+    "reward": 18.14,
+    "decision_ms": 8.42,
+    "modelled_mttr_s": 181.97,
+    "shap_attribution": {
+      "latency": 0.25,
+      "throughput": 0.254,
+      "loss": 0.263,
+      "congestion": 0.233
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 60.421,
+      "throughput_gbps": 5.726,
+      "packet_loss_pct": 1.922,
+      "congestion": 0.573
+    }
+  },
+  {
+    "episode": 3,
+    "timestamp": "2026-11-02T13:01:08.214859",
+    "anomaly_type": "link_failure",
+    "link": 17,
+    "anomaly_score": 0.929,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.529,
+    "mode": "escalated",
+    "reward": 28.12,
+    "decision_ms": 8.581,
+    "modelled_mttr_s": 244.46,
+    "shap_attribution": {
+      "latency": 0.269,
+      "throughput": 0.268,
+      "loss": 0.224,
+      "congestion": 0.239
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 65.983,
+      "throughput_gbps": 5.436,
+      "packet_loss_pct": 2.168,
+      "congestion": 0.544
+    }
+  },
+  {
+    "episode": 4,
+    "timestamp": "2026-11-02T13:01:08.235509",
+    "anomaly_type": "congestion",
+    "link": 5,
+    "anomaly_score": 0.78,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 21.93,
+    "decision_ms": 8.544,
+    "modelled_mttr_s": 11.06,
+    "shap_attribution": {
+      "latency": 0.359,
+      "throughput": 0.138,
+      "loss": 0.38,
+      "congestion": 0.124
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 10.807,
+      "throughput_gbps": 8.661,
+      "packet_loss_pct": 0.613,
+      "congestion": 0.866
+    }
+  },
+  {
+    "episode": 5,
+    "timestamp": "2026-11-02T13:01:08.255518",
+    "anomaly_type": "link_failure",
+    "link": 14,
+    "anomaly_score": 0.827,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.519,
+    "mode": "escalated",
+    "reward": 28.17,
+    "decision_ms": 8.215,
+    "modelled_mttr_s": 282.26,
+    "shap_attribution": {
+      "latency": 0.233,
+      "throughput": 0.247,
+      "loss": 0.25,
+      "congestion": 0.27
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 54.065,
+      "throughput_gbps": 6.358,
+      "packet_loss_pct": 1.773,
+      "congestion": 0.636
+    }
+  },
+  {
+    "episode": 6,
+    "timestamp": "2026-11-02T13:01:08.276137",
+    "anomaly_type": "routing_instability",
+    "link": 2,
+    "anomaly_score": 0.719,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.896,
+    "mode": "autonomous",
+    "reward": 10.39,
+    "decision_ms": 8.263,
+    "modelled_mttr_s": 249.58,
+    "shap_attribution": {
+      "latency": 0.476,
+      "throughput": 0.012,
+      "loss": 0.489,
+      "congestion": 0.023
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 30.021,
+      "throughput_gbps": 7.664,
+      "packet_loss_pct": 0.895,
+      "congestion": 0.766
+    }
+  },
+  {
+    "episode": 7,
+    "timestamp": "2026-11-02T13:01:08.296321",
+    "anomaly_type": "routing_instability",
+    "link": 7,
+    "anomaly_score": 0.772,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.918,
+    "mode": "autonomous",
+    "reward": 9.49,
+    "decision_ms": 8.464,
+    "modelled_mttr_s": 206.75,
+    "shap_attribution": {
+      "latency": 0.452,
+      "throughput": 0.039,
+      "loss": 0.482,
+      "congestion": 0.026
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 30.89,
+      "throughput_gbps": 7.553,
+      "packet_loss_pct": 0.915,
+      "congestion": 0.755
+    }
+  },
+  {
+    "episode": 8,
+    "timestamp": "2026-11-02T13:01:08.316720",
+    "anomaly_type": "routing_instability",
+    "link": 9,
+    "anomaly_score": 0.747,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.908,
+    "mode": "autonomous",
+    "reward": 5.63,
+    "decision_ms": 8.929,
+    "modelled_mttr_s": 170.83,
+    "shap_attribution": {
+      "latency": 0.459,
+      "throughput": 0.03,
+      "loss": 0.485,
+      "congestion": 0.026
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 34.559,
+      "throughput_gbps": 7.552,
+      "packet_loss_pct": 1.043,
+      "congestion": 0.755
+    }
+  },
+  {
+    "episode": 9,
+    "timestamp": "2026-11-02T13:01:08.336377",
+    "anomaly_type": "link_failure",
+    "link": 4,
+    "anomaly_score": 0.867,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.521,
+    "mode": "escalated",
+    "reward": 28.18,
+    "decision_ms": 8.48,
+    "modelled_mttr_s": 230.85,
+    "shap_attribution": {
+      "latency": 0.244,
+      "throughput": 0.257,
+      "loss": 0.265,
+      "congestion": 0.235
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 49.227,
+      "throughput_gbps": 6.541,
+      "packet_loss_pct": 1.58,
+      "congestion": 0.654
+    }
+  },
+  {
+    "episode": 10,
+    "timestamp": "2026-11-02T13:01:08.356111",
+    "anomaly_type": "congestion",
+    "link": 0,
+    "anomaly_score": 0.828,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 22.79,
+    "decision_ms": 8.084,
+    "modelled_mttr_s": 10.64,
+    "shap_attribution": {
+      "latency": 0.344,
+      "throughput": 0.171,
+      "loss": 0.362,
+      "congestion": 0.123
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 9.988,
+      "throughput_gbps": 8.352,
+      "packet_loss_pct": 0.576,
+      "congestion": 0.835
+    }
+  },
+  {
+    "episode": 11,
+    "timestamp": "2026-11-02T13:01:08.364523",
+    "anomaly_type": "routing_instability",
+    "link": 5,
+    "anomaly_score": 0.686,
+    "detected": false,
+    "action": "reroute",
+    "confidence": 0.889,
+    "mode": "escalated",
+    "reward": null,
+    "decision_ms": 8.241,
+    "modelled_mttr_s": 225.77,
+    "shap_attribution": null,
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 12,
+    "timestamp": "2026-11-02T13:01:08.387748",
+    "anomaly_type": "link_failure",
+    "link": 17,
+    "anomaly_score": 0.837,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.523,
+    "mode": "escalated",
+    "reward": 28.08,
+    "decision_ms": 9.65,
+    "modelled_mttr_s": 249.98,
+    "shap_attribution": {
+      "latency": 0.272,
+      "throughput": 0.234,
+      "loss": 0.247,
+      "congestion": 0.246
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 84.127,
+      "throughput_gbps": 4.69,
+      "packet_loss_pct": 2.722,
+      "congestion": 0.469
+    }
+  },
+  {
+    "episode": 13,
+    "timestamp": "2026-11-02T13:01:08.408566",
+    "anomaly_type": "routing_instability",
+    "link": 9,
+    "anomaly_score": 0.709,
+    "detected": true,
+    "action": "traffic_shaping",
+    "confidence": 0.235,
+    "mode": "escalated",
+    "reward": 24.02,
+    "decision_ms": 8.41,
+    "modelled_mttr_s": 216.73,
+    "shap_attribution": {
+      "latency": 0.455,
+      "throughput": 0.03,
+      "loss": 0.492,
+      "congestion": 0.023
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 17.052,
+      "throughput_gbps": 8.129,
+      "packet_loss_pct": 0.489,
+      "congestion": 0.813
+    }
+  },
+  {
+    "episode": 14,
+    "timestamp": "2026-11-02T13:01:08.428658",
+    "anomaly_type": "routing_instability",
+    "link": 5,
+    "anomaly_score": 0.719,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.895,
+    "mode": "autonomous",
+    "reward": 13.98,
+    "decision_ms": 8.52,
+    "modelled_mttr_s": 144.81,
+    "shap_attribution": {
+      "latency": 0.464,
+      "throughput": 0.035,
+      "loss": 0.472,
+      "congestion": 0.028
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 26.633,
+      "throughput_gbps": 7.604,
+      "packet_loss_pct": 0.759,
+      "congestion": 0.76
+    }
+  },
+  {
+    "episode": 15,
+    "timestamp": "2026-11-02T13:01:08.437367",
+    "anomaly_type": "routing_instability",
+    "link": 11,
+    "anomaly_score": 0.673,
+    "detected": false,
+    "action": "reroute",
+    "confidence": 0.888,
+    "mode": "escalated",
+    "reward": null,
+    "decision_ms": 8.551,
+    "modelled_mttr_s": 230.28,
+    "shap_attribution": null,
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 16,
+    "timestamp": "2026-11-02T13:01:08.458374",
+    "anomaly_type": "routing_instability",
+    "link": 14,
+    "anomaly_score": 0.712,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.894,
+    "mode": "autonomous",
+    "reward": 9.75,
+    "decision_ms": 9.199,
+    "modelled_mttr_s": 146.58,
+    "shap_attribution": {
+      "latency": 0.483,
+      "throughput": 0.039,
+      "loss": 0.462,
+      "congestion": 0.017
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 30.634,
+      "throughput_gbps": 7.852,
+      "packet_loss_pct": 0.924,
+      "congestion": 0.785
+    }
+  },
+  {
+    "episode": 17,
+    "timestamp": "2026-11-02T13:01:08.480136",
+    "anomaly_type": "routing_instability",
+    "link": 7,
+    "anomaly_score": 0.768,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.917,
+    "mode": "autonomous",
+    "reward": -0.05,
+    "decision_ms": 8.947,
+    "modelled_mttr_s": 131.36,
+    "shap_attribution": {
+      "latency": 0.458,
+      "throughput": 0.022,
+      "loss": 0.49,
+      "congestion": 0.029
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 18,
+    "timestamp": "2026-11-02T13:01:08.501368",
+    "anomaly_type": "link_failure",
+    "link": 14,
+    "anomaly_score": 0.85,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.539,
+    "mode": "escalated",
+    "reward": 18.09,
+    "decision_ms": 9.074,
+    "modelled_mttr_s": 299.98,
+    "shap_attribution": {
+      "latency": 0.26,
+      "throughput": 0.238,
+      "loss": 0.245,
+      "congestion": 0.257
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 81.129,
+      "throughput_gbps": 4.777,
+      "packet_loss_pct": 2.716,
+      "congestion": 0.478
+    }
+  },
+  {
+    "episode": 19,
+    "timestamp": "2026-11-02T13:01:08.522386",
+    "anomaly_type": "routing_instability",
+    "link": 12,
+    "anomaly_score": 0.754,
+    "detected": true,
+    "action": "reduce_interference",
+    "confidence": 0.154,
+    "mode": "escalated",
+    "reward": 2.79,
+    "decision_ms": 8.299,
+    "modelled_mttr_s": 284.83,
+    "shap_attribution": {
+      "latency": 0.478,
+      "throughput": 0.027,
+      "loss": 0.46,
+      "congestion": 0.035
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 37.244,
+      "throughput_gbps": 7.555,
+      "packet_loss_pct": 1.109,
+      "congestion": 0.755
+    }
+  },
+  {
+    "episode": 20,
+    "timestamp": "2026-11-02T13:01:08.543268",
+    "anomaly_type": "link_failure",
+    "link": 20,
+    "anomaly_score": 0.747,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.546,
+    "mode": "escalated",
+    "reward": 28.17,
+    "decision_ms": 8.64,
+    "modelled_mttr_s": 170.72,
+    "shap_attribution": {
+      "latency": 0.248,
+      "throughput": 0.255,
+      "loss": 0.25,
+      "congestion": 0.247
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 47.756,
+      "throughput_gbps": 6.318,
+      "packet_loss_pct": 1.518,
+      "congestion": 0.632
+    }
+  },
+  {
+    "episode": 21,
+    "timestamp": "2026-11-02T13:01:08.563435",
+    "anomaly_type": "routing_instability",
+    "link": 12,
+    "anomaly_score": 0.709,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.895,
+    "mode": "autonomous",
+    "reward": 14.7,
+    "decision_ms": 8.366,
+    "modelled_mttr_s": 240.3,
+    "shap_attribution": {
+      "latency": 0.465,
+      "throughput": 0.026,
+      "loss": 0.482,
+      "congestion": 0.028
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 25.964,
+      "throughput_gbps": 7.848,
+      "packet_loss_pct": 0.735,
+      "congestion": 0.785
+    }
+  },
+  {
+    "episode": 22,
+    "timestamp": "2026-11-02T13:01:08.571369",
+    "anomaly_type": "routing_instability",
+    "link": 19,
+    "anomaly_score": 0.683,
+    "detected": false,
+    "action": "scale_slice",
+    "confidence": 0.226,
+    "mode": "escalated",
+    "reward": null,
+    "decision_ms": 7.786,
+    "modelled_mttr_s": 276.84,
+    "shap_attribution": null,
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 23,
+    "timestamp": "2026-11-02T13:01:08.593608",
+    "anomaly_type": "congestion",
+    "link": 5,
+    "anomaly_score": 0.872,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 18.93,
+    "decision_ms": 9.479,
+    "modelled_mttr_s": 13.41,
+    "shap_attribution": {
+      "latency": 0.343,
+      "throughput": 0.173,
+      "loss": 0.346,
+      "congestion": 0.138
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 13.263,
+      "throughput_gbps": 8.581,
+      "packet_loss_pct": 0.972,
+      "congestion": 0.858
+    }
+  },
+  {
+    "episode": 24,
+    "timestamp": "2026-11-02T13:01:08.613861",
+    "anomaly_type": "link_failure",
+    "link": 2,
+    "anomaly_score": 0.817,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.546,
+    "mode": "escalated",
+    "reward": 28.19,
+    "decision_ms": 8.532,
+    "modelled_mttr_s": 182.74,
+    "shap_attribution": {
+      "latency": 0.229,
+      "throughput": 0.255,
+      "loss": 0.26,
+      "congestion": 0.255
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 29.785,
+      "throughput_gbps": 6.733,
+      "packet_loss_pct": 0.863,
+      "congestion": 0.673
+    }
+  },
+  {
+    "episode": 25,
+    "timestamp": "2026-11-02T13:01:08.634195",
+    "anomaly_type": "routing_instability",
+    "link": 12,
+    "anomaly_score": 0.839,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.941,
+    "mode": "autonomous",
+    "reward": -0.0,
+    "decision_ms": 8.501,
+    "modelled_mttr_s": 131.17,
+    "shap_attribution": {
+      "latency": 0.484,
+      "throughput": 0.028,
+      "loss": 0.46,
+      "congestion": 0.028
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 30.406,
+      "throughput_gbps": 7.637,
+      "packet_loss_pct": 0.902,
+      "congestion": 0.764
+    }
+  },
+  {
+    "episode": 26,
+    "timestamp": "2026-11-02T13:01:08.654393",
+    "anomaly_type": "link_failure",
+    "link": 15,
+    "anomaly_score": 0.819,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.549,
+    "mode": "escalated",
+    "reward": 28.12,
+    "decision_ms": 8.815,
+    "modelled_mttr_s": 260.55,
+    "shap_attribution": {
+      "latency": 0.251,
+      "throughput": 0.259,
+      "loss": 0.264,
+      "congestion": 0.226
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 65.57,
+      "throughput_gbps": 5.454,
+      "packet_loss_pct": 2.169,
+      "congestion": 0.545
+    }
+  },
+  {
+    "episode": 27,
+    "timestamp": "2026-11-02T13:01:08.674338",
+    "anomaly_type": "link_failure",
+    "link": 12,
+    "anomaly_score": 0.799,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.551,
+    "mode": "escalated",
+    "reward": 18.13,
+    "decision_ms": 8.262,
+    "modelled_mttr_s": 290.7,
+    "shap_attribution": {
+      "latency": 0.26,
+      "throughput": 0.254,
+      "loss": 0.251,
+      "congestion": 0.235
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 64.347,
+      "throughput_gbps": 5.641,
+      "packet_loss_pct": 2.05,
+      "congestion": 0.564
+    }
+  },
+  {
+    "episode": 28,
+    "timestamp": "2026-11-02T13:01:08.694095",
+    "anomaly_type": "routing_instability",
+    "link": 20,
+    "anomaly_score": 0.741,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.906,
+    "mode": "autonomous",
+    "reward": 11.22,
+    "decision_ms": 8.086,
+    "modelled_mttr_s": 136.19,
+    "shap_attribution": {
+      "latency": 0.46,
+      "throughput": 0.027,
+      "loss": 0.496,
+      "congestion": 0.016
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 29.288,
+      "throughput_gbps": 7.562,
+      "packet_loss_pct": 0.833,
+      "congestion": 0.756
+    }
+  },
+  {
+    "episode": 29,
+    "timestamp": "2026-11-02T13:01:08.714059",
+    "anomaly_type": "congestion",
+    "link": 13,
+    "anomaly_score": 0.927,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 25.09,
+    "decision_ms": 8.383,
+    "modelled_mttr_s": 10.46,
+    "shap_attribution": {
+      "latency": 0.357,
+      "throughput": 0.132,
+      "loss": 0.355,
+      "congestion": 0.156
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 7.818,
+      "throughput_gbps": 8.668,
+      "packet_loss_pct": 0.392,
+      "congestion": 0.867
+    }
+  },
+  {
+    "episode": 30,
+    "timestamp": "2026-11-02T13:01:08.734417",
+    "anomaly_type": "routing_instability",
+    "link": 4,
+    "anomaly_score": 0.768,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.917,
+    "mode": "autonomous",
+    "reward": 9.3,
+    "decision_ms": 8.517,
+    "modelled_mttr_s": 276.88,
+    "shap_attribution": {
+      "latency": 0.462,
+      "throughput": 0.021,
+      "loss": 0.495,
+      "congestion": 0.022
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 31.095,
+      "throughput_gbps": 7.684,
+      "packet_loss_pct": 0.906,
+      "congestion": 0.768
+    }
+  },
+  {
+    "episode": 31,
+    "timestamp": "2026-11-02T13:01:08.754577",
+    "anomaly_type": "link_failure",
+    "link": 10,
+    "anomaly_score": 0.765,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.552,
+    "mode": "escalated",
+    "reward": 28.18,
+    "decision_ms": 8.54,
+    "modelled_mttr_s": 208.04,
+    "shap_attribution": {
+      "latency": 0.238,
+      "throughput": 0.251,
+      "loss": 0.244,
+      "congestion": 0.266
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 46.862,
+      "throughput_gbps": 6.514,
+      "packet_loss_pct": 1.519,
+      "congestion": 0.651
+    }
+  },
+  {
+    "episode": 32,
+    "timestamp": "2026-11-02T13:01:08.774418",
+    "anomaly_type": "congestion",
+    "link": 11,
+    "anomaly_score": 0.791,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 27.04,
+    "decision_ms": 8.098,
+    "modelled_mttr_s": 13.21,
+    "shap_attribution": {
+      "latency": 0.371,
+      "throughput": 0.117,
+      "loss": 0.388,
+      "congestion": 0.124
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 5.882,
+      "throughput_gbps": 8.873,
+      "packet_loss_pct": 0.103,
+      "congestion": 0.887
+    }
+  },
+  {
+    "episode": 33,
+    "timestamp": "2026-11-02T13:01:08.795682",
+    "anomaly_type": "congestion",
+    "link": 18,
+    "anomaly_score": 0.794,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 18.75,
+    "decision_ms": 8.263,
+    "modelled_mttr_s": 4.34,
+    "shap_attribution": {
+      "latency": 0.393,
+      "throughput": 0.108,
+      "loss": 0.381,
+      "congestion": 0.118
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 13.483,
+      "throughput_gbps": 8.106,
+      "packet_loss_pct": 0.932,
+      "congestion": 0.811
+    }
+  },
+  {
+    "episode": 34,
+    "timestamp": "2026-11-02T13:01:08.820226",
+    "anomaly_type": "link_failure",
+    "link": 12,
+    "anomaly_score": 0.876,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.554,
+    "mode": "escalated",
+    "reward": 28.08,
+    "decision_ms": 11.878,
+    "modelled_mttr_s": 168.62,
+    "shap_attribution": {
+      "latency": 0.236,
+      "throughput": 0.271,
+      "loss": 0.243,
+      "congestion": 0.25
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 90.1,
+      "throughput_gbps": 4.582,
+      "packet_loss_pct": 2.997,
+      "congestion": 0.458
+    }
+  },
+  {
+    "episode": 35,
+    "timestamp": "2026-11-02T13:01:08.841182",
+    "anomaly_type": "congestion",
+    "link": 19,
+    "anomaly_score": 0.881,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 23.47,
+    "decision_ms": 8.724,
+    "modelled_mttr_s": 0.27,
+    "shap_attribution": {
+      "latency": 0.376,
+      "throughput": 0.136,
+      "loss": 0.366,
+      "congestion": 0.121
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 9.404,
+      "throughput_gbps": 8.684,
+      "packet_loss_pct": 0.525,
+      "congestion": 0.868
+    }
+  },
+  {
+    "episode": 36,
+    "timestamp": "2026-11-02T13:01:08.861466",
+    "anomaly_type": "link_failure",
+    "link": 19,
+    "anomaly_score": 0.942,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.571,
+    "mode": "escalated",
+    "reward": 18.17,
+    "decision_ms": 8.202,
+    "modelled_mttr_s": 313.24,
+    "shap_attribution": {
+      "latency": 0.223,
+      "throughput": 0.263,
+      "loss": 0.272,
+      "congestion": 0.242
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 49.928,
+      "throughput_gbps": 6.376,
+      "packet_loss_pct": 1.63,
+      "congestion": 0.638
+    }
+  },
+  {
+    "episode": 37,
+    "timestamp": "2026-11-02T13:01:08.883383",
+    "anomaly_type": "link_failure",
+    "link": 9,
+    "anomaly_score": 0.828,
+    "detected": true,
+    "action": "qos_priority",
+    "confidence": 0.105,
+    "mode": "escalated",
+    "reward": 4.08,
+    "decision_ms": 9.67,
+    "modelled_mttr_s": 262.69,
+    "shap_attribution": {
+      "latency": 0.256,
+      "throughput": 0.236,
+      "loss": 0.242,
+      "congestion": 0.266
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 146.106,
+      "throughput_gbps": 2.162,
+      "packet_loss_pct": 4.868,
+      "congestion": 0.216
+    }
+  },
+  {
+    "episode": 38,
+    "timestamp": "2026-11-02T13:01:08.905253",
+    "anomaly_type": "link_failure",
+    "link": 11,
+    "anomaly_score": 0.795,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.555,
+    "mode": "escalated",
+    "reward": 28.17,
+    "decision_ms": 8.78,
+    "modelled_mttr_s": 191.61,
+    "shap_attribution": {
+      "latency": 0.257,
+      "throughput": 0.251,
+      "loss": 0.231,
+      "congestion": 0.261
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 52.597,
+      "throughput_gbps": 6.322,
+      "packet_loss_pct": 1.645,
+      "congestion": 0.632
+    }
+  },
+  {
+    "episode": 39,
+    "timestamp": "2026-11-02T13:01:08.926567",
+    "anomaly_type": "congestion",
+    "link": 9,
+    "anomaly_score": 0.92,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 20.51,
+    "decision_ms": 8.473,
+    "modelled_mttr_s": 6.14,
+    "shap_attribution": {
+      "latency": 0.359,
+      "throughput": 0.138,
+      "loss": 0.343,
+      "congestion": 0.161
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 11.908,
+      "throughput_gbps": 8.534,
+      "packet_loss_pct": 0.82,
+      "congestion": 0.853
+    }
+  },
+  {
+    "episode": 40,
+    "timestamp": "2026-11-02T13:01:08.948729",
+    "anomaly_type": "congestion",
+    "link": 14,
+    "anomaly_score": 0.796,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 23.25,
+    "decision_ms": 9.959,
+    "modelled_mttr_s": 3.08,
+    "shap_attribution": {
+      "latency": 0.375,
+      "throughput": 0.148,
+      "loss": 0.373,
+      "congestion": 0.104
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 9.487,
+      "throughput_gbps": 8.258,
+      "packet_loss_pct": 0.599,
+      "congestion": 0.826
+    }
+  },
+  {
+    "episode": 41,
+    "timestamp": "2026-11-02T13:01:08.977410",
+    "anomaly_type": "routing_instability",
+    "link": 17,
+    "anomaly_score": 0.745,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.905,
+    "mode": "autonomous",
+    "reward": 5.98,
+    "decision_ms": 11.263,
+    "modelled_mttr_s": 295.03,
+    "shap_attribution": {
+      "latency": 0.487,
+      "throughput": 0.017,
+      "loss": 0.476,
+      "congestion": 0.02
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 34.237,
+      "throughput_gbps": 7.594,
+      "packet_loss_pct": 1.027,
+      "congestion": 0.759
+    }
+  },
+  {
+    "episode": 42,
+    "timestamp": "2026-11-02T13:01:09.008094",
+    "anomaly_type": "routing_instability",
+    "link": 7,
+    "anomaly_score": 0.732,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.899,
+    "mode": "autonomous",
+    "reward": 10.24,
+    "decision_ms": 13.527,
+    "modelled_mttr_s": 292.14,
+    "shap_attribution": {
+      "latency": 0.474,
+      "throughput": 0.035,
+      "loss": 0.464,
+      "congestion": 0.026
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 30.147,
+      "throughput_gbps": 7.726,
+      "packet_loss_pct": 0.918,
+      "congestion": 0.773
+    }
+  },
+  {
+    "episode": 43,
+    "timestamp": "2026-11-02T13:01:09.038422",
+    "anomaly_type": "link_failure",
+    "link": 14,
+    "anomaly_score": 0.837,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.552,
+    "mode": "escalated",
+    "reward": 18.15,
+    "decision_ms": 12.951,
+    "modelled_mttr_s": 151.62,
+    "shap_attribution": {
+      "latency": 0.27,
+      "throughput": 0.234,
+      "loss": 0.264,
+      "congestion": 0.232
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 58.128,
+      "throughput_gbps": 5.935,
+      "packet_loss_pct": 1.917,
+      "congestion": 0.594
+    }
+  },
+  {
+    "episode": 44,
+    "timestamp": "2026-11-02T13:01:09.068213",
+    "anomaly_type": "link_failure",
+    "link": 6,
+    "anomaly_score": 0.914,
+    "detected": true,
+    "action": "qos_priority",
+    "confidence": 0.287,
+    "mode": "escalated",
+    "reward": 7.6,
+    "decision_ms": 12.33,
+    "modelled_mttr_s": 292.9,
+    "shap_attribution": {
+      "latency": 0.246,
+      "throughput": 0.229,
+      "loss": 0.278,
+      "congestion": 0.246
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 142.762,
+      "throughput_gbps": 2.267,
+      "packet_loss_pct": 4.754,
+      "congestion": 0.227
+    }
+  },
+  {
+    "episode": 45,
+    "timestamp": "2026-11-02T13:01:09.090153",
+    "anomaly_type": "congestion",
+    "link": 13,
+    "anomaly_score": 0.848,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 21.53,
+    "decision_ms": 9.857,
+    "modelled_mttr_s": 2.68,
+    "shap_attribution": {
+      "latency": 0.304,
+      "throughput": 0.187,
+      "loss": 0.359,
+      "congestion": 0.151
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 11.025,
+      "throughput_gbps": 8.73,
+      "packet_loss_pct": 0.734,
+      "congestion": 0.873
+    }
+  },
+  {
+    "episode": 46,
+    "timestamp": "2026-11-02T13:01:09.111340",
+    "anomaly_type": "congestion",
+    "link": 4,
+    "anomaly_score": 0.753,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.997,
+    "mode": "autonomous",
+    "reward": 25.03,
+    "decision_ms": 9.158,
+    "modelled_mttr_s": 13.21,
+    "shap_attribution": {
+      "latency": 0.396,
+      "throughput": 0.13,
+      "loss": 0.378,
+      "congestion": 0.096
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 7.881,
+      "throughput_gbps": 8.637,
+      "packet_loss_pct": 0.416,
+      "congestion": 0.864
+    }
+  },
+  {
+    "episode": 47,
+    "timestamp": "2026-11-02T13:01:09.132555",
+    "anomaly_type": "congestion",
+    "link": 3,
+    "anomaly_score": 0.838,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 22.07,
+    "decision_ms": 9.541,
+    "modelled_mttr_s": 10.64,
+    "shap_attribution": {
+      "latency": 0.369,
+      "throughput": 0.125,
+      "loss": 0.386,
+      "congestion": 0.12
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 10.58,
+      "throughput_gbps": 8.501,
+      "packet_loss_pct": 0.664,
+      "congestion": 0.85
+    }
+  },
+  {
+    "episode": 48,
+    "timestamp": "2026-11-02T13:01:09.153735",
+    "anomaly_type": "link_failure",
+    "link": 14,
+    "anomaly_score": 0.822,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.542,
+    "mode": "escalated",
+    "reward": 28.1,
+    "decision_ms": 9.047,
+    "modelled_mttr_s": 242.67,
+    "shap_attribution": {
+      "latency": 0.248,
+      "throughput": 0.265,
+      "loss": 0.239,
+      "congestion": 0.248
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 73.197,
+      "throughput_gbps": 5.054,
+      "packet_loss_pct": 2.426,
+      "congestion": 0.505
+    }
+  },
+  {
+    "episode": 49,
+    "timestamp": "2026-11-02T13:01:09.175431",
+    "anomaly_type": "link_failure",
+    "link": 0,
+    "anomaly_score": 0.831,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.543,
+    "mode": "escalated",
+    "reward": 28.11,
+    "decision_ms": 8.854,
+    "modelled_mttr_s": 222.83,
+    "shap_attribution": {
+      "latency": 0.248,
+      "throughput": 0.26,
+      "loss": 0.271,
+      "congestion": 0.222
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 65.613,
+      "throughput_gbps": 5.214,
+      "packet_loss_pct": 2.124,
+      "congestion": 0.521
+    }
+  },
+  {
+    "episode": 50,
+    "timestamp": "2026-11-02T13:01:09.198332",
+    "anomaly_type": "congestion",
+    "link": 17,
+    "anomaly_score": 0.779,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 20.87,
+    "decision_ms": 8.861,
+    "modelled_mttr_s": 12.87,
+    "shap_attribution": {
+      "latency": 0.385,
+      "throughput": 0.125,
+      "loss": 0.388,
+      "congestion": 0.102
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 11.762,
+      "throughput_gbps": 8.294,
+      "packet_loss_pct": 0.67,
+      "congestion": 0.829
+    }
+  },
+  {
+    "episode": 51,
+    "timestamp": "2026-11-02T13:01:09.207970",
+    "anomaly_type": "routing_instability",
+    "link": 6,
+    "anomaly_score": 0.688,
+    "detected": false,
+    "action": "qos_priority",
+    "confidence": 0.221,
+    "mode": "escalated",
+    "reward": null,
+    "decision_ms": 9.447,
+    "modelled_mttr_s": 216.42,
+    "shap_attribution": null,
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 52,
+    "timestamp": "2026-11-02T13:01:09.234076",
+    "anomaly_type": "routing_instability",
+    "link": 10,
+    "anomaly_score": 0.73,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.897,
+    "mode": "autonomous",
+    "reward": 14.21,
+    "decision_ms": 8.84,
+    "modelled_mttr_s": 251.02,
+    "shap_attribution": {
+      "latency": 0.472,
+      "throughput": 0.019,
+      "loss": 0.486,
+      "congestion": 0.023
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 26.434,
+      "throughput_gbps": 7.773,
+      "packet_loss_pct": 0.747,
+      "congestion": 0.777
+    }
+  },
+  {
+    "episode": 53,
+    "timestamp": "2026-11-02T13:01:09.255076",
+    "anomaly_type": "routing_instability",
+    "link": 15,
+    "anomaly_score": 0.735,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.9,
+    "mode": "autonomous",
+    "reward": 3.51,
+    "decision_ms": 9.136,
+    "modelled_mttr_s": 209.4,
+    "shap_attribution": {
+      "latency": 0.458,
+      "throughput": 0.049,
+      "loss": 0.472,
+      "congestion": 0.021
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 36.592,
+      "throughput_gbps": 7.503,
+      "packet_loss_pct": 1.099,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 54,
+    "timestamp": "2026-11-02T13:01:09.274909",
+    "anomaly_type": "congestion",
+    "link": 14,
+    "anomaly_score": 0.876,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 22.52,
+    "decision_ms": 8.425,
+    "modelled_mttr_s": 2.2,
+    "shap_attribution": {
+      "latency": 0.345,
+      "throughput": 0.153,
+      "loss": 0.369,
+      "congestion": 0.133
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 10.189,
+      "throughput_gbps": 7.815,
+      "packet_loss_pct": 0.607,
+      "congestion": 0.781
+    }
+  },
+  {
+    "episode": 55,
+    "timestamp": "2026-11-02T13:01:09.300762",
+    "anomaly_type": "routing_instability",
+    "link": 14,
+    "anomaly_score": 0.793,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.925,
+    "mode": "autonomous",
+    "reward": -1.76,
+    "decision_ms": 8.228,
+    "modelled_mttr_s": 258.85,
+    "shap_attribution": {
+      "latency": 0.469,
+      "throughput": 0.043,
+      "loss": 0.458,
+      "congestion": 0.029
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 32.055,
+      "throughput_gbps": 7.481,
+      "packet_loss_pct": 0.969,
+      "congestion": 0.748
+    }
+  },
+  {
+    "episode": 56,
+    "timestamp": "2026-11-02T13:01:09.320796",
+    "anomaly_type": "routing_instability",
+    "link": 20,
+    "anomaly_score": 0.736,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.902,
+    "mode": "autonomous",
+    "reward": 8.98,
+    "decision_ms": 8.43,
+    "modelled_mttr_s": 241.96,
+    "shap_attribution": {
+      "latency": 0.474,
+      "throughput": 0.028,
+      "loss": 0.487,
+      "congestion": 0.01
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 31.363,
+      "throughput_gbps": 7.615,
+      "packet_loss_pct": 0.943,
+      "congestion": 0.761
+    }
+  },
+  {
+    "episode": 57,
+    "timestamp": "2026-11-02T13:01:09.342814",
+    "anomaly_type": "congestion",
+    "link": 5,
+    "anomaly_score": 0.795,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 23.11,
+    "decision_ms": 9.243,
+    "modelled_mttr_s": 11.78,
+    "shap_attribution": {
+      "latency": 0.38,
+      "throughput": 0.133,
+      "loss": 0.382,
+      "congestion": 0.105
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 9.626,
+      "throughput_gbps": 8.363,
+      "packet_loss_pct": 0.606,
+      "congestion": 0.836
+    }
+  },
+  {
+    "episode": 58,
+    "timestamp": "2026-11-02T13:01:09.363300",
+    "anomaly_type": "routing_instability",
+    "link": 3,
+    "anomaly_score": 0.772,
+    "detected": true,
+    "action": "escalate_noc",
+    "confidence": 0.068,
+    "mode": "escalated",
+    "reward": -0.25,
+    "decision_ms": 8.623,
+    "modelled_mttr_s": 283.84,
+    "shap_attribution": {
+      "latency": 0.421,
+      "throughput": 0.049,
+      "loss": 0.49,
+      "congestion": 0.04
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 59,
+    "timestamp": "2026-11-02T13:01:09.371554",
+    "anomaly_type": "routing_instability",
+    "link": 5,
+    "anomaly_score": 0.696,
+    "detected": false,
+    "action": "traffic_shaping",
+    "confidence": 0.209,
+    "mode": "escalated",
+    "reward": null,
+    "decision_ms": 8.101,
+    "modelled_mttr_s": 230.0,
+    "shap_attribution": null,
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 60,
+    "timestamp": "2026-11-02T13:01:09.395423",
+    "anomaly_type": "link_failure",
+    "link": 17,
+    "anomaly_score": 0.786,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.554,
+    "mode": "escalated",
+    "reward": 28.16,
+    "decision_ms": 8.427,
+    "modelled_mttr_s": 139.58,
+    "shap_attribution": {
+      "latency": 0.253,
+      "throughput": 0.25,
+      "loss": 0.251,
+      "congestion": 0.246
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 56.468,
+      "throughput_gbps": 6.132,
+      "packet_loss_pct": 1.832,
+      "congestion": 0.613
+    }
+  },
+  {
+    "episode": 61,
+    "timestamp": "2026-11-02T13:01:09.415596",
+    "anomaly_type": "congestion",
+    "link": 13,
+    "anomaly_score": 0.92,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 23.04,
+    "decision_ms": 8.826,
+    "modelled_mttr_s": 9.46,
+    "shap_attribution": {
+      "latency": 0.358,
+      "throughput": 0.175,
+      "loss": 0.342,
+      "congestion": 0.125
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 9.741,
+      "throughput_gbps": 7.606,
+      "packet_loss_pct": 0.553,
+      "congestion": 0.761
+    }
+  },
+  {
+    "episode": 62,
+    "timestamp": "2026-11-02T13:01:09.435488",
+    "anomaly_type": "routing_instability",
+    "link": 4,
+    "anomaly_score": 0.784,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.919,
+    "mode": "autonomous",
+    "reward": 10.78,
+    "decision_ms": 8.165,
+    "modelled_mttr_s": 185.27,
+    "shap_attribution": {
+      "latency": 0.438,
+      "throughput": 0.037,
+      "loss": 0.489,
+      "congestion": 0.036
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 29.647,
+      "throughput_gbps": 7.587,
+      "packet_loss_pct": 0.885,
+      "congestion": 0.759
+    }
+  },
+  {
+    "episode": 63,
+    "timestamp": "2026-11-02T13:01:09.455182",
+    "anomaly_type": "link_failure",
+    "link": 18,
+    "anomaly_score": 0.862,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.54,
+    "mode": "escalated",
+    "reward": 28.14,
+    "decision_ms": 8.081,
+    "modelled_mttr_s": 283.39,
+    "shap_attribution": {
+      "latency": 0.236,
+      "throughput": 0.255,
+      "loss": 0.263,
+      "congestion": 0.247
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 52.386,
+      "throughput_gbps": 5.886,
+      "packet_loss_pct": 1.691,
+      "congestion": 0.589
+    }
+  },
+  {
+    "episode": 64,
+    "timestamp": "2026-11-02T13:01:09.483686",
+    "anomaly_type": "routing_instability",
+    "link": 10,
+    "anomaly_score": 0.777,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.914,
+    "mode": "autonomous",
+    "reward": 10.4,
+    "decision_ms": 14.373,
+    "modelled_mttr_s": 239.26,
+    "shap_attribution": {
+      "latency": 0.46,
+      "throughput": 0.037,
+      "loss": 0.465,
+      "congestion": 0.037
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 30.008,
+      "throughput_gbps": 7.646,
+      "packet_loss_pct": 0.901,
+      "congestion": 0.765
+    }
+  },
+  {
+    "episode": 65,
+    "timestamp": "2026-11-02T13:01:09.506241",
+    "anomaly_type": "congestion",
+    "link": 13,
+    "anomaly_score": 0.936,
+    "detected": true,
+    "action": "local_failover",
+    "confidence": 0.024,
+    "mode": "escalated",
+    "reward": 3.21,
+    "decision_ms": 9.905,
+    "modelled_mttr_s": 174.33,
+    "shap_attribution": {
+      "latency": 0.35,
+      "throughput": 0.181,
+      "loss": 0.357,
+      "congestion": 0.112
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 27.094,
+      "throughput_gbps": 9.317,
+      "packet_loss_pct": 2.226,
+      "congestion": 0.932
+    }
+  },
+  {
+    "episode": 66,
+    "timestamp": "2026-11-02T13:01:09.529355",
+    "anomaly_type": "link_failure",
+    "link": 6,
+    "anomaly_score": 0.739,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.536,
+    "mode": "escalated",
+    "reward": 28.13,
+    "decision_ms": 8.903,
+    "modelled_mttr_s": 270.12,
+    "shap_attribution": {
+      "latency": 0.245,
+      "throughput": 0.253,
+      "loss": 0.266,
+      "congestion": 0.236
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 67.856,
+      "throughput_gbps": 5.679,
+      "packet_loss_pct": 2.222,
+      "congestion": 0.568
+    }
+  },
+  {
+    "episode": 67,
+    "timestamp": "2026-11-02T13:01:09.559242",
+    "anomaly_type": "link_failure",
+    "link": 2,
+    "anomaly_score": 0.862,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.531,
+    "mode": "escalated",
+    "reward": 28.15,
+    "decision_ms": 10.096,
+    "modelled_mttr_s": 298.31,
+    "shap_attribution": {
+      "latency": 0.257,
+      "throughput": 0.24,
+      "loss": 0.244,
+      "congestion": 0.26
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 57.141,
+      "throughput_gbps": 6.056,
+      "packet_loss_pct": 1.838,
+      "congestion": 0.606
+    }
+  },
+  {
+    "episode": 68,
+    "timestamp": "2026-11-02T13:01:09.580536",
+    "anomaly_type": "congestion",
+    "link": 18,
+    "anomaly_score": 0.806,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 27.89,
+    "decision_ms": 8.481,
+    "modelled_mttr_s": 7.61,
+    "shap_attribution": {
+      "latency": 0.386,
+      "throughput": 0.124,
+      "loss": 0.373,
+      "congestion": 0.117
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 4.995,
+      "throughput_gbps": 8.328,
+      "packet_loss_pct": 0.102,
+      "congestion": 0.833
+    }
+  },
+  {
+    "episode": 69,
+    "timestamp": "2026-11-02T13:01:09.606279",
+    "anomaly_type": "congestion",
+    "link": 14,
+    "anomaly_score": 0.768,
+    "detected": true,
+    "action": "scale_slice",
+    "confidence": 0.01,
+    "mode": "escalated",
+    "reward": 11.34,
+    "decision_ms": 10.078,
+    "modelled_mttr_s": 296.73,
+    "shap_attribution": {
+      "latency": 0.366,
+      "throughput": 0.147,
+      "loss": 0.371,
+      "congestion": 0.116
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 19.954,
+      "throughput_gbps": 8.856,
+      "packet_loss_pct": 1.517,
+      "congestion": 0.886
+    }
+  },
+  {
+    "episode": 70,
+    "timestamp": "2026-11-02T13:01:09.628642",
+    "anomaly_type": "congestion",
+    "link": 7,
+    "anomaly_score": 0.916,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 25.61,
+    "decision_ms": 8.639,
+    "modelled_mttr_s": 6.18,
+    "shap_attribution": {
+      "latency": 0.354,
+      "throughput": 0.167,
+      "loss": 0.339,
+      "congestion": 0.139
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 7.286,
+      "throughput_gbps": 8.349,
+      "packet_loss_pct": 0.39,
+      "congestion": 0.835
+    }
+  },
+  {
+    "episode": 71,
+    "timestamp": "2026-11-02T13:01:09.650166",
+    "anomaly_type": "congestion",
+    "link": 2,
+    "anomaly_score": 0.921,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 17.87,
+    "decision_ms": 8.971,
+    "modelled_mttr_s": 3.99,
+    "shap_attribution": {
+      "latency": 0.351,
+      "throughput": 0.141,
+      "loss": 0.373,
+      "congestion": 0.135
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 4.81,
+      "throughput_gbps": 7.96,
+      "packet_loss_pct": 0.094,
+      "congestion": 0.796
+    }
+  },
+  {
+    "episode": 72,
+    "timestamp": "2026-11-02T13:01:09.672751",
+    "anomaly_type": "congestion",
+    "link": 10,
+    "anomaly_score": 0.78,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 21.36,
+    "decision_ms": 8.954,
+    "modelled_mttr_s": 14.97,
+    "shap_attribution": {
+      "latency": 0.347,
+      "throughput": 0.146,
+      "loss": 0.373,
+      "congestion": 0.133
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 11.302,
+      "throughput_gbps": 7.857,
+      "packet_loss_pct": 0.637,
+      "congestion": 0.786
+    }
+  },
+  {
+    "episode": 73,
+    "timestamp": "2026-11-02T13:01:09.695554",
+    "anomaly_type": "congestion",
+    "link": 17,
+    "anomaly_score": 0.91,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 23.73,
+    "decision_ms": 11.369,
+    "modelled_mttr_s": 1.16,
+    "shap_attribution": {
+      "latency": 0.373,
+      "throughput": 0.139,
+      "loss": 0.378,
+      "congestion": 0.11
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 9.168,
+      "throughput_gbps": 8.365,
+      "packet_loss_pct": 0.497,
+      "congestion": 0.836
+    }
+  },
+  {
+    "episode": 74,
+    "timestamp": "2026-11-02T13:01:09.714367",
+    "anomaly_type": "routing_instability",
+    "link": 9,
+    "anomaly_score": 0.76,
+    "detected": true,
+    "action": "traffic_shaping",
+    "confidence": 0.134,
+    "mode": "escalated",
+    "reward": 25.86,
+    "decision_ms": 7.454,
+    "modelled_mttr_s": 230.65,
+    "shap_attribution": {
+      "latency": 0.473,
+      "throughput": 0.029,
+      "loss": 0.472,
+      "congestion": 0.026
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 15.338,
+      "throughput_gbps": 7.707,
+      "packet_loss_pct": 0.395,
+      "congestion": 0.771
+    }
+  },
+  {
+    "episode": 75,
+    "timestamp": "2026-11-02T13:01:09.739875",
+    "anomaly_type": "link_failure",
+    "link": 15,
+    "anomaly_score": 0.935,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.549,
+    "mode": "escalated",
+    "reward": 28.15,
+    "decision_ms": 12.952,
+    "modelled_mttr_s": 199.0,
+    "shap_attribution": {
+      "latency": 0.259,
+      "throughput": 0.253,
+      "loss": 0.243,
+      "congestion": 0.245
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 49.466,
+      "throughput_gbps": 5.916,
+      "packet_loss_pct": 1.6,
+      "congestion": 0.592
+    }
+  },
+  {
+    "episode": 76,
+    "timestamp": "2026-11-02T13:01:09.760150",
+    "anomaly_type": "link_failure",
+    "link": 12,
+    "anomaly_score": 0.875,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.54,
+    "mode": "escalated",
+    "reward": 28.14,
+    "decision_ms": 8.513,
+    "modelled_mttr_s": 189.84,
+    "shap_attribution": {
+      "latency": 0.27,
+      "throughput": 0.254,
+      "loss": 0.254,
+      "congestion": 0.222
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 63.212,
+      "throughput_gbps": 5.726,
+      "packet_loss_pct": 2.061,
+      "congestion": 0.573
+    }
+  },
+  {
+    "episode": 77,
+    "timestamp": "2026-11-02T13:01:09.780768",
+    "anomaly_type": "link_failure",
+    "link": 15,
+    "anomaly_score": 0.818,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.541,
+    "mode": "escalated",
+    "reward": 18.11,
+    "decision_ms": 8.994,
+    "modelled_mttr_s": 156.9,
+    "shap_attribution": {
+      "latency": 0.278,
+      "throughput": 0.265,
+      "loss": 0.245,
+      "congestion": 0.212
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 77.486,
+      "throughput_gbps": 5.222,
+      "packet_loss_pct": 2.575,
+      "congestion": 0.522
+    }
+  },
+  {
+    "episode": 78,
+    "timestamp": "2026-11-02T13:01:09.800381",
+    "anomaly_type": "link_failure",
+    "link": 18,
+    "anomaly_score": 0.877,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.544,
+    "mode": "escalated",
+    "reward": 28.2,
+    "decision_ms": 8.425,
+    "modelled_mttr_s": 142.56,
+    "shap_attribution": {
+      "latency": 0.247,
+      "throughput": 0.251,
+      "loss": 0.27,
+      "congestion": 0.233
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 32.847,
+      "throughput_gbps": 7.072,
+      "packet_loss_pct": 1.078,
+      "congestion": 0.707
+    }
+  },
+  {
+    "episode": 79,
+    "timestamp": "2026-11-02T13:01:09.820189",
+    "anomaly_type": "routing_instability",
+    "link": 1,
+    "anomaly_score": 0.74,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.901,
+    "mode": "autonomous",
+    "reward": 11.43,
+    "decision_ms": 8.244,
+    "modelled_mttr_s": 279.81,
+    "shap_attribution": {
+      "latency": 0.446,
+      "throughput": 0.031,
+      "loss": 0.497,
+      "congestion": 0.025
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 29.066,
+      "throughput_gbps": 7.653,
+      "packet_loss_pct": 0.844,
+      "congestion": 0.765
+    }
+  },
+  {
+    "episode": 80,
+    "timestamp": "2026-11-02T13:01:09.840171",
+    "anomaly_type": "link_failure",
+    "link": 11,
+    "anomaly_score": 0.888,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.551,
+    "mode": "escalated",
+    "reward": 28.13,
+    "decision_ms": 8.197,
+    "modelled_mttr_s": 240.86,
+    "shap_attribution": {
+      "latency": 0.274,
+      "throughput": 0.254,
+      "loss": 0.249,
+      "congestion": 0.223
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 60.759,
+      "throughput_gbps": 5.684,
+      "packet_loss_pct": 2.025,
+      "congestion": 0.568
+    }
+  },
+  {
+    "episode": 81,
+    "timestamp": "2026-11-02T13:01:09.858859",
+    "anomaly_type": "link_failure",
+    "link": 5,
+    "anomaly_score": 0.818,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.551,
+    "mode": "escalated",
+    "reward": 28.11,
+    "decision_ms": 7.877,
+    "modelled_mttr_s": 249.26,
+    "shap_attribution": {
+      "latency": 0.242,
+      "throughput": 0.247,
+      "loss": 0.249,
+      "congestion": 0.262
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 69.633,
+      "throughput_gbps": 5.143,
+      "packet_loss_pct": 2.298,
+      "congestion": 0.514
+    }
+  },
+  {
+    "episode": 82,
+    "timestamp": "2026-11-02T13:01:09.879724",
+    "anomaly_type": "routing_instability",
+    "link": 13,
+    "anomaly_score": 0.795,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.925,
+    "mode": "autonomous",
+    "reward": 4.91,
+    "decision_ms": 8.841,
+    "modelled_mttr_s": 221.82,
+    "shap_attribution": {
+      "latency": 0.456,
+      "throughput": 0.026,
+      "loss": 0.488,
+      "congestion": 0.03
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 35.277,
+      "throughput_gbps": 7.541,
+      "packet_loss_pct": 1.04,
+      "congestion": 0.754
+    }
+  },
+  {
+    "episode": 83,
+    "timestamp": "2026-11-02T13:01:09.900250",
+    "anomaly_type": "congestion",
+    "link": 17,
+    "anomaly_score": 0.802,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 24.32,
+    "decision_ms": 8.678,
+    "modelled_mttr_s": 8.48,
+    "shap_attribution": {
+      "latency": 0.362,
+      "throughput": 0.133,
+      "loss": 0.387,
+      "congestion": 0.118
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 8.547,
+      "throughput_gbps": 7.87,
+      "packet_loss_pct": 0.412,
+      "congestion": 0.787
+    }
+  },
+  {
+    "episode": 84,
+    "timestamp": "2026-11-02T13:01:09.919835",
+    "anomaly_type": "congestion",
+    "link": 20,
+    "anomaly_score": 0.928,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 27.89,
+    "decision_ms": 8.187,
+    "modelled_mttr_s": 14.71,
+    "shap_attribution": {
+      "latency": 0.354,
+      "throughput": 0.177,
+      "loss": 0.298,
+      "congestion": 0.172
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 4.945,
+      "throughput_gbps": 8.318,
+      "packet_loss_pct": 0.046,
+      "congestion": 0.832
+    }
+  },
+  {
+    "episode": 85,
+    "timestamp": "2026-11-02T13:01:09.940150",
+    "anomaly_type": "routing_instability",
+    "link": 6,
+    "anomaly_score": 0.795,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.925,
+    "mode": "autonomous",
+    "reward": 5.4,
+    "decision_ms": 8.242,
+    "modelled_mttr_s": 204.31,
+    "shap_attribution": {
+      "latency": 0.449,
+      "throughput": 0.018,
+      "loss": 0.501,
+      "congestion": 0.033
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 34.797,
+      "throughput_gbps": 7.587,
+      "packet_loss_pct": 1.036,
+      "congestion": 0.759
+    }
+  },
+  {
+    "episode": 86,
+    "timestamp": "2026-11-02T13:01:09.961506",
+    "anomaly_type": "link_failure",
+    "link": 18,
+    "anomaly_score": 0.829,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.55,
+    "mode": "escalated",
+    "reward": 28.15,
+    "decision_ms": 8.634,
+    "modelled_mttr_s": 302.48,
+    "shap_attribution": {
+      "latency": 0.23,
+      "throughput": 0.255,
+      "loss": 0.251,
+      "congestion": 0.264
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 54.275,
+      "throughput_gbps": 6.065,
+      "packet_loss_pct": 1.785,
+      "congestion": 0.606
+    }
+  },
+  {
+    "episode": 87,
+    "timestamp": "2026-11-02T13:01:09.982453",
+    "anomaly_type": "congestion",
+    "link": 3,
+    "anomaly_score": 0.841,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 22.83,
+    "decision_ms": 8.814,
+    "modelled_mttr_s": 4.96,
+    "shap_attribution": {
+      "latency": 0.374,
+      "throughput": 0.127,
+      "loss": 0.383,
+      "congestion": 0.117
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 9.899,
+      "throughput_gbps": 8.086,
+      "packet_loss_pct": 0.6,
+      "congestion": 0.809
+    }
+  },
+  {
+    "episode": 88,
+    "timestamp": "2026-11-02T13:01:10.002184",
+    "anomaly_type": "congestion",
+    "link": 11,
+    "anomaly_score": 0.801,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 18.16,
+    "decision_ms": 8.292,
+    "modelled_mttr_s": 9.98,
+    "shap_attribution": {
+      "latency": 0.364,
+      "throughput": 0.141,
+      "loss": 0.381,
+      "congestion": 0.114
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 13.998,
+      "throughput_gbps": 8.152,
+      "packet_loss_pct": 0.986,
+      "congestion": 0.815
+    }
+  },
+  {
+    "episode": 89,
+    "timestamp": "2026-11-02T13:01:10.022652",
+    "anomaly_type": "congestion",
+    "link": 19,
+    "anomaly_score": 0.822,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 22.38,
+    "decision_ms": 8.791,
+    "modelled_mttr_s": 4.85,
+    "shap_attribution": {
+      "latency": 0.371,
+      "throughput": 0.127,
+      "loss": 0.366,
+      "congestion": 0.135
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 10.298,
+      "throughput_gbps": 8.817,
+      "packet_loss_pct": 0.662,
+      "congestion": 0.882
+    }
+  },
+  {
+    "episode": 90,
+    "timestamp": "2026-11-02T13:01:10.044184",
+    "anomaly_type": "link_failure",
+    "link": 13,
+    "anomaly_score": 0.834,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.544,
+    "mode": "escalated",
+    "reward": 28.1,
+    "decision_ms": 9.364,
+    "modelled_mttr_s": 255.91,
+    "shap_attribution": {
+      "latency": 0.231,
+      "throughput": 0.27,
+      "loss": 0.263,
+      "congestion": 0.236
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 74.527,
+      "throughput_gbps": 4.924,
+      "packet_loss_pct": 2.504,
+      "congestion": 0.492
+    }
+  },
+  {
+    "episode": 91,
+    "timestamp": "2026-11-02T13:01:10.069961",
+    "anomaly_type": "congestion",
+    "link": 6,
+    "anomaly_score": 0.887,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 24.64,
+    "decision_ms": 8.785,
+    "modelled_mttr_s": 9.32,
+    "shap_attribution": {
+      "latency": 0.363,
+      "throughput": 0.157,
+      "loss": 0.35,
+      "congestion": 0.13
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 8.26,
+      "throughput_gbps": 8.499,
+      "packet_loss_pct": 0.321,
+      "congestion": 0.85
+    }
+  },
+  {
+    "episode": 92,
+    "timestamp": "2026-11-02T13:01:10.099962",
+    "anomaly_type": "congestion",
+    "link": 5,
+    "anomaly_score": 0.883,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.999,
+    "mode": "autonomous",
+    "reward": 25.75,
+    "decision_ms": 13.052,
+    "modelled_mttr_s": 3.95,
+    "shap_attribution": {
+      "latency": 0.344,
+      "throughput": 0.156,
+      "loss": 0.366,
+      "congestion": 0.135
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 7.145,
+      "throughput_gbps": 8.439,
+      "packet_loss_pct": 0.335,
+      "congestion": 0.844
+    }
+  },
+  {
+    "episode": 93,
+    "timestamp": "2026-11-02T13:01:10.112755",
+    "anomaly_type": "routing_instability",
+    "link": 1,
+    "anomaly_score": 0.671,
+    "detected": false,
+    "action": "reroute",
+    "confidence": 0.888,
+    "mode": "escalated",
+    "reward": null,
+    "decision_ms": 12.568,
+    "modelled_mttr_s": 148.74,
+    "shap_attribution": null,
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 94,
+    "timestamp": "2026-11-02T13:01:10.124980",
+    "anomaly_type": "routing_instability",
+    "link": 8,
+    "anomaly_score": 0.684,
+    "detected": false,
+    "action": "reroute",
+    "confidence": 0.89,
+    "mode": "escalated",
+    "reward": null,
+    "decision_ms": 11.979,
+    "modelled_mttr_s": 289.42,
+    "shap_attribution": null,
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    }
+  },
+  {
+    "episode": 95,
+    "timestamp": "2026-11-02T13:01:10.152916",
+    "anomaly_type": "congestion",
+    "link": 4,
+    "anomaly_score": 0.807,
+    "detected": true,
+    "action": "scale_slice",
+    "confidence": 0.238,
+    "mode": "escalated",
+    "reward": 10.01,
+    "decision_ms": 11.755,
+    "modelled_mttr_s": 185.64,
+    "shap_attribution": {
+      "latency": 0.382,
+      "throughput": 0.133,
+      "loss": 0.385,
+      "congestion": 0.1
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 21.119,
+      "throughput_gbps": 9.152,
+      "packet_loss_pct": 1.639,
+      "congestion": 0.915
+    }
+  },
+  {
+    "episode": 96,
+    "timestamp": "2026-11-02T13:01:10.182016",
+    "anomaly_type": "routing_instability",
+    "link": 14,
+    "anomaly_score": 0.777,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.918,
+    "mode": "autonomous",
+    "reward": 0.39,
+    "decision_ms": 12.357,
+    "modelled_mttr_s": 197.74,
+    "shap_attribution": {
+      "latency": 0.467,
+      "throughput": 0.027,
+      "loss": 0.477,
+      "congestion": 0.03
+    },
+    "metrics_before": {
+      "latency_ms": 40.0,
+      "throughput_gbps": 7.5,
+      "packet_loss_pct": 1.2,
+      "congestion": 0.75
+    },
+    "metrics_after": {
+      "latency_ms": 39.582,
+      "throughput_gbps": 7.509,
+      "packet_loss_pct": 1.187,
+      "congestion": 0.751
+    }
+  },
+  {
+    "episode": 97,
+    "timestamp": "2026-11-02T13:01:10.210734",
+    "anomaly_type": "link_failure",
+    "link": 11,
+    "anomaly_score": 0.9,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.549,
+    "mode": "escalated",
+    "reward": 28.16,
+    "decision_ms": 12.134,
+    "modelled_mttr_s": 199.82,
+    "shap_attribution": {
+      "latency": 0.276,
+      "throughput": 0.244,
+      "loss": 0.265,
+      "congestion": 0.215
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 43.775,
+      "throughput_gbps": 6.135,
+      "packet_loss_pct": 1.367,
+      "congestion": 0.614
+    }
+  },
+  {
+    "episode": 98,
+    "timestamp": "2026-11-02T13:01:10.235480",
+    "anomaly_type": "congestion",
+    "link": 6,
+    "anomaly_score": 0.789,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.998,
+    "mode": "autonomous",
+    "reward": 26.0,
+    "decision_ms": 12.556,
+    "modelled_mttr_s": 5.67,
+    "shap_attribution": {
+      "latency": 0.37,
+      "throughput": 0.139,
+      "loss": 0.371,
+      "congestion": 0.119
+    },
+    "metrics_before": {
+      "latency_ms": 30.0,
+      "throughput_gbps": 9.5,
+      "packet_loss_pct": 2.5,
+      "congestion": 0.95
+    },
+    "metrics_after": {
+      "latency_ms": 6.888,
+      "throughput_gbps": 8.206,
+      "packet_loss_pct": 0.302,
+      "congestion": 0.821
+    }
+  },
+  {
+    "episode": 99,
+    "timestamp": "2026-11-02T13:01:10.254395",
+    "anomaly_type": "link_failure",
+    "link": 20,
+    "anomaly_score": 0.876,
+    "detected": true,
+    "action": "reroute",
+    "confidence": 0.547,
+    "mode": "escalated",
+    "reward": 28.09,
+    "decision_ms": 7.945,
+    "modelled_mttr_s": 264.03,
+    "shap_attribution": {
+      "latency": 0.221,
+      "throughput": 0.257,
+      "loss": 0.247,
+      "congestion": 0.275
+    },
+    "metrics_before": {
+      "latency_ms": 150.0,
+      "throughput_gbps": 2.0,
+      "packet_loss_pct": 5.0,
+      "congestion": 0.2
+    },
+    "metrics_after": {
+      "latency_ms": 81.582,
+      "throughput_gbps": 4.728,
+      "packet_loss_pct": 2.687,
+      "congestion": 0.473
+    }
+  }
+]

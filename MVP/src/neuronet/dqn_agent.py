@@ -110,6 +110,38 @@ class DQNAgent:
 
     def load(self, path):
         checkpoint = torch.load(path, map_location=self.device, weights_only=False)
-        self.online.load_state_dict(checkpoint["online"])
-        self.target.load_state_dict(checkpoint.get("target", checkpoint["online"]))
+        if isinstance(checkpoint, dict) and "online" in checkpoint:
+            state_dict = checkpoint["online"]
+            target_dict = checkpoint.get("target", state_dict)
+        else:
+            state_dict = checkpoint
+            target_dict = checkpoint
+
+        # Detect layer names and hidden dimension
+        first_weight = state_dict.get("shared.0.weight") if "shared.0.weight" in state_dict else state_dict.get("feature.0.weight")
+        if first_weight is not None:
+            ckpt_hidden = first_weight.shape[0]
+            ckpt_state_dim = first_weight.shape[1]
+            if ckpt_hidden != self.online.feature[0].out_features or ckpt_state_dim != self.online.feature[0].in_features:
+                self.online = DuelingQNetwork(ckpt_state_dim, self.n_actions, hidden_dim=ckpt_hidden).to(self.device)
+                self.target = DuelingQNetwork(ckpt_state_dim, self.n_actions, hidden_dim=ckpt_hidden).to(self.device)
+                self.optimizer = torch.optim.Adam(self.online.parameters(), lr=1e-3)
+
+        # Map Mithu names ('shared', 'value_stream', 'advantage_stream') -> MVP names ('feature', 'value', 'advantage')
+        renamed = {}
+        for k, v in state_dict.items():
+            new_k = k.replace("shared.", "feature.").replace("value_stream.", "value.").replace("advantage_stream.", "advantage.")
+            renamed[new_k] = v
+
+        renamed_target = {}
+        for k, v in target_dict.items():
+            new_k = k.replace("shared.", "feature.").replace("value_stream.", "value.").replace("advantage_stream.", "advantage.")
+            renamed_target[new_k] = v
+
+        try:
+            self.online.load_state_dict(renamed)
+            self.target.load_state_dict(renamed_target)
+        except Exception:
+            self.online.load_state_dict(renamed, strict=False)
+            self.target.load_state_dict(renamed_target, strict=False)
         return self

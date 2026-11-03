@@ -1,0 +1,93 @@
+seeds 5
+pretrain curve mean [7.8, 9.2, 10.2, 11.2, 12.1, 12.9, 14.1, 14.8, 15.2, 15.1]
+doc eps curve mean [8.9, 11.7, 12.7, 12.6, 12.9, 12.9, 13.0, 13.1, 14.8, 15.0]
+long curve [8.9, 10.0, 10.8, 12.1, 12.7, 14.0, 16.0, 17.2, 18.2, 18.0]
+--- MVP
+congestion             rew  20.52±0.66 (within sd 5.5) conf 0.93 dLat   19.4 mttr   25.0 rec 0.95 det 0.99 ['reroute', 'reroute', 'reroute', 'reroute', 'reroute']
+routing_instability    rew   5.68±0.80 (within sd 5.8) conf 0.89 dLat    6.9 mttr  213.7 rec 0.02 det 0.55 ['reroute', 'reroute', 'reroute', 'reroute', 'reroute']
+link_failure           rew  26.05±0.83 (within sd 5.7) conf 0.73 dLat   91.1 mttr  130.3 rec 0.84 det 0.95 ['reroute', 'reroute', 'reroute', 'reroute', 'local_failover']
+overall                rew  19.48±0.88 (within sd 9.6) conf 0.84 dLat   44.6 mttr  106.1 rec 0.71 det 0.83 ['reroute', 'reroute', 'reroute', 'reroute', 'reroute']
+autonomous                                0.62 ± 0.12
+best action                               0.44 ± 0.12
+recovered                                 0.59 ± 0.03
+osc                                       10.20 ± 3.06
+--- literal_osc
+congestion             rew  12.54±0.69 (within sd 3.9) conf 0.68 dLat   19.1 mttr  143.5 rec 0.94 det 0.99 ['reroute', 'reroute', 'reroute', 'reroute', 'reroute']
+routing_instability    rew  -0.59±1.71 (within sd 6.4) conf 0.53 dLat    7.3 mttr  230.5 rec 0.05 det 0.39 ['reroute', 'reroute', 'reroute', 'reroute', 'reroute']
+link_failure           rew  19.59±0.61 (within sd 6.1) conf 0.55 dLat  120.8 mttr  217.0 rec 0.94 det 0.93 ['local_failover', 'local_failover', 'local_failover', 'local_failover', 'local_failover']
+overall                rew  13.31±0.49 (within sd 8.9) conf 0.60 dLat   58.9 mttr  185.9 rec 0.80 det 0.77 ['reroute', 'reroute', 'reroute', 'reroute', 'reroute']
+autonomous                                0.11 ± 0.13
+best action                               0.79 ± 0.03
+recovered                                 0.62 ± 0.05
+osc                                       62.40 ± 8.55
+--- doc_eps
+congestion             rew  18.33±4.49 (within sd 5.1) conf 0.88 dLat   17.7 mttr   61.6 rec 0.78 det 0.98 ['traffic_shaping', 'reroute', 'reroute', 'reroute', 'reroute']
+routing_instability    rew   8.92±4.88 (within sd 4.4) conf 0.90 dLat    9.1 mttr  195.0 rec 0.15 det 0.50 ['qos_priority', 'reroute', 'reroute', 'reroute', 'reroute']
+link_failure           rew  22.61±5.98 (within sd 6.9) conf 0.85 dLat   67.6 mttr   80.0 rec 0.65 det 0.90 ['traffic_shaping', 'reroute', 'reroute', 'reroute', 'reroute']
+overall                rew  18.23±3.07 (within sd 8.8) conf 0.88 dLat   35.3 mttr   93.3 rec 0.61 det 0.79 ['traffic_shaping', 'reroute', 'reroute', 'reroute', 'reroute']
+autonomous                                0.62 ± 0.23
+best action                               0.36 ± 0.07
+recovered                                 0.48 ± 0.15
+osc                                       10.00 ± 2.83
+--- cold_start
+congestion             rew  11.51±4.36 (within sd 4.7) conf 0.14 dLat   10.9 mttr  220.3 rec 0.28 det 0.99 ['traffic_shaping', 'qos_priority', 'traffic_shaping', 'reroute', 'reduce_interference']
+routing_instability    rew  12.94±7.42 (within sd 5.8) conf 0.14 dLat   13.3 mttr  202.0 rec 0.45 det 0.47 ['traffic_shaping', 'qos_priority', 'traffic_shaping', 'reduce_interference', 'reduce_interference']
+link_failure           rew   5.66±2.87 (within sd 8.5) conf 0.15 dLat    8.4 mttr  219.5 rec 0.02 det 0.96 ['traffic_shaping', 'qos_priority', 'traffic_shaping', 'reduce_interference', 'traffic_shaping']
+overall                rew   9.88±0.84 (within sd 9.2) conf 0.14 dLat   10.8 mttr  216.5 rec 0.23 det 0.81 ['traffic_shaping', 'qos_priority', 'traffic_shaping', 'reduce_interference', 'reduce_interference']
+autonomous                                0.00 ± 0.00
+best action                               0.21 ± 0.12
+recovered                                 0.18 ± 0.07
+osc                                       7.60 ± 4.59
+--- strict_chain
+congestion             rew  10.77±0.23 (within sd 4.9) conf 0.57 dLat   10.4 mttr  196.1 rec 0.27 det 0.99 ['traffic_shaping', 'traffic_shaping', 'traffic_shaping', 'scale_slice', 'scale_slice']
+routing_instability    rew  13.35±7.53 (within sd 5.7) conf 0.62 dLat   13.4 mttr  179.9 rec 0.48 det 0.44 ['traffic_shaping', 'traffic_shaping', 'traffic_shaping', 'scale_slice', 'scale_slice']
+link_failure           rew  14.08±0.82 (within sd 10.6) conf 0.81 dLat   16.1 mttr  224.4 rec 0.00 det 0.89 ['scale_slice', 'scale_slice', 'scale_slice', 'scale_slice', 'scale_slice']
+overall                rew  12.70±1.48 (within sd 8.6) conf 0.68 dLat   13.4 mttr  201.1 rec 0.22 det 0.78 ['traffic_shaping', 'traffic_shaping', 'traffic_shaping', 'scale_slice', 'scale_slice']
+autonomous                                0.39 ± 0.14
+best action                               0.12 ± 0.08
+recovered                                 0.17 ± 0.06
+osc                                       6.00 ± 2.76
+--- rule(300)
+congestion             rew  22.03±0.26 (within sd 3.6) conf 1.00 dLat   20.1 mttr   50.2 rec 1.00 det 0.97 ['reroute', 'reroute', 'reroute', 'reroute', 'reroute']
+routing_instability    rew  21.40±0.17 (within sd 3.5) conf 1.00 dLat   20.8 mttr   85.8 rec 0.84 det 0.47 ['qos_priority', 'qos_priority', 'qos_priority', 'qos_priority', 'qos_priority']
+link_failure           rew  27.69±0.05 (within sd 2.1) conf 1.00 dLat  129.1 mttr   49.9 rec 1.00 det 0.92 ['local_failover', 'local_failover', 'local_failover', 'local_failover', 'local_failover']
+overall                rew  24.13±0.21 (within sd 4.2) conf 1.00 dLat   62.9 mttr   57.0 rec 0.97 det 0.79 ['reroute', 'reroute', 'local_failover', 'reroute', 'reroute']
+autonomous                                0.79 ± 0.07
+best action                               1.00 ± 0.00
+recovered                                 0.76 ± 0.07
+osc                                       12.00 ± 1.67
+--- long 20k
+congestion             rew  20.98±0.36 (within sd 5.2) conf 0.94 dLat   18.9 mttr   21.1 rec 0.94 det 1.00 ['reroute', 'reroute']
+routing_instability    rew  15.49±5.20 (within sd 4.8) conf 0.85 dLat   15.3 mttr  120.8 rec 0.45 det 0.59 ['traffic_shaping', 'local_failover']
+link_failure           rew  25.75±0.65 (within sd 6.7) conf 0.52 dLat  111.7 mttr  212.3 rec 0.89 det 0.98 ['local_failover', 'local_failover']
+overall                rew  21.68±1.39 (within sd 7.1) conf 0.76 dLat   53.8 mttr  115.2 rec 0.82 det 0.86 ['reroute', 'local_failover']
+autonomous                                0.49 ± 0.03
+best action                               0.77 ± 0.09
+recovered                                 0.71 ± 0.10
+osc                                       12.50 ± 3.50
+--- scaling
+chain20 links 21 p50=8.89±0.61 p95=12.67±2.20 sweep=192.06±12.48 acc=0.89±0.04 tpr=0.79±0.07 fpr=0.00±0.00 mttr=110.30±30.02 auto=0.56±0.12 best=0.46±0.15
+fat50 links 113 p50=8.63±0.19 p95=12.59±0.62 sweep=995.00±37.62 acc=0.89±0.04 tpr=0.79±0.07 fpr=0.00±0.00 mttr=112.80±32.58 auto=0.57±0.12 best=0.45±0.13
+fat80 links 256 p50=8.80±0.43 p95=13.75±0.32 sweep=2331.50±77.01 acc=0.90±0.03 tpr=0.79±0.07 fpr=0.00±0.00 mttr=108.20±34.24 auto=0.56±0.10 best=0.45±0.14
+--- stability
+crashes                                   0.00 ± 0.00
+mean_ms                                   9.05 ± 0.33
+first100                                  9.09 ± 0.80
+last100                                   9.12 ± 0.50
+oscillations                              25.40 ± 6.05
+rollbacks                                 0.00 ± 0.00
+autonomous_rate                           0.56 ± 0.11
+recovered_rate                            0.56 ± 0.03
+--- severity
+sev 1.0 acc                               0.898 ± 0.027
+   tpr                                    0.795 ± 0.054
+   fpr                                    0.000 ± 0.000
+sev 0.5 acc                               0.846 ± 0.034
+   tpr                                    0.691 ± 0.069
+   fpr                                    0.000 ± 0.000
+sev 0.25 acc                              0.798 ± 0.055
+   tpr                                    0.597 ± 0.111
+   fpr                                    0.001 ± 0.001
+sev 0.1 acc                               0.732 ± 0.049
+   tpr                                    0.463 ± 0.099
+   fpr                                    0.000 ± 0.000

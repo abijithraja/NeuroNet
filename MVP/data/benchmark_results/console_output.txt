@@ -1,0 +1,690 @@
+=== NeuroNet Modulator MVP ===
+
+Step 1: Generating benign data for anomaly detector...
+Step 2: Training anomaly detector...
+✓ Anomaly detector trained
+
+Step 3a: Pre-training DQN on 5000 synthetic episodes...
+  Mean reward per 500 episodes: [9.5, 9.4, 11.4, 12.6, 13.0, 14.8, 14.7, 16.8, 17.0, 17.0]
+
+Step 3b: Running 100 simulation episodes...
+
+=== Episode 0 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.920, Is anomaly: True
+Selected action: reroute (confidence: 0.52) -> escalated to NOC
+Metrics after: Latency 37.9ms, Loss 1.25%
+Reward: 28.19
+
+=== Episode 1 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.839, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 8.5ms, Loss 0.40%
+Reward: 24.37
+
+=== Episode 2 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.871, Is anomaly: True
+Selected action: reroute (confidence: 0.52) -> escalated to NOC
+Metrics after: Latency 60.4ms, Loss 1.92%
+Reward: 18.14
+
+=== Episode 3 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.929, Is anomaly: True
+Selected action: reroute (confidence: 0.53) -> escalated to NOC
+Metrics after: Latency 66.0ms, Loss 2.17%
+Reward: 28.12
+
+=== Episode 4 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.780, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 10.8ms, Loss 0.61%
+Reward: 21.93
+
+=== Episode 5 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.827, Is anomaly: True
+Selected action: reroute (confidence: 0.52) -> escalated to NOC
+Metrics after: Latency 54.1ms, Loss 1.77%
+Reward: 28.17
+
+=== Episode 6 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.719, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 30.0ms, Loss 0.90%
+Reward: 10.39
+
+=== Episode 7 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.772, Is anomaly: True
+Selected action: reroute (confidence: 0.92) -> autonomous
+Metrics after: Latency 30.9ms, Loss 0.91%
+Reward: 9.49
+
+=== Episode 8 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.747, Is anomaly: True
+Selected action: reroute (confidence: 0.91) -> autonomous
+Metrics after: Latency 34.6ms, Loss 1.04%
+Reward: 5.63
+
+=== Episode 9 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.867, Is anomaly: True
+Selected action: reroute (confidence: 0.52) -> escalated to NOC
+Metrics after: Latency 49.2ms, Loss 1.58%
+Reward: 28.18
+
+=== Episode 10 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.828, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 10.0ms, Loss 0.58%
+Reward: 22.79
+
+=== Episode 11 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.686, Is anomaly: False
+=== Episode 12 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.837, Is anomaly: True
+Selected action: reroute (confidence: 0.52) -> escalated to NOC
+Metrics after: Latency 84.1ms, Loss 2.72%
+Reward: 28.08
+
+=== Episode 13 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.709, Is anomaly: True
+Selected action: traffic_shaping (confidence: 0.24) -> escalated to NOC
+Metrics after: Latency 17.1ms, Loss 0.49%
+Reward: 24.02
+
+=== Episode 14 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.719, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 26.6ms, Loss 0.76%
+Reward: 13.98
+
+=== Episode 15 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.673, Is anomaly: False
+=== Episode 16 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.712, Is anomaly: True
+Selected action: reroute (confidence: 0.89) -> autonomous
+Metrics after: Latency 30.6ms, Loss 0.92%
+Reward: 9.75
+
+=== Episode 17 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.768, Is anomaly: True
+Selected action: reroute (confidence: 0.92) -> autonomous
+Metrics after: Latency 40.0ms, Loss 1.20%
+Reward: -0.05
+
+=== Episode 18 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.850, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 81.1ms, Loss 2.72%
+Reward: 18.09
+
+=== Episode 19 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.754, Is anomaly: True
+Selected action: reduce_interference (confidence: 0.15) -> escalated to NOC
+Metrics after: Latency 37.2ms, Loss 1.11%
+Reward: 2.79
+
+=== Episode 20 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.747, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 47.8ms, Loss 1.52%
+Reward: 28.17
+
+=== Episode 21 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.709, Is anomaly: True
+Selected action: reroute (confidence: 0.89) -> autonomous
+Metrics after: Latency 26.0ms, Loss 0.74%
+Reward: 14.70
+
+=== Episode 22 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.683, Is anomaly: False
+=== Episode 23 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.872, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 13.3ms, Loss 0.97%
+Reward: 18.93
+
+=== Episode 24 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.817, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 29.8ms, Loss 0.86%
+Reward: 28.19
+
+=== Episode 25 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.839, Is anomaly: True
+Selected action: reroute (confidence: 0.94) -> autonomous
+Metrics after: Latency 30.4ms, Loss 0.90%
+Reward: -0.00
+
+=== Episode 26 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.819, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 65.6ms, Loss 2.17%
+Reward: 28.12
+
+=== Episode 27 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.799, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 64.3ms, Loss 2.05%
+Reward: 18.13
+
+=== Episode 28 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.741, Is anomaly: True
+Selected action: reroute (confidence: 0.91) -> autonomous
+Metrics after: Latency 29.3ms, Loss 0.83%
+Reward: 11.22
+
+=== Episode 29 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.927, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 7.8ms, Loss 0.39%
+Reward: 25.09
+
+=== Episode 30 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.768, Is anomaly: True
+Selected action: reroute (confidence: 0.92) -> autonomous
+Metrics after: Latency 31.1ms, Loss 0.91%
+Reward: 9.30
+
+=== Episode 31 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.765, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 46.9ms, Loss 1.52%
+Reward: 28.18
+
+=== Episode 32 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.791, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 5.9ms, Loss 0.10%
+Reward: 27.04
+
+=== Episode 33 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.794, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 13.5ms, Loss 0.93%
+Reward: 18.75
+
+=== Episode 34 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.876, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 90.1ms, Loss 3.00%
+Reward: 28.08
+
+=== Episode 35 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.881, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 9.4ms, Loss 0.53%
+Reward: 23.47
+
+=== Episode 36 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.942, Is anomaly: True
+Selected action: reroute (confidence: 0.57) -> escalated to NOC
+Metrics after: Latency 49.9ms, Loss 1.63%
+Reward: 18.17
+
+=== Episode 37 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.828, Is anomaly: True
+Selected action: qos_priority (confidence: 0.10) -> escalated to NOC
+Metrics after: Latency 146.1ms, Loss 4.87%
+Reward: 4.08
+
+=== Episode 38 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.795, Is anomaly: True
+Selected action: reroute (confidence: 0.56) -> escalated to NOC
+Metrics after: Latency 52.6ms, Loss 1.64%
+Reward: 28.17
+
+=== Episode 39 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.920, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 11.9ms, Loss 0.82%
+Reward: 20.51
+
+=== Episode 40 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.796, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 9.5ms, Loss 0.60%
+Reward: 23.25
+
+=== Episode 41 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.745, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 34.2ms, Loss 1.03%
+Reward: 5.98
+
+=== Episode 42 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.732, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 30.1ms, Loss 0.92%
+Reward: 10.24
+
+=== Episode 43 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.837, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 58.1ms, Loss 1.92%
+Reward: 18.15
+
+=== Episode 44 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.914, Is anomaly: True
+Selected action: qos_priority (confidence: 0.29) -> escalated to NOC
+Metrics after: Latency 142.8ms, Loss 4.75%
+Reward: 7.60
+
+=== Episode 45 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.848, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 11.0ms, Loss 0.73%
+Reward: 21.53
+
+=== Episode 46 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.753, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 7.9ms, Loss 0.42%
+Reward: 25.03
+
+=== Episode 47 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.838, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 10.6ms, Loss 0.66%
+Reward: 22.07
+
+=== Episode 48 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.822, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 73.2ms, Loss 2.43%
+Reward: 28.10
+
+=== Episode 49 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.831, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 65.6ms, Loss 2.12%
+Reward: 28.11
+
+=== Episode 50 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.779, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 11.8ms, Loss 0.67%
+Reward: 20.87
+
+=== Episode 51 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.688, Is anomaly: False
+=== Episode 52 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.730, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 26.4ms, Loss 0.75%
+Reward: 14.21
+
+=== Episode 53 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.735, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 36.6ms, Loss 1.10%
+Reward: 3.51
+
+=== Episode 54 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.876, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 10.2ms, Loss 0.61%
+Reward: 22.52
+
+=== Episode 55 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.793, Is anomaly: True
+Selected action: reroute (confidence: 0.93) -> autonomous
+Metrics after: Latency 32.1ms, Loss 0.97%
+Reward: -1.76
+
+=== Episode 56 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.736, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 31.4ms, Loss 0.94%
+Reward: 8.98
+
+=== Episode 57 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.795, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 9.6ms, Loss 0.61%
+Reward: 23.11
+
+=== Episode 58 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.772, Is anomaly: True
+Selected action: escalate_noc (confidence: 0.07) -> escalated to NOC
+Metrics after: Latency 40.0ms, Loss 1.20%
+Reward: -0.25
+
+=== Episode 59 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.696, Is anomaly: False
+=== Episode 60 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.786, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 56.5ms, Loss 1.83%
+Reward: 28.16
+
+=== Episode 61 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.920, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 9.7ms, Loss 0.55%
+Reward: 23.04
+
+=== Episode 62 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.784, Is anomaly: True
+Selected action: reroute (confidence: 0.92) -> autonomous
+Metrics after: Latency 29.6ms, Loss 0.88%
+Reward: 10.78
+
+=== Episode 63 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.862, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 52.4ms, Loss 1.69%
+Reward: 28.14
+
+=== Episode 64 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.777, Is anomaly: True
+Selected action: reroute (confidence: 0.91) -> autonomous
+Metrics after: Latency 30.0ms, Loss 0.90%
+Reward: 10.40
+
+=== Episode 65 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.936, Is anomaly: True
+Selected action: local_failover (confidence: 0.02) -> escalated to NOC
+Metrics after: Latency 27.1ms, Loss 2.23%
+Reward: 3.21
+
+=== Episode 66 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.739, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 67.9ms, Loss 2.22%
+Reward: 28.13
+
+=== Episode 67 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.862, Is anomaly: True
+Selected action: reroute (confidence: 0.53) -> escalated to NOC
+Metrics after: Latency 57.1ms, Loss 1.84%
+Reward: 28.15
+
+=== Episode 68 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.806, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 5.0ms, Loss 0.10%
+Reward: 27.89
+
+=== Episode 69 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.768, Is anomaly: True
+Selected action: scale_slice (confidence: 0.01) -> escalated to NOC
+Metrics after: Latency 20.0ms, Loss 1.52%
+Reward: 11.34
+
+=== Episode 70 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.916, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 7.3ms, Loss 0.39%
+Reward: 25.61
+
+=== Episode 71 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.921, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 4.8ms, Loss 0.09%
+Reward: 17.87
+
+=== Episode 72 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.780, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 11.3ms, Loss 0.64%
+Reward: 21.36
+
+=== Episode 73 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.910, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 9.2ms, Loss 0.50%
+Reward: 23.73
+
+=== Episode 74 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.760, Is anomaly: True
+Selected action: traffic_shaping (confidence: 0.13) -> escalated to NOC
+Metrics after: Latency 15.3ms, Loss 0.39%
+Reward: 25.86
+
+=== Episode 75 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.935, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 49.5ms, Loss 1.60%
+Reward: 28.15
+
+=== Episode 76 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.875, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 63.2ms, Loss 2.06%
+Reward: 28.14
+
+=== Episode 77 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.818, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 77.5ms, Loss 2.57%
+Reward: 18.11
+
+=== Episode 78 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.877, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 32.8ms, Loss 1.08%
+Reward: 28.20
+
+=== Episode 79 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.740, Is anomaly: True
+Selected action: reroute (confidence: 0.90) -> autonomous
+Metrics after: Latency 29.1ms, Loss 0.84%
+Reward: 11.43
+
+=== Episode 80 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.888, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 60.8ms, Loss 2.03%
+Reward: 28.13
+
+=== Episode 81 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.818, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 69.6ms, Loss 2.30%
+Reward: 28.11
+
+=== Episode 82 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.795, Is anomaly: True
+Selected action: reroute (confidence: 0.93) -> autonomous
+Metrics after: Latency 35.3ms, Loss 1.04%
+Reward: 4.91
+
+=== Episode 83 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.802, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 8.5ms, Loss 0.41%
+Reward: 24.32
+
+=== Episode 84 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.928, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 4.9ms, Loss 0.05%
+Reward: 27.89
+
+=== Episode 85 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.795, Is anomaly: True
+Selected action: reroute (confidence: 0.93) -> autonomous
+Metrics after: Latency 34.8ms, Loss 1.04%
+Reward: 5.40
+
+=== Episode 86 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.829, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 54.3ms, Loss 1.78%
+Reward: 28.15
+
+=== Episode 87 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.841, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 9.9ms, Loss 0.60%
+Reward: 22.83
+
+=== Episode 88 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.801, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 14.0ms, Loss 0.99%
+Reward: 18.16
+
+=== Episode 89 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.822, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 10.3ms, Loss 0.66%
+Reward: 22.38
+
+=== Episode 90 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.834, Is anomaly: True
+Selected action: reroute (confidence: 0.54) -> escalated to NOC
+Metrics after: Latency 74.5ms, Loss 2.50%
+Reward: 28.10
+
+=== Episode 91 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.887, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 8.3ms, Loss 0.32%
+Reward: 24.64
+
+=== Episode 92 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.883, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 7.1ms, Loss 0.33%
+Reward: 25.75
+
+=== Episode 93 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.671, Is anomaly: False
+=== Episode 94 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.684, Is anomaly: False
+=== Episode 95 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.807, Is anomaly: True
+Selected action: scale_slice (confidence: 0.24) -> escalated to NOC
+Metrics after: Latency 21.1ms, Loss 1.64%
+Reward: 10.01
+
+=== Episode 96 ===
+Injected routing_instability: Latency 40.0ms, Loss 1.20%, Congestion 0.75
+Anomaly score: 0.777, Is anomaly: True
+Selected action: reroute (confidence: 0.92) -> autonomous
+Metrics after: Latency 39.6ms, Loss 1.19%
+Reward: 0.39
+
+=== Episode 97 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.900, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 43.8ms, Loss 1.37%
+Reward: 28.16
+
+=== Episode 98 ===
+Injected congestion: Latency 30.0ms, Loss 2.50%, Congestion 0.95
+Anomaly score: 0.789, Is anomaly: True
+Selected action: reroute (confidence: 1.00) -> autonomous
+Metrics after: Latency 6.9ms, Loss 0.30%
+Reward: 26.00
+
+=== Episode 99 ===
+Injected link_failure: Latency 150.0ms, Loss 5.00%, Congestion 0.20
+Anomaly score: 0.876, Is anomaly: True
+Selected action: reroute (confidence: 0.55) -> escalated to NOC
+Metrics after: Latency 81.6ms, Loss 2.69%
+Reward: 28.09
+
+CONGESTION             Mean reward 21.74, Mean latency improvement 19.5 ms, Mean confidence 0.92, Top action reroute
+ROUTING_INSTABILITY    Mean reward 8.51, Mean latency improvement 8.9 ms, Mean confidence 0.79, Top action reroute
+LINK_FAILURE           Mean reward 25.06, Mean latency improvement 85.1 ms, Mean confidence 0.52, Top action reroute
+Autonomous rate 52%
+
+✓ Decision log saved to decision_log.json
+✓ Simulation complete

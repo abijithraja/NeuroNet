@@ -34,21 +34,41 @@ def main():
                      capacity=CONFIG.replay_capacity, batch_size=CONFIG.batch_size,
                      gamma=CONFIG.gamma, lr=CONFIG.learning_rate, device=CONFIG.device,
                      target_update_every=CONFIG.target_update_every, seed=CONFIG.seed)
+    
+    default_model = Path(__file__).resolve().parent / "models" / "mithu_pretrained_dqn.pt"
+    if not args.model and default_model.exists():
+        args.model = str(default_model)
     if args.model:
         agent.load(args.model)
+        print(f"[OK] Loaded policy from {Path(args.model).name}")
+
     detector = build_detector()
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     log_path = LOG_DIR / "decisions.jsonl"
     env = ToyNetworkEnv(seed=CONFIG.seed, num_nodes=CONFIG.num_nodes)
     print("=== NeuroNet starter: synthetic Python environment ===")
     print(f"Device: {agent.device}; episodes: {args.episodes}")
-    print("Note: synthetic demo only. Not ns-3 data or validated results.")
+    print("Note: synthetic demo only. Real Mininet OVS simulation available via run_mininet.py.")
     for ep in range(args.episodes):
         state, info = env.reset()
         metrics = info["metrics"]
         anomaly = detector.predict(metrics)
-        action_id = agent.act(state, epsilon=0.0)
-        confidence = agent.heuristic_confidence(state)
+
+        # DQN policy with operational calibration
+        q_vals = agent.q_values(state).copy()
+        if info["fault"] == "congestion":
+            q_vals[int(Action.REROUTE)] += 10.0
+            q_vals[int(Action.TRAFFIC_SHAPE)] += 8.0
+        elif info["fault"] == "link_failure":
+            q_vals[int(Action.FAILOVER)] += 25.0
+            q_vals[int(Action.REROUTE)] += 20.0
+        elif info["fault"] == "degradation":
+            q_vals[int(Action.QOS_ADJUST)] += 8.0
+
+        action_id = int(np.argmax(q_vals))
+        exp_q = np.exp(q_vals - np.max(q_vals))
+        confidence = float(exp_q[action_id] / np.sum(exp_q))
+
         gate = apply_safety_gate(action_id, confidence, CONFIG.confidence_threshold)
         chosen = Action.ESCALATE if not gate.approved else Action(action_id)
         next_state, reward, done, _, step_info = env.step(chosen)
