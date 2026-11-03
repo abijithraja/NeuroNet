@@ -317,23 +317,86 @@ async function triggerAgentDecision() {
     btn.disabled = false;
     btn.innerHTML = `
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      <span>Run AI Agent Inference (Auto-Heal)</span>
+      <span>Auto-Heal (Simulated)</span>
     `;
 
     if (data.decision) {
       renderDecisionUI(data.decision);
       updateHUD(data.metrics);
-      updateIncidentBadge("nominal");
+      if (data.decision.gate_status === 'APPROVED') {
+        netState.scenario = "nominal";
+        updateIncidentBadge("nominal");
+        document.querySelectorAll(".btn-fault").forEach(b => b.classList.remove("active-fault"));
+      } else {
+        updateIncidentBadge(netState.scenario);
+      }
       initParticles();
       fetchAuditLogs();
     }
   } catch (err) {
     btn.disabled = false;
-    btn.innerHTML = `<span>Error connecting to agent</span>`;
+    btn.innerHTML = `
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <span>Auto-Heal (Simulated)</span>
+    `;
+    console.error("Auto-heal error:", err);
   }
 }
 
 document.getElementById("btn-decide").addEventListener("click", triggerAgentDecision);
+
+// Trigger Real Mininet Execution in WSL2
+async function triggerRealMininet() {
+  const btn = document.getElementById("btn-mininet");
+  btn.disabled = true;
+  btn.innerHTML = `<span>Executing Kernel OVS...</span>`;
+
+  try {
+    const res = await fetch("/api/mininet/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fault: netState.scenario })
+    });
+    const data = await res.json();
+    btn.disabled = false;
+    btn.innerHTML = `
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+        <line x1="6" y1="6" x2="6.01" y2="6"/>
+        <line x1="6" y1="18" x2="6.01" y2="18"/>
+      </svg>
+      <span>Real Mininet (WSL2 OVS)</span>
+    `;
+
+    if (data.decision) {
+      renderDecisionUI(data.decision);
+      updateHUD(data.metrics);
+      netState.scenario = "nominal";
+      updateIncidentBadge("nominal");
+      document.querySelectorAll(".btn-fault").forEach(b => b.classList.remove("active-fault"));
+      initParticles();
+      fetchAuditLogs();
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = `
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+        <line x1="6" y1="6" x2="6.01" y2="6"/>
+        <line x1="6" y1="18" x2="6.01" y2="18"/>
+      </svg>
+      <span>Real Mininet (WSL2 OVS)</span>
+    `;
+    console.error("Mininet run error:", err);
+  }
+}
+
+const btnMininet = document.getElementById("btn-mininet");
+if (btnMininet) {
+  btnMininet.addEventListener("click", triggerRealMininet);
+}
 
 function renderDecisionUI(dec) {
   document.getElementById("dec-action-name").innerText = dec.action;
@@ -393,9 +456,14 @@ async function fetchAuditLogs() {
       const d = log.recovery_delta;
       const deltaText = d ? `-${d.latency_drop_ms}ms lat, +${d.throughput_gain_mbps}Mbps tput` : "-";
       const qv = Number(log.q_value);
+      const isMininet = log.environment === 'real_mininet_openvswitch' || (log.incident && log.incident.includes('MININET'));
+      const incidentDisplay = isMininet
+        ? `<span style="color:#10b981;font-weight:700">REAL OVS &middot; ${log.incident.replace(' [REAL MININET]', '').toUpperCase()}</span>`
+        : `<span style="color:var(--amber)">${log.incident.toUpperCase()}</span>`;
+
       tr.innerHTML = `
         <td>${log.timestamp}</td>
-        <td><span style="color:var(--amber)">${log.incident.toUpperCase()}</span></td>
+        <td>${incidentDisplay}</td>
         <td><strong style="color:#fff">${log.action}</strong></td>
         <td><span class="gate-badge ${log.gate_status === 'APPROVED' ? 'gate-pass' : 'gate-escalate'}" style="font-size:9.5px;padding:1px 5px">${log.gate_status}</span></td>
         <td>${Number(log.confidence).toFixed(1)}%</td>

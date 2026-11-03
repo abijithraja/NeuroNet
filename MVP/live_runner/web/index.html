@@ -223,12 +223,23 @@
           <h4>Dueling DQN Policy</h4>
         </div>
 
-        <button id="btn-decide" class="btn-run-agent">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="5 3 19 12 5 21 5 3"/>
-          </svg>
-          <span>Run AI Agent Inference (Auto-Heal)</span>
-        </button>
+        <div class="agent-actions-row">
+          <button id="btn-decide" class="btn-run-agent" title="Run fast simulated inference in Python">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span>Auto-Heal (Simulated)</span>
+          </button>
+          <button id="btn-mininet" class="btn-run-mininet" title="Trigger REAL Linux Open vSwitch Mininet execution cycle via WSL2 kernel">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+              <line x1="6" y1="6" x2="6.01" y2="6"/>
+              <line x1="6" y1="18" x2="6.01" y2="18"/>
+            </svg>
+            <span>Auto-Heal (Real Mininet)</span>
+          </button>
+        </div>
 
         <!-- DECISION RESULT BANNER -->
         <div class="decision-result-panel" id="decision-panel">
