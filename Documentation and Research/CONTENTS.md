@@ -158,3 +158,15 @@ This directory contains research papers, technical architecture documents, hacka
   - **Exhaustive File-by-File Inventory:** Detailed description and utility of every file inside `MVP/` (entry points, Real Mininet subsystem, core AI algorithms, pre-trained models, datasets, and live runner).
   - **End-to-End Operational Workflow:** Step-by-step lifecycle with Mermaid sequence/flow diagram illustrating anomaly detection, confidence gating, OpenFlow failover execution, and JSONL audit logging.
   - **Live Verification Status:** Documents unit test pass rates ($4/4$ test suites OK), pre-trained weight integration (`mithu_pretrained_dqn.pt`), and real Mininet failover verification (0.0% packet loss).
+
+---
+
+### 12. [MVP_UPGRADE_AUDIT_AND_DESIGN.md](file:///c:/Users/ABIJITH%20RAJA%20B/Desktop/Neuronet/Documentation%20and%20Research/MVP_UPGRADE_AUDIT_AND_DESIGN.md)
+* **Format:** Markdown (`.md`)
+* **Title:** *NeuroNet MVP Real Physics & Independent AI Upgrade*
+* **Purpose:** Complete specification of the realistic 20-node discrete packet queue engine, unmanipulated Dueling DQN decision-making, action-specific physical remediation, and real Linux tc TBF queue saturation.
+* **Gist:**
+  - **M/M/1/K Fluid Queue Dynamics:** Implements real per-node buffers ($Q_{t+1} = \min(Q_{\max}, \max(0, Q_t + A_t - S_t))$), Little's Law queuing delay, packet drops, and CPU utilization.
+  - **Unmanipulated Dueling DQN:** Complete elimination of artificial scenario-based Q-value tampering, trained for 600 episodes to achieve +54.5 reward independently.
+  - **Action-Specific Remediation:** Dedicated execution for all 8 actions with dynamic Dijkstra constrained rerouting around congested nodes, backup spine failover, traffic shaping, DSCP QoS, and dynamic capacity scaling.
+  - **Real Mininet Queue Saturation & Scaling:** Replaces synthetic netem delays with real Linux `tc tbf` buffer constraints and dynamic bandwidth/queue scaling.
