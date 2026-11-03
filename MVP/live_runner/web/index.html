@@ -38,6 +38,10 @@
         <span class="live-pulse"></span>
         <span id="runtime-status-text">CONTROL PLANE ACTIVE &middot; 20 NODES ONLINE</span>
       </div>
+      <div id="mininet-status-pill" class="mininet-pill" title="Live status of Real Linux Mininet in WSL2">
+        <span class="mininet-dot"></span>
+        <span id="mininet-status-text">Real Mininet: Active (WSL2 OVS)</span>
+      </div>
       <div class="step-badge">
         <span class="step-label">CYCLE</span>
         <strong id="val-step">0</strong>
@@ -121,8 +125,12 @@
     <div class="canvas-container">
       <div class="canvas-header">
         <div class="canvas-title-wrap">
-          <span class="canvas-title">TOPOLOGY GRAPH &middot; M/M/1 QUEUE MODEL</span>
+          <span class="canvas-title">TOPOLOGY GRAPH &middot; M/M/1 QUEUE DYNAMICS</span>
           <span id="canvas-incident-badge" class="badge-nominal">NOMINAL</span>
+        </div>
+        <div class="canvas-active-path">
+          <span class="path-label">Active Path:</span>
+          <span id="active-path-str" class="path-display">E1 &rarr; A1 &rarr; C1 &rarr; C2 &rarr; A3 &rarr; E5</span>
         </div>
         <div class="canvas-legend">
           <span class="legend-item"><span class="dot-core"></span> Core &times;4</span>
@@ -136,8 +144,12 @@
         <canvas id="topologyCanvas" width="900" height="560"></canvas>
         <div id="node-inspector" class="inspector-popup" style="display:none;">
           <div class="insp-title" id="insp-name">Node C1 (Core)</div>
-          <div class="insp-row"><span>CPU Utilization:</span><strong id="insp-cpu">22%</strong></div>
-          <div class="insp-row"><span>Buffer Ingress:</span><strong id="insp-buf">14%</strong></div>
+          <div class="insp-row"><span>Queue Depth:</span><strong id="insp-queue">15 / 1000 pkts</strong></div>
+          <div class="insp-row"><span>Buffer Utilization:</span><strong id="insp-buf">1.5%</strong></div>
+          <div class="insp-row"><span>Traffic Flow:</span><strong id="insp-rate">45.0 Mbps</strong></div>
+          <div class="insp-row"><span>Queue Latency:</span><strong id="insp-delay">0.8 ms</strong></div>
+          <div class="insp-row"><span>Packets Dropped:</span><strong id="insp-drops" style="color:var(--rose)">0</strong></div>
+          <div class="insp-row"><span>CPU Load:</span><strong id="insp-cpu">22%</strong></div>
           <div class="insp-row"><span>Physical State:</span><span id="insp-status" class="tag-insp-ok">OK</span></div>
         </div>
       </div>

@@ -12,6 +12,9 @@ let netState = {
   metrics: { latency_ms: 19.4, throughput_mbps: 94.2, packet_loss_pct: 0.12, congestion: 0.16, link_health: 0.98, cpu_util_pct: 24.5 },
   nodes: [],
   links: [],
+  active_path: [10, 4, 0, 1, 6, 14],
+  active_path_names: ["E1", "A1", "C1", "C2", "A3", "E5"],
+  active_path_str: "E1 → A1 → C1 → C2 → A3 → E5",
   last_action: "MONITOR",
   last_decision: null
 };
@@ -49,7 +52,7 @@ class PacketParticle {
     }
   }
 
-  draw(nodes) {
+  draw(nodes, activeLinkSet) {
     const sNode = nodes[this.link.source];
     const tNode = nodes[this.link.target];
     if (!sNode || !tNode) return;
@@ -60,6 +63,8 @@ class PacketParticle {
     const x = from.x + (to.x - from.x) * this.progress;
     const y = from.y + (to.y - from.y) * this.progress;
 
+    const isActive = activeLinkSet && activeLinkSet.has(`${this.link.source}-${this.link.target}`);
+
     ctx.save();
     if (this.link.status === "cut") {
       ctx.fillStyle = "#f43f5e";
@@ -69,6 +74,13 @@ class PacketParticle {
     } else if (this.link.status === "congested") {
       ctx.fillStyle = "#f59e0b";
       ctx.shadowColor = "#f59e0b";
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(x, y, 3.2, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (isActive) {
+      ctx.fillStyle = "#06b6d4";
+      ctx.shadowColor = "#06b6d4";
       ctx.shadowBlur = 6;
       ctx.beginPath();
       ctx.arc(x, y, 2.8, 0, Math.PI * 2);
@@ -78,7 +90,7 @@ class PacketParticle {
       ctx.shadowColor = "#ffffff";
       ctx.shadowBlur = 4;
       ctx.beginPath();
-      ctx.arc(x, y, 2.2, 0, Math.PI * 2);
+      ctx.arc(x, y, 2.0, 0, Math.PI * 2);
       ctx.fill();
     }
     ctx.restore();
@@ -89,7 +101,7 @@ function initParticles() {
   particles = [];
   if (!netState.links) return;
   netState.links.forEach(l => {
-    const count = l.status === "congested" ? 4 : 2;
+    const count = l.status === "congested" ? 5 : 2;
     for (let i = 0; i < count; i++) {
       particles.push(new PacketParticle(l));
     }
@@ -102,6 +114,13 @@ function renderCanvas() {
 
   const nodes = netState.nodes;
   const links = netState.links;
+  const activePath = netState.active_path || [];
+
+  const activeLinkSet = new Set();
+  for (let i = 0; i < activePath.length - 1; i++) {
+    activeLinkSet.add(`${activePath[i]}-${activePath[i+1]}`);
+    activeLinkSet.add(`${activePath[i+1]}-${activePath[i]}`);
+  }
 
   if (nodes.length > 0 && links.length > 0) {
     // 1. Draw Links
@@ -110,20 +129,28 @@ function renderCanvas() {
       const t = nodes[l.target];
       if (!s || !t) return;
 
+      const isActive = activeLinkSet.has(`${l.source}-${l.target}`);
+
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(s.x, s.y);
       ctx.lineTo(t.x, t.y);
 
       if (l.status === "cut") {
-        ctx.strokeStyle = "rgba(244, 63, 94, 0.75)";
-        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = "rgba(244, 63, 94, 0.85)";
+        ctx.lineWidth = 2.8;
         ctx.setLineDash([6, 6]);
       } else if (l.status === "congested") {
-        ctx.strokeStyle = "rgba(245, 158, 11, 0.75)";
-        ctx.lineWidth = 3.5;
-        ctx.shadowColor = "rgba(245, 158, 11, 0.4)";
-        ctx.shadowBlur = 8;
+        ctx.strokeStyle = "rgba(245, 158, 11, 0.9)";
+        ctx.lineWidth = 4.0;
+        ctx.shadowColor = "rgba(245, 158, 11, 0.6)";
+        ctx.shadowBlur = 10;
+      } else if (isActive) {
+        // High-visibility glowing cyan active flow pipe
+        ctx.strokeStyle = "rgba(6, 182, 212, 0.85)";
+        ctx.lineWidth = 3.2;
+        ctx.shadowColor = "rgba(6, 182, 212, 0.65)";
+        ctx.shadowBlur = 12;
       } else {
         ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
         ctx.lineWidth = 1.6;
@@ -135,33 +162,40 @@ function renderCanvas() {
     // 2. Draw Packet Particles
     particles.forEach(p => {
       p.update();
-      p.draw(nodes);
+      p.draw(nodes, activeLinkSet);
     });
 
     // 3. Draw Nodes
     nodes.forEach(n => {
       const isSelected = selectedNodeId === n.id;
+      const isOnActivePath = activePath.includes(n.id);
       let radius = n.tier === "core" ? 18 : (n.tier === "agg" ? 14 : 10);
       let color = n.tier === "core" ? "#ffffff" : (n.tier === "agg" ? "#a1a1aa" : "#22c55e");
 
       if (n.status === "critical") color = "#f43f5e";
       else if (n.status === "congested") color = "#f59e0b";
       else if (n.status === "warning") color = "#fbbf24";
+      else if (isOnActivePath) color = "#06b6d4";
 
       ctx.save();
 
-      // Outer Halo for critical/congested nodes
+      // Outer Halo for critical/congested nodes or active path
       if (n.status !== "nominal") {
         ctx.beginPath();
         ctx.arc(n.x, n.y, radius + 8, 0, Math.PI * 2);
         ctx.fillStyle = n.status === "critical" ? "rgba(244, 63, 94, 0.25)" : "rgba(245, 158, 11, 0.25)";
+        ctx.fill();
+      } else if (isOnActivePath) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, radius + 5, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(6, 182, 212, 0.15)";
         ctx.fill();
       }
 
       // Selection ring
       if (isSelected) {
         ctx.beginPath();
-        ctx.arc(n.x, n.y, radius + 5, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, radius + 6, 0, Math.PI * 2);
         ctx.strokeStyle = "#fff";
         ctx.lineWidth = 2;
         ctx.stroke();
@@ -192,6 +226,26 @@ function renderCanvas() {
   requestAnimationFrame(renderCanvas);
 }
 
+function updateNodeInspector() {
+  if (selectedNodeId === null || !netState.nodes) return;
+  const found = netState.nodes.find(n => n.id === selectedNodeId);
+  const popup = document.getElementById("node-inspector");
+  if (!found || !popup) return;
+
+  document.getElementById("insp-name").innerText = `${found.name} (${found.tier.toUpperCase()})`;
+  const qDepth = found.queue_depth !== undefined ? found.queue_depth : Math.round((found.buffer / 100) * 1000);
+  const qCap = found.queue_capacity || 1000;
+  document.getElementById("insp-queue").innerText = `${qDepth} / ${qCap} pkts`;
+  document.getElementById("insp-buf").innerText = `${found.buffer}%`;
+  document.getElementById("insp-rate").innerText = `${found.incoming_mbps || 20.0} Mbps`;
+  document.getElementById("insp-delay").innerText = `${found.delay_ms || 1.0} ms`;
+  document.getElementById("insp-drops").innerText = `${found.dropped_packets || 0}`;
+  document.getElementById("insp-cpu").innerText = `${found.cpu}%`;
+  document.getElementById("insp-status").innerText = found.status.toUpperCase();
+  document.getElementById("insp-status").className = found.status === "nominal" ? "tag-insp-ok" : "tag-insp-err";
+  popup.style.display = "block";
+}
+
 // Canvas Click for Node Inspector
 canvas.addEventListener("click", e => {
   const rect = canvas.getBoundingClientRect();
@@ -209,12 +263,7 @@ canvas.addEventListener("click", e => {
   const popup = document.getElementById("node-inspector");
   if (found) {
     selectedNodeId = found.id;
-    document.getElementById("insp-name").innerText = `${found.name} (${found.tier.toUpperCase()})`;
-    document.getElementById("insp-cpu").innerText = `${found.cpu}%`;
-    document.getElementById("insp-buf").innerText = `${found.buffer}%`;
-    document.getElementById("insp-status").innerText = found.status.toUpperCase();
-    document.getElementById("insp-status").className = found.status === "nominal" ? "tag-insp-ok" : "tag-insp-err";
-    popup.style.display = "block";
+    updateNodeInspector();
   } else {
     selectedNodeId = null;
     popup.style.display = "none";
@@ -234,13 +283,38 @@ async function fetchStatus() {
     updateHUD(data.metrics);
     updateIncidentBadge(data.scenario);
     document.getElementById("val-step").innerText = data.step;
+    if (data.active_path_str) {
+      const pEl = document.getElementById("active-path-str");
+      if (pEl) pEl.innerText = data.active_path_str;
+    }
+    updateNodeInspector();
 
     if (particles.length === 0) {
       initParticles();
     }
+    checkMininetStatus();
   } catch (err) {
     console.warn("API connection pending...", err);
   }
+}
+
+async function checkMininetStatus() {
+  try {
+    const res = await fetch("/api/mininet/status");
+    if (!res.ok) return;
+    const data = await res.json();
+    const pill = document.getElementById("mininet-status-pill");
+    const text = document.getElementById("mininet-status-text");
+    if (pill && text) {
+      if (data.online) {
+        pill.className = "mininet-pill";
+        text.innerText = "Real Mininet: ACTIVE (WSL2 OVS)";
+      } else {
+        pill.className = "mininet-pill offline";
+        text.innerText = "Real Mininet: Booting...";
+      }
+    }
+  } catch (e) {}
 }
 
 function updateHUD(m) {
@@ -291,8 +365,17 @@ document.querySelectorAll(".btn-fault").forEach(btn => {
         body: JSON.stringify({ scenario })
       });
       const data = await res.json();
+      if (data.nodes) netState.nodes = data.nodes;
+      if (data.links) netState.links = data.links;
+      if (data.active_path) netState.active_path = data.active_path;
+      if (data.active_path_str) {
+        netState.active_path_str = data.active_path_str;
+        const pEl = document.getElementById("active-path-str");
+        if (pEl) pEl.innerText = data.active_path_str;
+      }
       updateHUD(data.metrics);
       updateIncidentBadge(data.scenario);
+      updateNodeInspector();
       initParticles();
 
       // If Auto-Pilot is enabled, automatically trigger the agent after 1.2s delay
@@ -323,6 +406,16 @@ async function triggerAgentDecision() {
     if (data.decision) {
       renderDecisionUI(data.decision);
       updateHUD(data.metrics);
+      if (data.nodes) netState.nodes = data.nodes;
+      if (data.links) netState.links = data.links;
+      if (data.active_path) netState.active_path = data.active_path;
+      if (data.active_path_str) {
+        netState.active_path_str = data.active_path_str;
+        const pEl = document.getElementById("active-path-str");
+        if (pEl) pEl.innerText = data.active_path_str;
+      }
+      updateNodeInspector();
+
       if (data.decision.gate_status === 'APPROVED') {
         netState.scenario = "nominal";
         updateIncidentBadge("nominal");
@@ -352,10 +445,13 @@ async function triggerRealMininet() {
   btn.innerHTML = `<span>Executing Kernel OVS...</span>`;
 
   try {
+    // If no incident is active, default to link_failure so user sees a real physical failover cycle
+    const faultToRun = (!netState.scenario || netState.scenario === "nominal") ? "link_failure" : netState.scenario;
+
     const res = await fetch("/api/mininet/run", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fault: netState.scenario })
+      body: JSON.stringify({ fault: faultToRun })
     });
     const data = await res.json();
     btn.disabled = false;
@@ -372,6 +468,13 @@ async function triggerRealMininet() {
     if (data.decision) {
       renderDecisionUI(data.decision);
       updateHUD(data.metrics);
+      if (data.decision.action === "REROUTE" || data.decision.action === "FAILOVER") {
+        netState.active_path = [10, 9, 3, 2, 7, 14];
+        netState.active_path_str = "E1 → A6 → C4 → C3 → A4 → E5 (Backup Spine B)";
+        const pEl = document.getElementById("active-path-str");
+        if (pEl) pEl.innerText = netState.active_path_str;
+      }
+      updateNodeInspector();
       netState.scenario = "nominal";
       updateIncidentBadge("nominal");
       document.querySelectorAll(".btn-fault").forEach(b => b.classList.remove("active-fault"));
@@ -407,7 +510,21 @@ function renderDecisionUI(dec) {
   const gateBadge = document.getElementById("dec-gate-badge");
   gateBadge.innerText = dec.gate_status;
   gateBadge.className = `gate-badge ${dec.gate_status === 'APPROVED' ? 'gate-pass' : 'gate-escalate'}`;
-  document.getElementById("dec-gate-desc").innerText = dec.gate_reason;
+  let descText = dec.gate_reason;
+  if (dec.action_details) {
+    if (dec.action_details.reroute) {
+      descText += ` • ${dec.action_details.reroute.new_path}`;
+    } else if (dec.action_details.failover) {
+      descText += ` • ${dec.action_details.failover.activated_backup}`;
+    } else if (dec.action_details.shaping) {
+      descText += ` • ${dec.action_details.shaping}`;
+    } else if (dec.action_details.scaling) {
+      descText += ` • ${dec.action_details.scaling}`;
+    } else if (dec.action_details.qos) {
+      descText += ` • ${dec.action_details.qos}`;
+    }
+  }
+  document.getElementById("dec-gate-desc").innerText = descText;
 
   // Render Q-values horizontal bars
   const qContainer = document.getElementById("q-bars-container");
